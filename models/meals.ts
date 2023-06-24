@@ -49,7 +49,7 @@ export class Meal extends Realm.Object {
     properties: {
       _id: 'objectId',
       name: 'string',
-      ingredientLines: '[string]',
+      ingredientLines: 'string[]',
       calories: 'number',
       macros: {
         carbs: 'number',
