@@ -8,6 +8,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.13.0",
+    "@react-navigation/native": "^6.1.7",
+    "@react-navigation/native-stack": "^6.9.13",
     "@types/react": "~18.0.27",
     "expo": "~48.0.18",
     "expo-splash-screen": "~0.18.2",
@@ -20,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "react-native-dotenv": "^3.4.9",
     "tailwindcss": "^3.3.2"
   },
   "private": true
