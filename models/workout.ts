@@ -1,5 +1,5 @@
 import {Realm, createRealmContext} from '@realm/react';
-
+import {Recurrence} from '../types/recurrence';
 //TODO figure out reoccurence type etc and uncomment all of the occurences of it in file
 export class Workout extends Realm.Object {
   _id!: Realm.BSON.ObjectId;
@@ -9,7 +9,7 @@ export class Workout extends Realm.Object {
   equipment: string;
   difficulty: string;
   instructions: string;
-  // reoccurence: string;
+  // recurrence: string;
   createdAt!: Date;
 
   // the Task.generate() method creates Task objects with fields with default values
@@ -20,7 +20,7 @@ export class Workout extends Realm.Object {
     equipment: string,
     difficulty: string,
     instructions: string
-    // reoccurence: string
+    // recurrence: Recurrence
   ) {
     return {
       _id: new Realm.BSON.ObjectId(),
@@ -30,7 +30,7 @@ export class Workout extends Realm.Object {
       equipment,
       difficulty,
       instructions,
-      // reoccurence,
+      // recurrence: recurrence.toString(),
       createdAt: new Date(),
     };
   }
@@ -47,7 +47,7 @@ export class Workout extends Realm.Object {
       equipment: 'string',
       difficulty: 'string',
       instructions: 'string',
-      // reoccurence: 'string',
+      // recurrence: 'string',
       createdAt: 'date',
     },
   };

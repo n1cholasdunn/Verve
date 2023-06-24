@@ -1,4 +1,4 @@
-export enum Reoccurence {
+export enum Recurrence {
   None = 'none',
   Daily = 'daily',
   Weekly = 'weekly',
