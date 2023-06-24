@@ -1,4 +1,4 @@
-import {createRealmContext} from '@realm/react';
+import {Realm, createRealmContext} from '@realm/react';
 import {Workout} from './models/workout';
 import {Meal} from './models/meals';
 
