@@ -5,27 +5,32 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import {FIREBASE_AUTH} from '../../firebaseConfig';
+// import {FIREBASE_AUTH} from '../../firebaseConfig';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const auth = getAuth();
+const auth = getAuth();
 
-  const signUp = async () => {
-    try {
-      createUserWithEmailAndPassword(FIREBASE_AUTH, email, password);
-      alert('check email');
-    } catch (error) {
-      console.log(error);
+const Login = ({navigation}) => {
+  const [userDetails, setUserDetails] = useState({
+    email: '',
+    password: '',
+    error: '',
+  });
+
+  const loginFunction = async () => {
+    if (userDetails.email === '' || userDetails.password === '') {
+      setUserDetails({
+        ...userDetails,
+        error: 'Please enter email and password',
+      });
+      return;
     }
-  };
-
-  const signIn = async () => {
     try {
-      signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
-    } catch (error) {
-      console.log(error);
+      signInWithEmailAndPassword(auth, userDetails.email, userDetails.password);
+    } catch (err) {
+      setUserDetails({
+        ...userDetails,
+        error: err.message,
+      });
     }
   };
 
@@ -35,31 +40,34 @@ const Login = () => {
       <Text>Login</Text>
       <TextInput
         placeholder="email"
-        style={styles.input}
-        onChangeText={(input: string) => setEmail(input)}
-        value={email}
+        onChangeText={input => setUserDetails({...userDetails, email: input})}
+        value={userDetails.email}
       />
       <TextInput
         placeholder="password"
         textContentType="password"
-        style={styles.input}
-        onChangeText={(input: string) => setPassword(input)}
-        value={password}
+        onChangeText={input =>
+          setUserDetails({...userDetails, password: input})
+        }
+        value={userDetails.password}
       />
-      <Button onPress={signIn} title="Sign in" />
-      <Button onPress={signUp} title="Sign up" />
+      <Button onPress={loginFunction} title="Sign in" />
+      <Button
+        onPress={() => navigation.navigate('Registration page')}
+        title="Register new account"
+      />
     </View>
   );
 };
 
 export default Login;
 
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    borderWidth: 1,
-    borderRadius: 4,
-    padding: 10,
-    backgroundColor: '#ffff',
-  },
-});
+// const styles = StyleSheet.create({
+//   input: {
+//     height: 40,
+//     borderWidth: 1,
+//     borderRadius: 4,
+//     padding: 10,
+//     backgroundColor: '#ffff',
+//   },
+// });
