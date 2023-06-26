@@ -28,7 +28,6 @@ const Dashboard = () => {
         <View>
           <MealForm />
         </View>
-        {/* <MealData /> */}
         {/* <Nutrition /> */}
       </ScrollView>
     </SafeAreaView>

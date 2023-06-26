@@ -1,15 +1,16 @@
 import {
-  Button,
   FlatList,
   Pressable,
   SafeAreaView,
   ScrollView,
   Text,
   View,
+  StyleSheet,
 } from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
 import {onSnapshot, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
+import {color} from '@rneui/base';
 
 const MealData = ({day, mealType}) => {
   const [meals, setMeals] = useState([]);
@@ -29,28 +30,40 @@ const MealData = ({day, mealType}) => {
   }, []);
   //flatlist for ingredients
   const renderMeals = ({item}) => (
-    <View style={{marginTop: 10, padding: 15}}>
-      <Text>Name: {item.name}</Text>
-      <Text>Ingredients:{item.ingredients}</Text>
-      <Text>Calories: {item.totalCalories}</Text>
-      <Text>Protein: {item.totalProtein}</Text>
-      <Text>Fat: {item.totalFat}lbs</Text>
-      <Text>Date: {item.date.toString()}</Text>
+    <View style={styles.mealCard}>
+      <Text style={{fontSize: 20, color: '#BB86FC'}}>{item.name}</Text>
+      <Text style={{color: '#606368'}}>Ingredients:{item.ingredients}</Text>
+      <Text style={{color: '#606368'}}>Calories: {item.totalCalories}</Text>
+      <Text style={{color: '#606368'}}>Protein: {item.totalProtein}</Text>
+      <Text style={{color: '#606368'}}>Fat: {item.totalFat}</Text>
+      <Text style={{color: '#606368'}}>Date: {item.date.toString()}</Text>
     </View>
   );
 
   return (
     <SafeAreaView>
       <ScrollView>
-        <FlatList
-          data={meals}
-          renderItem={renderMeals}
-          horizontal={true}
-          keyExtractor={item => item.id}
-        />
+        <View>
+          <FlatList
+            data={meals}
+            renderItem={renderMeals}
+            horizontal={true}
+            keyExtractor={item => item.id}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  mealCard: {
+    margin: 10,
+    padding: 15,
+    height: 170,
+    width: 300,
+    backgroundColor: '#1E1E1E',
+  },
+});
 
 export default MealData;
