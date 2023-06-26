@@ -1,9 +1,17 @@
-import {FlatList, SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {
+  Button,
+  FlatList,
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
 import {onSnapshot, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const MealData = () => {
+const MealData = ({day, mealType}) => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -12,11 +20,14 @@ const MealData = () => {
     onSnapshot(mealQuery, snapshot => {
       let mealList = [];
       snapshot.docs.map(doc => mealList.push({...doc.data(), id: doc.id}));
+      mealList = mealList.filter(meal => {
+        return meal.type === mealType && meal.date === day;
+      });
       setMeals(mealList);
       setLoading(false);
     });
   }, []);
-
+  //flatlist for ingredients
   const renderMeals = ({item}) => (
     <View style={{marginTop: 10, padding: 15}}>
       <Text>Name: {item.name}</Text>
@@ -31,10 +42,6 @@ const MealData = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View>
-          <Text style={{marginTop: 40, fontWeight: 'bold'}}>Added Meals</Text>
-        </View>
-
         <FlatList
           data={meals}
           renderItem={renderMeals}
