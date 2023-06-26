@@ -20,29 +20,30 @@ const WorkoutData = () => {
   }, []);
 
   const renderWorkouts = ({item}) => (
-    <View style={{marginTop: 20, padding: 15}}>
-      <Text>Name: {item.name}</Text>
-      <Text>Muscle: {item.muscle}</Text>
-      <Text>Reps: {item.reps}</Text>
-      <Text>Sets: {item.sets}</Text>
-      <Text>Weight: {item.weight}lbs</Text>
-      <Text>Date: {item.date.toString()}</Text>
+    <View className="mt-4 p-15 ">
+      {/* <View style={{marginTop: 20, padding: 15}}> */}
+      <Text className="text-lg">Name: {item.name}</Text>
+      <Text className="text-lg">Muscle: {item.muscle}</Text>
+      <Text className="text-lg">Reps: {item.reps}</Text>
+      <Text className="text-lg">Sets: {item.sets}</Text>
+      <Text className="text-lg">Weight: {item.weight}lbs</Text>
+      <Text className="text-lg">Date: {item.date.toString()}</Text>
     </View>
   );
 
   return (
     <SafeAreaView>
       <ScrollView>
-        <View>
-          <Text style={{marginTop: 40, fontWeight: 'bold'}}>
-            Added Workouts
-          </Text>
+        <View className="flex items-center">
+          <Text className="mt-10 text-2xl font-bold">Added Workouts</Text>
+          {/* <ScrollView> */}
           <FlatList
             data={workouts}
             renderItem={renderWorkouts}
-            horizontal={true}
+            // horizontal={true}
             keyExtractor={item => item.id}
           />
+          {/* </ScrollView> */}
         </View>
       </ScrollView>
     </SafeAreaView>

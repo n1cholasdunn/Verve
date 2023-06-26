@@ -1,9 +1,10 @@
-import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import {UserOutlined} from '@ant-design/icons';
-import WorkoutRender from '../components/WorkoutRender';
+import WorkoutData from '../../components/WorkoutData';
+import DailyChart from '../../components/charts/DailyChart';
 
-const ProfileScreen = () => {
+const UserProfile = () => {
   return (
     // <View>
     <SafeAreaView>
@@ -14,10 +15,11 @@ const ProfileScreen = () => {
           </View>
           <View>
             {/* TODO render user profile picture */}
-            <UserOutlined />
+            {/* <UserOutlined /> */}
             <Text>Username</Text>
           </View>
           <View>
+            {/* TODO Integrate fitness calculator api for goals and progress */}
             <Text>Overall</Text>
           </View>
           <View>
@@ -25,6 +27,7 @@ const ProfileScreen = () => {
           </View>
           <View>
             <Text>Total Weight Loss</Text>
+            <DailyChart />
             <Text>10lb/20lb</Text>
           </View>
           <View>
@@ -34,12 +37,12 @@ const ProfileScreen = () => {
         </View>
         <View>
           <Text>Your Activities</Text>
-          {/* TODO Render list of activites/workouts */}
-          <WorkoutRender />
+          {/* TODO Render list of USER activites/workouts */}
+          <WorkoutData />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default ProfileScreen;
+export default UserProfile;
