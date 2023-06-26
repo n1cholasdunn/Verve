@@ -2,6 +2,7 @@
 import {initializeApp} from 'firebase/app';
 import 'firebase/auth';
 import {FIREBASE_API_KEY} from '@env';
+import {getFirestore} from '@firebase/firestore';
 
 // Your web app's Firebase configuration
 
@@ -20,5 +21,5 @@ export const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+export const db = getFirestore();
 export default app;
