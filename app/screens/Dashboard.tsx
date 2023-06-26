@@ -1,7 +1,8 @@
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, ScrollView, SafeAreaView} from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
 import {collection, onSnapshot} from 'firebase/firestore';
 import {db} from '../../firebaseConfig';
+import WorkoutForm from '../../components/WorkoutForm';
 
 const Dashboard = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -19,24 +20,34 @@ const Dashboard = () => {
   }, []);
 
   const renderWorkouts = ({item}) => (
-    <View style={{marginTop: 20}}>
+    <View style={{marginTop: 20, padding: 15}}>
       <Text>Name: {item.name}</Text>
       <Text>Muscle: {item.muscle}</Text>
       <Text>Reps: {item.reps}</Text>
       <Text>Sets: {item.sets}</Text>
-      <Text>weight: {item.weight}lbs</Text>
+      <Text>Weight: {item.weight}lbs</Text>
+      <Text>Date: {item.date.toString()}</Text>
     </View>
   );
-
+  // gosam61266@fulwark.com
   return (
-    <View>
-      <Text>Dashboard</Text>
-      <FlatList
-        data={workouts}
-        renderItem={renderWorkouts}
-        keyExtractor={item => item.id}
-      />
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View>
+          <WorkoutForm />
+          <Text style={{marginTop: 40, fontWeight: 'bold'}}>
+            Added Workouts
+          </Text>
+        </View>
+
+        <FlatList
+          data={workouts}
+          renderItem={renderWorkouts}
+          horizontal={true}
+          keyExtractor={item => item.id}
+        />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
