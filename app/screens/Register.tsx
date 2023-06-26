@@ -1,4 +1,4 @@
-import {Button, Text, TextInput, View} from 'react-native';
+import {Button, Text, TextInput, View, StyleSheet} from 'react-native';
 import React, {Component, useState} from 'react';
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
 
@@ -34,11 +34,13 @@ const Register = ({navigation}) => {
     }
   };
   return (
-    <View className="w-full h-full">
-      <Text className="font-title">Register</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Verve</Text>
+      <Text style={styles.text}>Register</Text>
       <View>
+        <Text style={styles.text}>Email:</Text>
         <TextInput
-          placeholder="email"
+          style={styles.input}
           value={userDetails.email}
           onChangeText={input => {
             setUserDetails({...userDetails, email: input});
@@ -46,7 +48,9 @@ const Register = ({navigation}) => {
         />
       </View>
       <View>
+        <Text style={styles.text}>Password:</Text>
         <TextInput
+          style={styles.input}
           placeholder="password"
           value={userDetails.password}
           onChangeText={input => {
@@ -66,5 +70,31 @@ const Register = ({navigation}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1E1E1E',
+    flex: 1,
+  },
+  title: {
+    marginTop: 50,
+    marginBottom: 80,
+    color: '#01DBC6',
+    fontSize: 80,
+    textAlign: 'center',
+  },
+  text: {
+    color: 'white',
+  },
+  input: {
+    height: 50,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+    color: 'white',
+    borderColor: 'white',
+  },
+});
 
 export default Register;

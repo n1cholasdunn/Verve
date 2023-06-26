@@ -35,15 +35,21 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <View className="flex-1 items-center justify-center bg-black">
-      <Text>Verve</Text>
-      <Text>Login</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Verve</Text>
+      <Text style={styles.text}>Login</Text>
+      <View>
+        <Text style={styles.text}>Email:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="email"
+          onChangeText={input => setUserDetails({...userDetails, email: input})}
+          value={userDetails.email}
+        />
+      </View>
+      <Text style={styles.text}>Password:</Text>
       <TextInput
-        placeholder="email"
-        onChangeText={input => setUserDetails({...userDetails, email: input})}
-        value={userDetails.email}
-      />
-      <TextInput
+        style={styles.input}
         placeholder="password"
         textContentType="password"
         onChangeText={input =>
@@ -60,14 +66,30 @@ const Login = ({navigation}) => {
   );
 };
 
-export default Login;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1E1E1E',
+    flex: 1,
+  },
+  title: {
+    marginTop: 50,
+    marginBottom: 80,
+    color: '#01DBC6',
+    fontSize: 80,
+    textAlign: 'center',
+  },
+  text: {
+    color: 'white',
+  },
+  input: {
+    height: 50,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+    color: 'white',
+    borderColor: 'white',
+  },
+});
 
-// const styles = StyleSheet.create({
-//   input: {
-//     height: 40,
-//     borderWidth: 1,
-//     borderRadius: 4,
-//     padding: 10,
-//     backgroundColor: '#ffff',
-//   },
-// });
+export default Login;
