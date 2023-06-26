@@ -1,4 +1,4 @@
-import {View, Text, TextInput, Pressable} from 'react-native';
+import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import {collection, addDoc} from 'firebase/firestore';
@@ -31,14 +31,7 @@ const WorkoutForm = () => {
       <View>
         <Text>Name</Text>
         <TextInput
-          style={{
-            height: 40,
-            width: 300,
-            margin: 12,
-            borderWidth: 1,
-            padding: 10,
-            borderRadius: 10,
-          }}
+          style={styles.input}
           placeholder="name"
           value={workout.name}
           onChangeText={input => {
@@ -47,14 +40,7 @@ const WorkoutForm = () => {
         />
         <Text>Muscle:</Text>
         <TextInput
-          style={{
-            height: 40,
-            width: 300,
-            margin: 12,
-            borderWidth: 1,
-            padding: 10,
-            borderRadius: 10,
-          }}
+          style={styles.input}
           placeholder="muscle"
           value={workout.muscle}
           onChangeText={input => {
@@ -97,14 +83,7 @@ const WorkoutForm = () => {
         </Picker>
         <Text>Weight(lbs):</Text>
         <TextInput
-          style={{
-            height: 40,
-            width: 300,
-            margin: 12,
-            borderWidth: 1,
-            padding: 10,
-            borderRadius: 10,
-          }}
+          style={styles.input}
           keyboardType="numeric"
           value={workout.weight.toString()}
           onChangeText={input => {
@@ -112,17 +91,7 @@ const WorkoutForm = () => {
           }}
         />
         <View style={{alignItems: 'center'}}>
-          <Pressable
-            onPress={addWorkout}
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderStyle: 'solid',
-              borderWidth: 1,
-              backgroundColor: '#BB86FC',
-              height: 40,
-              width: 300,
-            }}>
+          <Pressable onPress={addWorkout} style={styles.addButton}>
             <Text style={{fontSize: 20, fontWeight: '600'}}>Add workout</Text>
           </Pressable>
         </View>
@@ -130,5 +99,25 @@ const WorkoutForm = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    width: 300,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+  },
+  addButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    backgroundColor: '#BB86FC',
+    height: 40,
+    width: 300,
+  },
+});
 
 export default WorkoutForm;
