@@ -1,9 +1,16 @@
-import {FlatList, SafeAreaView, ScrollView, Text, View} from 'react-native';
-import React, {Component, useEffect, useState} from 'react';
+import {
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const WorkoutData = () => {
+const WorkoutData = ({day}) => {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -14,36 +21,37 @@ const WorkoutData = () => {
     onSnapshot(workoutQuery, snapshot => {
       let workoutList = [];
       snapshot.docs.map(doc => workoutList.push({...doc.data(), id: doc.id}));
+      workoutList = workoutList.filter(workout => {
+        return workout.date === day;
+      });
       setWorkouts(workoutList);
       setLoading(false);
     });
   }, []);
 
   const renderWorkouts = ({item}) => (
-    <View className="mt-4 p-15 ">
-      {/* <View style={{marginTop: 20, padding: 15}}> */}
-      <Text className="text-lg">Name: {item.name}</Text>
-      <Text className="text-lg">Muscle: {item.muscle}</Text>
-      <Text className="text-lg">Reps: {item.reps}</Text>
-      <Text className="text-lg">Sets: {item.sets}</Text>
-      <Text className="text-lg">Weight: {item.weight}lbs</Text>
-      <Text className="text-lg">Date: {item.date.toString()}</Text>
+    <View className="p-15 m-10 h-170 w-300 bg-[#1E1E1E]">
+      <Text className="text-2xl text-[#BB86FC]">Name: {item.name}</Text>
+      <Text className="text-lg text-[#606368]">Muscle: {item.muscle}</Text>
+      <Text className="text-lg text-[#606368]">Reps: {item.reps}</Text>
+      <Text className="text-lg text-[#606368]">Sets: {item.sets}</Text>
+      <Text className="text-lg text-[#606368]">Weight: {item.weight}lbs</Text>
+      <Text className="text-lg text-[#606368]">
+        Date: {item.date.toString()}
+      </Text>
     </View>
   );
 
   return (
     <SafeAreaView>
       <ScrollView>
-        <View className="flex items-center">
+        <View>
           <Text className="mt-10 text-2xl font-bold">Added Workouts</Text>
-          {/* <ScrollView> */}
           <FlatList
             data={workouts}
             renderItem={renderWorkouts}
-            // horizontal={true}
             keyExtractor={item => item.id}
           />
-          {/* </ScrollView> */}
         </View>
       </ScrollView>
     </SafeAreaView>

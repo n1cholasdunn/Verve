@@ -14,21 +14,24 @@ import MealData from '../../components/MealData';
 import WorkoutData from '../../components/WorkoutData';
 import MealForm from '../../components/MealForm';
 import Nutrition from './Nutrition';
+import Workouts from './Workouts';
 
 const Dashboard = () => {
   // gosam61266@fulwark.com
   return (
     <SafeAreaView>
       <ScrollView>
-        <View>
+        {/* <View>
           <WorkoutForm />
-        </View>
-        <WorkoutData />
+        </View> */}
+        {/* <WorkoutData /> */}
 
-        <View>
+        {/* <View>
           <MealForm />
-        </View>
+        </View> */}
+
         {/* <Nutrition /> */}
+        <Workouts />
       </ScrollView>
     </SafeAreaView>
   );

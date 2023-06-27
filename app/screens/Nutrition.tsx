@@ -1,14 +1,18 @@
 import {Text, View, StyleSheet} from 'react-native';
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import MealData from '../../components/MealData';
+import {collection, onSnapshot} from '@firebase/firestore';
+import {db} from '../../firebaseConfig';
 
 const Nutrition = () => {
   let today = new Date().toISOString().slice(0, 10);
+  const [calories, setCalories] = useState(0);
+
   return (
     <View style={styles.container}>
       <View style={{marginHorizontal: 10}}>
         <Text style={styles.title}>Verve</Text>
-        <Text style={styles.text}>Today's Calories: </Text>
+        <Text style={styles.text}>Today's Calories:{calories} </Text>
         <Text style={styles.text}>Macros</Text>
         <Text
           style={{

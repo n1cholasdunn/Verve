@@ -22,7 +22,7 @@ const MealData = ({day, mealType}) => {
       let mealList = [];
       snapshot.docs.map(doc => mealList.push({...doc.data(), id: doc.id}));
       mealList = mealList.filter(meal => {
-        return meal.type === mealType && meal.date === day;
+        return meal.type === mealType;
       });
       setMeals(mealList);
       setLoading(false);
