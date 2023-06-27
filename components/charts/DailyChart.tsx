@@ -6,7 +6,7 @@ import {Dimensions} from 'react-native';
 const DailyChart = ({className}) => {
   const screenWidth = Dimensions.get('window').width;
   return (
-    <View>
+    <View className="w-1/2">
       <ProgressChart
         data={[0.8]}
         width={Dimensions.get('window').width / 2 - 30}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import Explore from '../components/Explore';
+import Explore from '../../components/Explore';
 
 const Today = () => {
   return (

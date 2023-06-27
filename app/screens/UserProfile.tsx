@@ -10,7 +10,7 @@ const UserProfile = () => {
     // <View>
     <SafeAreaView>
       <ScrollView nestedScrollEnabled>
-        <View>
+        <View className="bg-black h-50 w-50">
           <View>
             <Text className="text-xl">Goal Progress</Text>
           </View>
@@ -20,7 +20,7 @@ const UserProfile = () => {
             <Text className="text-xl">Username</Text>
           </View>
           <View>
-            <View className=" flexflex-row border-solid border-2 border-black bg-black">
+            <View className=" flex-row flex">
               <DailyChart className="flex" />
               <OverallChart className="flex" />
             </View>
@@ -40,7 +40,8 @@ const UserProfile = () => {
         <View>
           <Text>Your Activities</Text>
           {/* TODO Render list of USER activites/workouts */}
-          <WorkoutData />
+          {/* TODO uncomment workout data when either new component made or searchable by user and sort by date */}
+          {/* <WorkoutData /> */}
         </View>
       </ScrollView>
     </SafeAreaView>

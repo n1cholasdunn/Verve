@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Dashboard from '../app/screens/Dashboard';
 import UserProfile from '../app/screens/UserProfile';
-import Today from '../app/Today';
+import Today from '../app/screens/Today';
 
 const Tab = createBottomTabNavigator();
 

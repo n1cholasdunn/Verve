@@ -8,7 +8,7 @@ type OverallChartProps = {};
 const OverallChart = ({className}) => {
   // const OverallChart = (steps: OverallChartProps) => {
   return (
-    <View>
+    <View className="w-1/2">
       <ProgressChart
         data={[0.4]}
         width={Dimensions.get('window').width / 2 - 30}
