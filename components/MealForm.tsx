@@ -31,87 +31,74 @@ const MealForm = ({mealType}) => {
   }
 
   return (
-    <View>
-      <Text style={{fontSize: 40, marginBottom: 20}}>Meal Form</Text>
-      <View
-        style={{
-          margin: 10,
-          padding: 15,
-          height: 600,
-          width: 370,
-          backgroundColor: '#1E1E1E',
-        }}>
-        {/* <Text>Type</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="name"
-          value={meal.type}
-          onChangeText={input => {
-            setMeal({...meal, type: input});
-          }}
-        /> */}
-        <Text>Name</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="name"
-          value={meal.name}
-          onChangeText={input => {
-            setMeal({...meal, name: input});
-          }}
-        />
-        <Text>ingredients</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="name"
-          onChangeText={input => {
-            setMeal({
-              ...meal,
-              ingredients: input.replaceAll(',', '').split(' '),
-            });
-          }}
-          //   value={meal.ingredients}
-        />
-        <Text>Calories(kcal)</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={meal.totalCalories.toString()}
-          onChangeText={input => {
-            setMeal({...meal, totalCalories: +input});
-          }}
-        />
-        <Text>Protein(g)</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={meal.totalProtein.toString()}
-          onChangeText={input => {
-            setMeal({...meal, totalProtein: +input});
-          }}
-        />
-        <Text>Cabrs(g)</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={meal.totalCarbs.toString()}
-          onChangeText={input => {
-            setMeal({...meal, totalCarbs: +input});
-          }}
-        />
-        <Text>Fat(g)</Text>
-        <TextInput
-          style={styles.input}
-          keyboardType="numeric"
-          value={meal.totalFat.toString()}
-          onChangeText={input => {
-            setMeal({...meal, totalFat: +input});
-          }}
-        />
-        <View style={{alignItems: 'center'}}>
-          <Pressable onPress={addMeal} style={styles.addButton}>
-            <Text style={{fontSize: 20, fontWeight: '600'}}>Add Meal</Text>
-          </Pressable>
-        </View>
+    <View
+      style={{
+        margin: 10,
+        padding: 15,
+        height: 600,
+        width: 350,
+        backgroundColor: '#1E1E1E',
+      }}>
+      <Text className="text-[#FFFFFF]">Name</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="name"
+        value={meal.name}
+        onChangeText={input => {
+          setMeal({...meal, name: input});
+        }}
+      />
+      <Text className="text-[#FFFFFF]">ingredients</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="name"
+        onChangeText={input => {
+          setMeal({
+            ...meal,
+            ingredients: input.replaceAll(',', '').split(' '),
+          });
+        }}
+      />
+      <Text className="text-[#FFFFFF]">Calories(kcal)</Text>
+      <TextInput
+        style={styles.input}
+        keyboardType="numeric"
+        value={meal.totalCalories.toString()}
+        onChangeText={input => {
+          setMeal({...meal, totalCalories: +input});
+        }}
+      />
+      <Text className="text-[#FFFFFF]">Protein(g)</Text>
+      <TextInput
+        style={styles.input}
+        keyboardType="numeric"
+        value={meal.totalProtein.toString()}
+        onChangeText={input => {
+          setMeal({...meal, totalProtein: +input});
+        }}
+      />
+      <Text className="text-[#FFFFFF]">Cabrs(g)</Text>
+      <TextInput
+        style={styles.input}
+        keyboardType="numeric"
+        value={meal.totalCarbs.toString()}
+        onChangeText={input => {
+          setMeal({...meal, totalCarbs: +input});
+        }}
+      />
+      <Text className="text-[#FFFFFF]">Fat(g)</Text>
+      <TextInput
+        style={styles.input}
+        keyboardType="numeric"
+        value={meal.totalFat.toString()}
+        onChangeText={input => {
+          setMeal({...meal, totalFat: +input});
+        }}
+      />
+      <View style={{alignItems: 'center'}}>
+        <Pressable onPress={addMeal} style={styles.addButton}>
+          <Text style={{fontSize: 20, fontWeight: '600'}}>Add Meal</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -125,6 +112,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
+    color: 'white',
+    borderColor: 'white',
   },
   addButton: {
     alignItems: 'center',

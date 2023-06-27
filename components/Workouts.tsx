@@ -1,9 +1,10 @@
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, SafeAreaView, ScrollView} from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
-import WorkoutData from '../../components/WorkoutData';
+import WorkoutData from './WorkoutData';
 import {collection, onSnapshot} from '@firebase/firestore';
-import {db} from '../../firebaseConfig';
+import {db} from '../firebaseConfig';
 import {FlatList} from 'react-native-gesture-handler';
+import WorkoutForm from './WorkoutForm';
 
 const Workouts = () => {
   const [workoutGoal, setWorkoutGoal] = useState([]);
@@ -26,12 +27,6 @@ const Workouts = () => {
       setLoading(false);
     });
   }, []);
-
-  const renderGoals = ({item}) => (
-    <View className="p-15 m-10 h-170 w-300 bg-[#1E1E1E]">
-      <Text style={{fontSize: 20, color: '#BB86FC'}}>{item.name}</Text>
-    </View>
-  );
 
   let today = new Date().toISOString().slice(0, 10);
   return (
@@ -57,13 +52,15 @@ const Workouts = () => {
               status = '☐';
             }
             return (
-              <Text style={{fontSize: 20, color: '#BB86FC'}}>
+              <Text style={{fontSize: 20, color: '#BB86FC'}} key={workout.id}>
                 {workout.name} {status}
               </Text>
             );
           })}
         </View>
         <WorkoutData day={today} />
+
+        <WorkoutForm />
       </View>
     </View>
   );
@@ -74,6 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#121212',
     flex: 1,
   },
+
   title: {
     marginTop: 50,
     marginBottom: 40,

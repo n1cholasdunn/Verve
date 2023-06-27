@@ -1,4 +1,11 @@
-import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import {MultiSelect} from 'react-native-element-dropdown';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
@@ -47,9 +54,18 @@ const WorkoutForm = () => {
     });
   }
   return (
-    <View style={{flex: 1, backgroundColor: '#1E1E1E'}}>
-      <Text style={{fontSize: 40, marginBottom: 20}}>Workout Form</Text>
-      <View>
+    <View style={{flex: 1, backgroundColor: '#121212'}}>
+      <Text
+        style={{
+          marginTop: 20,
+          fontWeight: 'bold',
+          fontSize: 30,
+          color: 'white',
+        }}>
+        Add Workout
+      </Text>
+      <View
+        style={{backgroundColor: '#1E1E1E', marginHorizontal: 10, height: 500}}>
         <Text style={styles.text}>Name</Text>
         <TextInput
           style={styles.input}
@@ -59,7 +75,6 @@ const WorkoutForm = () => {
             setWorkout({...workout, name: input});
           }}
         />
-        <Text style={styles.text}>Muscle:</Text>
         <MultiSelect
           data={muscleData}
           labelField="label"

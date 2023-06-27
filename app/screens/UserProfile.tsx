@@ -3,42 +3,47 @@ import React from 'react';
 import {UserOutlined} from '@ant-design/icons';
 import WorkoutData from '../../components/WorkoutData';
 import DailyChart from '../../components/charts/DailyChart';
+import OverallChart from '../../components/charts/OverallChart';
 
 const UserProfile = () => {
   return (
     // <View>
-    <SafeAreaView>
-      <ScrollView>
+    <SafeAreaView className="bg-zinc-950 h-full w-full">
+      <ScrollView nestedScrollEnabled>
         <View>
           <View>
-            <Text>Goal Progress</Text>
+            <View>
+              <Text className="text-xl">Goal Progress</Text>
+            </View>
+            <View>
+              {/* TODO render user profile picture */}
+              {/* <UserOutlined /> */}
+              <Text className="text-xl">Username</Text>
+            </View>
+            <View>
+              <View className=" flex-row flex">
+                <DailyChart className="flex" />
+                <OverallChart className="flex" />
+              </View>
+              <View className="">
+                {/* TODO Integrate fitness calculator api for goals and progress */}
+                <Text>Overall</Text>
+                <Text>Total Weight Loss</Text>
+                <Text>Daily Activity</Text>
+              </View>
+              <View className="">
+                <Text>Daily</Text>
+                <Text>10lb/20lb</Text>
+                <Text>5000/10000 Steps</Text>
+              </View>
+            </View>
           </View>
           <View>
-            {/* TODO render user profile picture */}
-            {/* <UserOutlined /> */}
-            <Text>Username</Text>
+            <Text>Your Activities</Text>
+            {/* TODO Render list of USER activites/workouts */}
+            {/* TODO uncomment workout data when either new component made or searchable by user and sort by date */}
+            {/* <WorkoutData /> */}
           </View>
-          <View>
-            {/* TODO Integrate fitness calculator api for goals and progress */}
-            <Text>Overall</Text>
-          </View>
-          <View>
-            <Text>Daily</Text>
-          </View>
-          <View>
-            <Text>Total Weight Loss</Text>
-            <DailyChart />
-            <Text>10lb/20lb</Text>
-          </View>
-          <View>
-            <Text>Daily Activity</Text>
-            <Text>5000/10000 Steps</Text>
-          </View>
-        </View>
-        <View>
-          <Text>Your Activities</Text>
-          {/* TODO Render list of USER activites/workouts */}
-          <WorkoutData />
         </View>
       </ScrollView>
     </SafeAreaView>
