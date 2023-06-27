@@ -21,7 +21,6 @@ const WorkoutData = () => {
 
   const renderWorkouts = ({item}) => (
     <View className="mt-4 p-15 ">
-      {/* <View style={{marginTop: 20, padding: 15}}> */}
       <Text className="text-lg">Name: {item.name}</Text>
       <Text className="text-lg">Muscle: {item.muscle}</Text>
       <Text className="text-lg">Reps: {item.reps}</Text>
@@ -33,21 +32,35 @@ const WorkoutData = () => {
 
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View className="flex items-center">
-          <Text className="mt-10 text-2xl font-bold">Added Workouts</Text>
-          {/* <ScrollView> */}
+      <View className="flex items-center">
+        <Text className="mt-10 text-2xl font-bold">Added Workouts</Text>
+        <ScrollView>
           <FlatList
             data={workouts}
             renderItem={renderWorkouts}
             // horizontal={true}
             keyExtractor={item => item.id}
           />
-          {/* </ScrollView> */}
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
 
 export default WorkoutData;
+// <FlatList
+//   ListHeaderComponent={
+//     <>
+//       <Text>Workouts </Text>
+//     </>
+//   }
+//   data={workouts}
+//   renderItem={renderWorkouts}
+//   // horizontal={true}
+//   keyExtractor={item => item.id}
+//   ListFooterComponent={
+//     <>
+//       <Text>Footer</Text>
+//     </>
+//   }
+// />;
