@@ -21,16 +21,16 @@ const Dashboard = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        {/* <View>
+        <View>
           <WorkoutForm />
-        </View> */}
+        </View>
         {/* <WorkoutData /> */}
 
         {/* <View>
-          <MealForm />
+          <MealForm mealType={undefined} />
         </View> */}
 
-        <Nutrition />
+        {/* <Nutrition /> */}
         {/* <Workouts /> */}
       </ScrollView>
     </SafeAreaView>

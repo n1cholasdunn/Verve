@@ -3,7 +3,7 @@ import React, {Component, useState} from 'react';
 import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const MealForm = () => {
+const MealForm = ({mealType}) => {
   let today = new Date().toISOString().slice(0, 10);
   const [meal, setMeal] = useState({
     name: '',
@@ -25,7 +25,7 @@ const MealForm = () => {
       totalCarbs: meal.totalCalories,
       totalProtein: meal.totalProtein,
       totalFat: meal.totalFat,
-      type: meal.type,
+      type: mealType,
       date: today,
     });
   }
@@ -33,8 +33,15 @@ const MealForm = () => {
   return (
     <View>
       <Text style={{fontSize: 40, marginBottom: 20}}>Meal Form</Text>
-      <View>
-        <Text>Type</Text>
+      <View
+        style={{
+          margin: 10,
+          padding: 15,
+          height: 600,
+          width: 370,
+          backgroundColor: '#1E1E1E',
+        }}>
+        {/* <Text>Type</Text>
         <TextInput
           style={styles.input}
           placeholder="name"
@@ -42,7 +49,7 @@ const MealForm = () => {
           onChangeText={input => {
             setMeal({...meal, type: input});
           }}
-        />
+        /> */}
         <Text>Name</Text>
         <TextInput
           style={styles.input}

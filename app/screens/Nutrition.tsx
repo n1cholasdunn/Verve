@@ -1,8 +1,9 @@
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Button, Pressable} from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
 import MealData from '../../components/MealData';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../../firebaseConfig';
+import MealForm from '../../components/MealForm';
 
 const Nutrition = () => {
   let today = new Date().toISOString().slice(0, 10);
@@ -57,15 +58,52 @@ const Nutrition = () => {
           Meals
         </Text>
 
-        <Text style={styles.mealType}>Breakfast</Text>
-        <View>
-          <MealData day={today} mealType={'breakfast'} />
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <View style={styles.mealCard}>
+            <Text style={styles.mealType}>Breakfast</Text>
+          </View>
+          <Pressable style={styles.addBtn} onPress={() => {}}>
+            <Text style={styles.mealType} id="breakfastAdd">
+              +
+            </Text>
+          </Pressable>
         </View>
-        <Text style={styles.mealType}>Lunch</Text>
+        <MealData day={today} mealType={'breakfast'} />
+
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <View style={styles.mealCard}>
+            <Text style={styles.mealType}>Lunch</Text>
+          </View>
+          <Pressable style={styles.addBtn} onPress={() => {}}>
+            <Text style={styles.mealType} id="lunchAdd">
+              +
+            </Text>
+          </Pressable>
+        </View>
         <MealData day={today} mealType={'lunch'} />
-        <Text style={styles.mealType}>Dinner</Text>
+
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <View style={styles.mealCard}>
+            <Text style={styles.mealType}>Dinner</Text>
+          </View>
+          <Pressable style={styles.addBtn} onPress={() => {}}>
+            <Text style={styles.mealType} id="DinnerAdd">
+              +
+            </Text>
+          </Pressable>
+        </View>
         <MealData day={today} mealType={'dinner'} />
-        <Text style={styles.mealType}>Snacks</Text>
+
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+          <View style={styles.mealCard}>
+            <Text style={styles.mealType}>Snack</Text>
+          </View>
+          <Pressable style={styles.addBtn} onPress={() => {}}>
+            <Text style={styles.mealType} id="SnackAdd">
+              +
+            </Text>
+          </Pressable>
+        </View>
         <MealData day={today} mealType={'snacks'} />
       </View>
     </View>
@@ -87,7 +125,31 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
   },
-  mealType: {marginTop: 20, fontWeight: 'bold', fontSize: 20, color: '#606368'},
+  mealCard: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    marginTop: 20,
+    marginLeft: 10,
+    height: 40,
+    width: 300,
+    backgroundColor: '#1E1E1E',
+  },
+  addBtn: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#606368',
+    backgroundColor: '#1E1E1E',
+    height: 40,
+    width: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginLeft: 10,
+  },
+  mealType: {fontWeight: 'bold', fontSize: 20, color: '#606368'},
 });
 
 export default Nutrition;

@@ -1,4 +1,5 @@
 import {View, Text, TextInput, Pressable, StyleSheet} from 'react-native';
+import {MultiSelect} from 'react-native-element-dropdown';
 import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import {collection, addDoc} from 'firebase/firestore';
@@ -7,12 +8,31 @@ const WorkoutForm = () => {
   let today = new Date().toISOString().slice(0, 10);
   const [workout, setWorkout] = useState({
     name: '',
-    muscle: '',
+    muscle: [],
     reps: 0,
     sets: 0,
     weight: 0,
     date: '',
   });
+
+  const muscleData = [
+    {label: 'Abdominals', value: 'abdominals'},
+    {label: 'Abductors', value: 'abductors'},
+    {label: 'Adductors', value: 'adductors'},
+    {label: 'Biceps', value: 'biceps'},
+    {label: 'Calves', value: 'calves'},
+    {label: 'Chest', value: 'chest'},
+    {label: 'Forearms', value: 'forearms'},
+    {label: 'Glutes', value: 'glutes'},
+    {label: 'Hamstrings', value: 'hamstrings'},
+    {label: 'Lats', value: 'lats'},
+    {label: 'Lower back', value: 'lower_back'},
+    {label: 'Middle back', value: 'middle_back'},
+    {label: 'Neck', value: 'neck'},
+    {label: 'Quadriceps', value: 'quadriceps'},
+    {label: 'Traps', value: 'traps'},
+    {label: 'Triceps', value: 'triceps'},
+  ];
 
   function addWorkout() {
     const workoutDb = collection(db, 'workout-test');
@@ -27,10 +47,10 @@ const WorkoutForm = () => {
     });
   }
   return (
-    <View>
+    <View style={{flex: 1, backgroundColor: '#1E1E1E'}}>
       <Text style={{fontSize: 40, marginBottom: 20}}>Workout Form</Text>
       <View>
-        <Text>Name</Text>
+        <Text style={styles.text}>Name</Text>
         <TextInput
           style={styles.input}
           placeholder="name"
@@ -39,16 +59,20 @@ const WorkoutForm = () => {
             setWorkout({...workout, name: input});
           }}
         />
-        <Text>Muscle:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="muscle"
+        <Text style={styles.text}>Muscle:</Text>
+        <MultiSelect
+          data={muscleData}
+          labelField="label"
+          valueField="value"
+          placeholder="Select muscles"
+          search
+          placeholderStyle={styles.text}
           value={workout.muscle}
-          onChangeText={input => {
-            setWorkout({...workout, muscle: input});
+          onChange={(item: string[]) => {
+            setWorkout({...workout, muscle: item});
           }}
         />
-        <Text>Reps:</Text>
+        <Text style={styles.text}>Reps:</Text>
         <Picker
           selectedValue={workout.reps}
           onValueChange={input => {
@@ -65,7 +89,7 @@ const WorkoutForm = () => {
           <Picker.Item label="9" value={9} />
           <Picker.Item label="10" value={10} />
         </Picker>
-        <Text>Sets:</Text>
+        <Text style={styles.text}>Sets:</Text>
         <Picker
           selectedValue={workout.sets}
           onValueChange={input => {
@@ -82,7 +106,7 @@ const WorkoutForm = () => {
           <Picker.Item label="9" value={9} />
           <Picker.Item label="10" value={10} />
         </Picker>
-        <Text>Weight(lbs):</Text>
+        <Text style={styles.text}>Weight(lbs):</Text>
         <TextInput
           style={styles.input}
           keyboardType="numeric"
@@ -109,6 +133,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
+    color: 'white',
+    borderColor: 'white',
   },
   addButton: {
     alignItems: 'center',
@@ -118,6 +144,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#BB86FC',
     height: 40,
     width: 300,
+  },
+  text: {
+    color: 'white',
   },
 });
 
