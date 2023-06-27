@@ -52,9 +52,9 @@ const Workouts = () => {
           {workoutGoal.map(workout => {
             let status;
             if (workout.completed) {
-              status = 'completed';
+              status = '☒';
             } else {
-              status = 'not completed';
+              status = '☐';
             }
             return (
               <Text style={{fontSize: 20, color: '#BB86FC'}}>

@@ -30,8 +30,8 @@ const Dashboard = () => {
           <MealForm />
         </View> */}
 
-        {/* <Nutrition /> */}
-        <Workouts />
+        <Nutrition />
+        {/* <Workouts /> */}
       </ScrollView>
     </SafeAreaView>
   );
