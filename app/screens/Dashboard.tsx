@@ -27,7 +27,7 @@ const Dashboard = () => {
         {/* <WorkoutData /> */}
 
         {/* <View>
-          <MealForm />
+          <MealForm mealType={undefined} />
         </View> */}
 
         <Nutrition />
