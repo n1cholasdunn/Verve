@@ -6,27 +6,27 @@ const Today = () => {
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <View>
-        <Text className="text-2xl font-bold">Today's Stats</Text>
+        <Text className="text-2xl font-bold text-white">Today's Stats</Text>
       </View>
       <View>
         <View>
-          <Text>Diet</Text>
+          <Text className="text-white">Diet</Text>
         </View>
         <View>
           <View>
-            <Text>Calories</Text>
-            <Text>Macros</Text>
+            <Text className="text-white">Calories</Text>
+            <Text className="text-white">Macros</Text>
           </View>
           <View>
-            <Text>1000/2000 Calories </Text>
-            <Text>20/55g</Text>
-            <Text>150/300g</Text>
-            <Text>30/70g</Text>
+            <Text className="text-white">1000/2000 Calories </Text>
+            <Text className="text-white">20/55g</Text>
+            <Text className="text-white">150/300g</Text>
+            <Text className="text-white">30/70g</Text>
           </View>
         </View>
       </View>
       <View>
-        <Text className="text-2xl font-bold">Your Progress</Text>
+        <Text className="text-2xl font-bold text-white">Your Progress</Text>
         {/* TODO Weight chart */}
       </View>
       <View>

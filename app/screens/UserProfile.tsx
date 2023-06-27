@@ -11,35 +11,57 @@ const UserProfile = () => {
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView nestedScrollEnabled>
         <View>
-          <View>
-            <View>
-              <Text className="text-xl">Goal Progress</Text>
-            </View>
+          <View className="mb-6">
             <View>
               {/* TODO render user profile picture */}
               {/* <UserOutlined /> */}
-              <Text className="text-xl">Username</Text>
+              <Text className="text-xl font-semibold text-slate-300">
+                Username
+              </Text>
             </View>
             <View>
-              <View className=" flex-row flex">
-                <DailyChart className="flex" />
-                <OverallChart className="flex" />
+              <Text className="text-2xl font-semibold text-slate-300 self-center">
+                Goal Progress
+              </Text>
+            </View>
+            <View className="flex flex-row justify-between">
+              <Text className="text-slate-300 ml-16 text-lg">Overall</Text>
+              <Text
+                className="text-slate-300 mr-16 text-lg
+              ">
+                Daily
+              </Text>
+            </View>
+            <View>
+              <View className=" flex-row flex justify-evenly">
+                <DailyChart />
+                <OverallChart />
               </View>
-              <View className="">
-                {/* TODO Integrate fitness calculator api for goals and progress */}
-                <Text>Overall</Text>
-                <Text>Total Weight Loss</Text>
-                <Text>Daily Activity</Text>
-              </View>
-              <View className="">
-                <Text>Daily</Text>
-                <Text>10lb/20lb</Text>
-                <Text>5000/10000 Steps</Text>
+              <View className="mx-2 flex flex-row justify-between">
+                <View className=" ">
+                  {/* TODO Integrate fitness calculator api for goals and progress */}
+                  <Text className="text-slate-300 text-lg flex self-center">
+                    Total Weight Loss
+                  </Text>
+                  <Text className="text-slate-300 text-lg flex self-center">
+                    Daily Activity
+                  </Text>
+                </View>
+                <View className="">
+                  <Text className="text-slate-300 text-lg flex self-center">
+                    10lb/20lb
+                  </Text>
+                  <Text className="text-slate-300 text-lg flex self-center">
+                    5000/10000 Steps
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
           <View>
-            <Text>Your Activities</Text>
+            <Text className="text-slate-300  text-2xl font-semibold self-center">
+              Your Activities
+            </Text>
             {/* TODO Render list of USER activites/workouts */}
             {/* TODO uncomment workout data when either new component made or searchable by user and sort by date */}
             {/* <WorkoutData /> */}
@@ -51,3 +73,15 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
+//  <View className="mx-2">
+//    <View className="flex-row justify-between flex ">
+//      {/* TODO Integrate fitness calculator api for goals and progress */}
+//      <Text className="text-slate-300 text-lg">Total Weight Loss</Text>
+//      <Text className="text-slate-300 text-lg">10lb/20lb</Text>
+//    </View>
+//    <View className="justify-between flex flex-row">
+//      <Text className="text-slate-300 text-lg">Daily Activity</Text>
+//      <Text className="text-slate-300 text-lg">5000/10000 Steps</Text>
+//    </View>
+//  </View>;

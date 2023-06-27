@@ -50,7 +50,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#cbd5e1',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
