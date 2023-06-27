@@ -12,7 +12,7 @@ export default function userStack() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarStyle: {position: 'absolute', backgroundColor: '#000000'},
+          tabBarStyle: {position: 'absolute', backgroundColor: '#09090b'},
         }}>
         <Tab.Screen
           name="Dashboard"
@@ -20,7 +20,7 @@ export default function userStack() {
           options={{
             title: 'Dashboard',
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#09090b',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -34,7 +34,7 @@ export default function userStack() {
           options={{
             title: 'Your Day',
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#09090b',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -48,7 +48,7 @@ export default function userStack() {
           options={{
             title: 'Profile',
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#09090b',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
