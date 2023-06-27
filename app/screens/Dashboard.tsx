@@ -19,7 +19,7 @@ import Workouts from '../../components/Workouts';
 const Dashboard = () => {
   // gosam61266@fulwark.com
   return (
-    <SafeAreaView>
+    <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView>
         {/* <View>
           <WorkoutForm />

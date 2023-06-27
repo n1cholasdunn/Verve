@@ -8,9 +8,9 @@ import OverallChart from '../../components/charts/OverallChart';
 const UserProfile = () => {
   return (
     // <View>
-    <SafeAreaView>
+    <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView nestedScrollEnabled>
-        <View className="bg-black h-full w-full">
+        <View>
           <View>
             <View>
               <Text className="text-xl">Goal Progress</Text>

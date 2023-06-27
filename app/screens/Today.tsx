@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import Explore from '../../components/Explore';
 
 const Today = () => {
   return (
-    <View>
+    <SafeAreaView className="bg-zinc-950 h-full w-full">
       <View>
         <Text className="text-2xl font-bold">Today's Stats</Text>
       </View>
@@ -32,7 +32,7 @@ const Today = () => {
       <View>
         <Explore />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
