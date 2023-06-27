@@ -10,7 +10,10 @@ const Tab = createBottomTabNavigator();
 export default function userStack() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: {position: 'absolute', backgroundColor: '#000000'},
+        }}>
         <Tab.Screen name="Dashboard" component={Dashboard} />
         <Tab.Screen name="Your Day" component={Today} />
         <Tab.Screen name="Profile" component={UserProfile} />
