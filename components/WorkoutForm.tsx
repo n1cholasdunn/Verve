@@ -23,6 +23,7 @@ const WorkoutForm = () => {
       sets: workout.sets,
       weight: workout.weight,
       date: today,
+      completed: false,
     });
   }
   return (

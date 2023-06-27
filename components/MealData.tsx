@@ -35,6 +35,7 @@ const MealData = ({day, mealType}) => {
       <Text style={{color: '#606368'}}>Ingredients:{item.ingredients}</Text>
       <Text style={{color: '#606368'}}>Calories: {item.totalCalories}</Text>
       <Text style={{color: '#606368'}}>Protein: {item.totalProtein}</Text>
+      <Text style={{color: '#606368'}}>Carbs: {item.totalCarbs}</Text>
       <Text style={{color: '#606368'}}>Fat: {item.totalFat}</Text>
       <Text style={{color: '#606368'}}>Date: {item.date.toString()}</Text>
     </View>
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   mealCard: {
     margin: 10,
     padding: 15,
-    height: 170,
+    height: 180,
     width: 300,
     backgroundColor: '#1E1E1E',
   },

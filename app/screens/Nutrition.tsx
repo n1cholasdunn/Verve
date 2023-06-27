@@ -1,15 +1,52 @@
 import {Text, View, StyleSheet} from 'react-native';
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import MealData from '../../components/MealData';
+import {collection, onSnapshot} from '@firebase/firestore';
+import {db} from '../../firebaseConfig';
 
 const Nutrition = () => {
   let today = new Date().toISOString().slice(0, 10);
+  const [calories, setCalories] = useState(0);
+  const [protein, setProtein] = useState(0);
+  const [carbs, setCarbs] = useState(0);
+  const [fat, setFat] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const mealQuery = collection(db, 'meal-test');
+    onSnapshot(mealQuery, snapshot => {
+      let mealList = [];
+      snapshot.docs.map(doc => mealList.push({...doc.data(), id: doc.id}));
+      mealList = mealList.filter(meal => {
+        return meal.date === today;
+      });
+      let cal = 0;
+      let pro = 0;
+      let car = 0;
+      let fatv = 0;
+
+      mealList.map(meal => {
+        cal += meal.totalCalories;
+        pro += meal.totalProtein;
+        car += meal.totalCarbs;
+        fatv += meal.totalFat;
+      });
+      setCalories(cal);
+      setProtein(pro);
+      setCarbs(car);
+      setFat(fatv);
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={{marginHorizontal: 10}}>
         <Text style={styles.title}>Verve</Text>
-        <Text style={styles.text}>Today's Calories: </Text>
-        <Text style={styles.text}>Macros</Text>
+        <Text style={styles.text}>Today's Calories: {calories} /2000</Text>
+        <Text style={styles.text}>Today's Macros:</Text>
+        <Text style={styles.text}>Protein: {protein}</Text>
+        <Text style={styles.text}>Carbs: {carbs}</Text>
+        <Text style={styles.text}>Macros: {fat}</Text>
         <Text
           style={{
             marginTop: 40,
