@@ -13,8 +13,8 @@ import WorkoutForm from '../../components/WorkoutForm';
 import MealData from '../../components/MealData';
 import WorkoutData from '../../components/WorkoutData';
 import MealForm from '../../components/MealForm';
-import Nutrition from './Nutrition';
-import Workouts from './Workouts';
+import Nutrition from '../../components/Nutrition';
+import Workouts from '../../components/Workouts';
 
 const Dashboard = () => {
   // gosam61266@fulwark.com

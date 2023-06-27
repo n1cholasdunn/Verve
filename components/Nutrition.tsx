@@ -1,8 +1,8 @@
 import {Text, View, StyleSheet} from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
-import MealData from '../../components/MealData';
+import MealData from './MealData';
 import {collection, onSnapshot} from '@firebase/firestore';
-import {db} from '../../firebaseConfig';
+import {db} from '../firebaseConfig';
 
 const Nutrition = () => {
   let today = new Date().toISOString().slice(0, 10);

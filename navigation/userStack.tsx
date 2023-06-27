@@ -14,9 +14,48 @@ export default function userStack() {
         screenOptions={{
           tabBarStyle: {position: 'absolute', backgroundColor: '#000000'},
         }}>
-        <Tab.Screen name="Dashboard" component={Dashboard} />
-        <Tab.Screen name="Your Day" component={Today} />
-        <Tab.Screen name="Profile" component={UserProfile} />
+        <Tab.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={{
+            title: 'Dashboard',
+            headerStyle: {
+              backgroundColor: '#121212',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Your Day"
+          component={Today}
+          options={{
+            title: 'Your Day',
+            headerStyle: {
+              backgroundColor: '#121212',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Tab.Screen
+          name="UserProfile"
+          component={UserProfile}
+          options={{
+            title: 'Profile',
+            headerStyle: {
+              backgroundColor: '#121212',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

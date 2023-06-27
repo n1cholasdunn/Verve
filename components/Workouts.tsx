@@ -1,8 +1,8 @@
 import {Text, View, StyleSheet} from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
-import WorkoutData from '../../components/WorkoutData';
+import WorkoutData from './WorkoutData';
 import {collection, onSnapshot} from '@firebase/firestore';
-import {db} from '../../firebaseConfig';
+import {db} from '../firebaseConfig';
 import {FlatList} from 'react-native-gesture-handler';
 
 const Workouts = () => {
