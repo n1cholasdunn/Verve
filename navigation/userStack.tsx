@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Dashboard from '../app/screens/Dashboard';
-import UserProfile from '../app/screens/UserProfile';
-import Today from '../app/screens/Today';
+import Dashboard from '../screens/Dashboard';
+import UserProfile from '../screens/UserProfile';
+import Today from '../screens/Today';
 import Ionicons from '@expo/vector-icons/Ionicons';
 const Tab = createBottomTabNavigator();
 

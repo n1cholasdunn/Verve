@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import Explore from '../../components/Explore';
-import TodayChart from '../../components/charts/TodayChart';
-import WeightChart from '../../components/charts/WeightChart';
+import Explore from '../components/Explore';
+import TodayChart from '../components/charts/TodayChart';
+import WeightChart from '../components/charts/WeightChart';
 
 const Today = () => {
   return (

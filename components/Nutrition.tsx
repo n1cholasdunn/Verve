@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {Component, useEffect, useState} from 'react';
-import MealData from '../components/MealData';
+import MealData from './MealData';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import MealForm from './MealForm';

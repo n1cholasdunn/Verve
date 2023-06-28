@@ -1,13 +1,12 @@
 import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import {UserOutlined} from '@ant-design/icons';
-import WorkoutData from '../../components/WorkoutData';
-import DailyChart from '../../components/charts/DailyChart';
-import OverallChart from '../../components/charts/OverallChart';
+import WorkoutData from '../components/WorkoutData';
+import DailyChart from '../components/charts/DailyChart';
+import OverallChart from '../components/charts/OverallChart';
 
 const UserProfile = () => {
   return (
-    // <View>
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView nestedScrollEnabled>
         <View>
@@ -75,15 +74,3 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
-
-//  <View className="mx-2">
-//    <View className="flex-row justify-between flex ">
-//      {/* TODO Integrate fitness calculator api for goals and progress */}
-//      <Text className="text-slate-200 text-lg">Total Weight Loss</Text>
-//      <Text className="text-slate-200 text-lg">10lb/20lb</Text>
-//    </View>
-//    <View className="justify-between flex flex-row">
-//      <Text className="text-slate-200 text-lg">Daily Activity</Text>
-//      <Text className="text-slate-200 text-lg">5000/10000 Steps</Text>
-//    </View>
-//  </View>;
