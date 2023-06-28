@@ -1,4 +1,12 @@
-import {FlatList, Text, View, StyleSheet, Image} from 'react-native';
+import {
+  FlatList,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 import React, {useState} from 'react';
 
 //We can also display recipes such as high-protein, low-fat, low-cal, vegan.....
@@ -42,44 +50,48 @@ const DiscoverMeals = () => {
   );
 
   return (
-    <View>
-      <View className="mt-10">
-        <Text className="text-3xl text-[#ffffff]">Breakfast</Text>
-        <FlatList
-          data={breakfastRecipes}
-          renderItem={renderBreakfast}
-          horizontal={true}
-          keyExtractor={item => item.uri}
-        />
-      </View>
-      <View className="mt-10">
-        <Text className="text-3xl text-[#ffffff]">Lunch</Text>
-        <FlatList
-          data={breakfastRecipes}
-          renderItem={renderBreakfast}
-          horizontal={true}
-          keyExtractor={item => item.uri}
-        />
-      </View>
-      <View className="mt-10">
-        <Text className="text-3xl text-[#ffffff]">Dinner</Text>
-        <FlatList
-          data={breakfastRecipes}
-          renderItem={renderBreakfast}
-          horizontal={true}
-          keyExtractor={item => item.uri}
-        />
-      </View>
-      <View className="mt-10">
-        <Text className="text-3xl text-[#ffffff]">Snacks</Text>
-        <FlatList
-          data={breakfastRecipes}
-          renderItem={renderBreakfast}
-          horizontal={true}
-          keyExtractor={item => item.uri}
-        />
-      </View>
-    </View>
+    <SafeAreaView>
+      <ScrollView nestedScrollEnabled>
+        <View className="pb-[75px] min-h-full px-[2px]">
+          <View className="mt-10">
+            <Text className="text-3xl text-slate-200 pl-2">Breakfast</Text>
+            <FlatList
+              data={breakfastRecipes}
+              renderItem={renderBreakfast}
+              horizontal={true}
+              keyExtractor={item => item.uri}
+            />
+          </View>
+          <View className="mt-10">
+            <Text className="text-3xl text-slate-200 pl-2">Lunch</Text>
+            <FlatList
+              data={breakfastRecipes}
+              renderItem={renderBreakfast}
+              horizontal={true}
+              keyExtractor={item => item.uri}
+            />
+          </View>
+          <View className="mt-10">
+            <Text className="text-3xl text-slate-200 pl-2">Dinner</Text>
+            <FlatList
+              data={breakfastRecipes}
+              renderItem={renderBreakfast}
+              horizontal={true}
+              keyExtractor={item => item.uri}
+            />
+          </View>
+          <View className="mt-10 ">
+            <Text className="text-3xl text-slate-200 pl-2">Snacks</Text>
+            <FlatList
+              data={breakfastRecipes}
+              renderItem={renderBreakfast}
+              horizontal={true}
+              keyExtractor={item => item.uri}
+            />
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

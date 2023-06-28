@@ -17,7 +17,9 @@ export default function App() {
   // const {colorScheme, toggleColorScheme} = useColorScheme();
   return (
     <AuthProvider>
-      <RootNavigation />
+      <NavigationContainer>
+        <RootNavigation />
+      </NavigationContainer>
     </AuthProvider>
   );
 }
