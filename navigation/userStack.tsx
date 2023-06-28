@@ -42,7 +42,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#cbd5e1',
+            headerTintColor: '#e2e8f0',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -56,7 +56,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#cbd5e1',
+            headerTintColor: '#e2e8f0',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -70,7 +70,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#cbd5e1',
+            headerTintColor: '#e2e8f0',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
