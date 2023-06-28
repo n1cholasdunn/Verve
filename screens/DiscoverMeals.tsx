@@ -42,7 +42,7 @@ const DiscoverMeals = () => {
   );
 
   return (
-    <View>
+    <View className="pb-100">
       <View className="mt-10">
         <Text className="text-3xl text-[#ffffff]">Breakfast</Text>
         <FlatList

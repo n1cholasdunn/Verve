@@ -33,8 +33,8 @@ const Dashboard = () => {
         {/* <View>
           <MealForm mealType={undefined} />
         </View> */}
-
-        {/* {userContext && <Nutrition />} */}
+        {/* 
+        {userContext && <Nutrition />} */}
         {/* {userContext && <Workouts />} */}
         <DiscoverMeals />
       </ScrollView>
