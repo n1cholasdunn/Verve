@@ -5,12 +5,13 @@ import {
   Pressable,
   TouchableOpacity,
 } from 'react-native';
-import React, {Component, useEffect, useState} from 'react';
-import MealData from './MealData';
+import React, {Component, useContext, useEffect, useState} from 'react';
+import MealData from '../components/MealData';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import MealForm from './MealForm';
 import {Touchable} from 'react-native';
+import {AuthContext} from '../context/auth';
 
 const Nutrition = () => {
   let today = new Date().toISOString().slice(0, 10);
@@ -22,14 +23,16 @@ const Nutrition = () => {
   const [addLnState, setAddLnState] = useState(false);
   const [addDnState, setAddDnState] = useState(false);
   const [addSnState, setAddSnState] = useState(false);
+  const userContext = useContext(AuthContext);
 
   useEffect(() => {
     const mealQuery = collection(db, 'meal-test');
+
     onSnapshot(mealQuery, snapshot => {
       let mealList = [];
       snapshot.docs.map(doc => mealList.push({...doc.data(), id: doc.id}));
       mealList = mealList.filter(meal => {
-        return meal.date === today;
+        return meal.date === today && meal.userId === userContext.UserUID;
       });
       let cal = 0;
       let pro = 0;
@@ -57,7 +60,7 @@ const Nutrition = () => {
         <Text style={styles.text}>Today's Macros:</Text>
         <Text style={styles.text}>Protein: {protein}</Text>
         <Text style={styles.text}>Carbs: {carbs}</Text>
-        <Text style={styles.text}>Macros: {fat}</Text>
+        <Text style={styles.text}>fat: {fat}</Text>
         <Text
           style={{
             marginTop: 40,
@@ -81,9 +84,17 @@ const Nutrition = () => {
                 </Text>
               </TouchableOpacity>
             </View>
-            <View>{addBrstate && <MealForm mealType={'breakfast'} />}</View>
+            <View>
+              {addBrstate && (
+                <MealForm mealType={'breakfast'} user={userContext.UserUID} />
+              )}
+            </View>
           </View>
-          <MealData day={today} mealType={'breakfast'} />
+          <MealData
+            day={today}
+            mealType={'breakfast'}
+            user={userContext.UserUID}
+          />
         </View>
         <View>
           <View style={{display: 'flex', flexDirection: 'column'}}>
@@ -99,9 +110,13 @@ const Nutrition = () => {
                 </Text>
               </TouchableOpacity>
             </View>
-            <View>{addLnState && <MealForm mealType={'lunch'} />}</View>
+            <View>
+              {addLnState && (
+                <MealForm mealType={'lunch'} user={userContext.UserUID} />
+              )}
+            </View>
           </View>
-          <MealData day={today} mealType={'lunch'} />
+          <MealData day={today} mealType={'lunch'} user={userContext.UserUID} />
         </View>
         <View>
           <View style={{display: 'flex', flexDirection: 'column'}}>
@@ -117,9 +132,17 @@ const Nutrition = () => {
                 </Text>
               </TouchableOpacity>
             </View>
-            <View>{addDnState && <MealForm mealType={'dinner'} />}</View>
+            <View>
+              {addDnState && (
+                <MealForm mealType={'dinner'} user={userContext.UserUID} />
+              )}
+            </View>
           </View>
-          <MealData day={today} mealType={'dinner'} />
+          <MealData
+            day={today}
+            mealType={'dinner'}
+            user={userContext.UserUID}
+          />
         </View>
         <View>
           <View style={{display: 'flex', flexDirection: 'column'}}>
@@ -135,9 +158,17 @@ const Nutrition = () => {
                 </Text>
               </TouchableOpacity>
             </View>
-            <View>{addSnState && <MealForm mealType={'snacks'} />}</View>
+            <View>
+              {addSnState && (
+                <MealForm mealType={'snacks'} user={userContext.UserUID} />
+              )}
+            </View>
           </View>
-          <MealData day={today} mealType={'snacks'} />
+          <MealData
+            day={today}
+            mealType={'snacks'}
+            user={userContext.UserUID}
+          />
         </View>
       </View>
     </View>

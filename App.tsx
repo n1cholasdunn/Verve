@@ -11,16 +11,14 @@ import RootNavigation from './navigation';
 import './firebaseConfig';
 import {firebaseConfig} from './firebaseConfig';
 import {useColorScheme} from 'nativewind';
+import {AuthContext, AuthProvider} from './context/auth';
 
 export default function App() {
   // const {colorScheme, toggleColorScheme} = useColorScheme();
   return (
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen name="Login" component={Login} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-    <RootNavigation />
+    <AuthProvider>
+      <RootNavigation />
+    </AuthProvider>
   );
 }
 // <View className="flex-1 light:bg-slate-200  ">

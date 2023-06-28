@@ -11,7 +11,8 @@ import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import {collection, addDoc} from 'firebase/firestore';
 import {db} from '../firebaseConfig';
-const WorkoutForm = () => {
+
+const WorkoutForm = ({user}) => {
   let today = new Date().toISOString().slice(0, 10);
   const [workout, setWorkout] = useState({
     name: '',
@@ -20,6 +21,7 @@ const WorkoutForm = () => {
     sets: 0,
     weight: 0,
     date: '',
+    userId: '',
   });
 
   const muscleData = [
@@ -51,6 +53,7 @@ const WorkoutForm = () => {
       weight: workout.weight,
       date: today,
       completed: false,
+      userId: user,
     });
   }
   return (

@@ -3,7 +3,7 @@ import React, {Component, useState} from 'react';
 import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const MealForm = ({mealType}) => {
+const MealForm = ({mealType, user}) => {
   let today = new Date().toISOString().slice(0, 10);
   const [meal, setMeal] = useState({
     name: '',
@@ -14,6 +14,7 @@ const MealForm = ({mealType}) => {
     totalFat: 0,
     type: '',
     date: '',
+    userId: '',
   });
 
   function addMeal() {
@@ -22,11 +23,12 @@ const MealForm = ({mealType}) => {
       name: meal.name,
       ingredients: meal.ingredients,
       totalCalories: meal.totalCalories,
-      totalCarbs: meal.totalCalories,
+      totalCarbs: meal.totalCarbs,
       totalProtein: meal.totalProtein,
       totalFat: meal.totalFat,
       type: mealType,
       date: today,
+      userId: user,
     });
   }
 

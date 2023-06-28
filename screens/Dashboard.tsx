@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   Button,
 } from 'react-native';
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useContext, useEffect, useState} from 'react';
 import {collection, onSnapshot} from 'firebase/firestore';
 import {db} from '../firebaseConfig';
 import WorkoutForm from '../components/WorkoutForm';
@@ -16,7 +16,10 @@ import MealForm from '../components/MealForm';
 import Nutrition from '../components/Nutrition';
 import Workouts from '../components/Workouts';
 
+import {AuthContext} from '../context/auth';
+
 const Dashboard = () => {
+  const userContext = useContext(AuthContext);
   // gosam61266@fulwark.com
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
@@ -30,8 +33,8 @@ const Dashboard = () => {
           <MealForm mealType={undefined} />
         </View> */}
 
-        <Nutrition />
-        {/* <Workouts /> */}
+        {userContext && <Nutrition />}
+        {/* {userContext && <Workouts />} */}
       </ScrollView>
     </SafeAreaView>
   );

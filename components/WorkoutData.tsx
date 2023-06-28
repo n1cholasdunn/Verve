@@ -10,7 +10,7 @@ import React, {useEffect, useState} from 'react';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const WorkoutData = ({day}) => {
+const WorkoutData = ({day, user}) => {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +22,7 @@ const WorkoutData = ({day}) => {
       let workoutList = [];
       snapshot.docs.map(doc => workoutList.push({...doc.data(), id: doc.id}));
       workoutList = workoutList.filter(workout => {
-        return workout.date === day;
+        return workout.date === day && workout.userId === user;
       });
       setWorkouts(workoutList);
       setLoading(false);
