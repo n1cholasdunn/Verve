@@ -43,6 +43,7 @@ const Register = ({navigation}) => {
         <TextInput
           style={styles.input}
           value={userDetails.email}
+          textContentType="emailAddress"
           onChangeText={input => {
             setUserDetails({...userDetails, email: input});
           }}
@@ -53,6 +54,7 @@ const Register = ({navigation}) => {
         <TextInput
           style={styles.input}
           placeholder="password"
+          textContentType="newPassword"
           value={userDetails.password}
           onChangeText={input => {
             setUserDetails({...userDetails, password: input});
