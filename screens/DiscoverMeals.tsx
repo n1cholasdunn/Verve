@@ -27,7 +27,6 @@ const DiscoverMeals = () => {
       }
     };
     fetchRandom();
-    // console.log('after', breakfastRecipes);
   }, []);
 
   const renderBreakfast = ({item}) => (
@@ -70,15 +69,20 @@ const DiscoverMeals = () => {
   return (
     <SafeAreaView>
       <ScrollView nestedScrollEnabled>
+        <Text className="text-5xl text-slate-200 pl-2 mt-10">Find recipes</Text>
         <View className="pb-[75px] min-h-full px-[2px]">
           <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2">Breakfast</Text>
-            <FlatList
-              data={breakfastRecipes.hits}
-              renderItem={renderBreakfast}
-              horizontal={true}
-              // keyExtractor={item => item.uri}
-            />
+            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
+              Breakfast
+            </Text>
+            {breakfastRecipes && (
+              <FlatList
+                data={breakfastRecipes.hits}
+                renderItem={renderBreakfast}
+                horizontal={true}
+                // keyExtractor={item => item.uri}
+              />
+            )}
           </View>
           {/* <View className="mt-10">
             <Text className="text-3xl text-slate-200 pl-2">Lunch</Text>
