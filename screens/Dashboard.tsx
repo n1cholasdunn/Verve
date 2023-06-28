@@ -17,6 +17,7 @@ import Nutrition from '../components/Nutrition';
 import Workouts from '../components/Workouts';
 
 import {AuthContext} from '../context/auth';
+import DiscoverMeals from './DiscoverMeals';
 
 const Dashboard = () => {
   const userContext = useContext(AuthContext);
@@ -33,8 +34,9 @@ const Dashboard = () => {
           <MealForm mealType={undefined} />
         </View> */}
 
-        {userContext && <Nutrition />}
+        {/* {userContext && <Nutrition />} */}
         {/* {userContext && <Workouts />} */}
+        <DiscoverMeals />
       </ScrollView>
     </SafeAreaView>
   );
