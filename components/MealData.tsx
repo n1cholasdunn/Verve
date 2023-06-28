@@ -32,7 +32,7 @@ const MealData = ({day, mealType}) => {
   const renderMeals = ({item}) => (
     <View style={styles.mealCard}>
       <Text style={{fontSize: 20, color: '#BB86FC'}}>{item.name}</Text>
-      <Text style={{color: '#606368'}}>Ingredients:{item.ingredients}</Text>
+      <Text style={{color: '#606368'}}>Ingredients: {item.ingredients}</Text>
       <Text style={{color: '#606368'}}>Calories: {item.totalCalories}</Text>
       <Text style={{color: '#606368'}}>Protein: {item.totalProtein}</Text>
       <Text style={{color: '#606368'}}>Carbs: {item.totalCarbs}</Text>

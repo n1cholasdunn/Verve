@@ -77,7 +77,7 @@ const MealForm = ({mealType}) => {
           setMeal({...meal, totalProtein: +input});
         }}
       />
-      <Text className="text-[#FFFFFF]">Cabrs(g)</Text>
+      <Text className="text-[#FFFFFF]">Carbs(g)</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
