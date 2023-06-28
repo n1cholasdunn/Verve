@@ -3,11 +3,11 @@ import {View, Text} from 'react-native';
 import {ProgressChart} from 'react-native-chart-kit';
 import {Dimensions} from 'react-native';
 
-const DailyChart = () => {
+const TodayChart = () => {
   const screenWidth = Dimensions.get('window').width;
   return (
     <ProgressChart
-      data={[0.8]}
+      data={[0.3]}
       width={Dimensions.get('window').width / 2}
       height={220}
       chartConfig={{
@@ -25,4 +25,4 @@ const DailyChart = () => {
   );
 };
 
-export default DailyChart;
+export default TodayChart;

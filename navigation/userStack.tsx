@@ -4,16 +4,36 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Dashboard from '../app/screens/Dashboard';
 import UserProfile from '../app/screens/UserProfile';
 import Today from '../app/screens/Today';
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 const Tab = createBottomTabNavigator();
 
 export default function userStack() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        screenOptions={{
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+
+            if (route.name === 'UserProfile') {
+              iconName = focused ? 'person-circle' : 'person-circle-outline';
+            } else if (route.name === 'Your Day') {
+              iconName = focused ? 'bar-chart' : 'bar-chart-outline';
+            } else if (route.name === 'Dashboard') {
+              iconName = focused ? 'home' : 'home-outline';
+            }
+            // else if (route.name === 'Your Day') {
+            //   iconName = focused ? 'bar-chart' : 'bar-chart-outline';
+            // }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
           tabBarStyle: {position: 'absolute', backgroundColor: '#09090b'},
-        }}>
+
+          tabBarActiveTintColor: '#01DBC6',
+          tabBarInactiveTintColor: '#606368',
+        })}>
         <Tab.Screen
           name="Dashboard"
           component={Dashboard}
@@ -22,7 +42,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#cbd5e1',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -36,7 +56,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#cbd5e1',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
