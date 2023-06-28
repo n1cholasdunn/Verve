@@ -53,7 +53,7 @@ const Nutrition = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View className="pb-[75px] min-h-full px-[2px]">
       <View style={{marginHorizontal: 10}}>
         <Text style={styles.title}>Verve</Text>
         <Text style={styles.text}>Today's Calories: {calories} /2000</Text>
