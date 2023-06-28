@@ -46,6 +46,7 @@ const Login = ({navigation}) => {
           textContentType="emailAddress"
           onChangeText={input => setUserDetails({...userDetails, email: input})}
           value={userDetails.email}
+          autoCapitalize="none"
         />
       </View>
       <Text className="text-slate-200">Password:</Text>
@@ -53,6 +54,7 @@ const Login = ({navigation}) => {
         style={styles.input}
         placeholder="password"
         textContentType="password"
+        autoCapitalize="none"
         onChangeText={input =>
           setUserDetails({...userDetails, password: input})
         }

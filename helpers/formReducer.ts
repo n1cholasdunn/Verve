@@ -5,6 +5,11 @@ const formReducer = (state, action) => {
         ...state,
         [action.field]: action.payload,
       };
+    case 'HANDLE INPUT WEIGHT':
+      return {
+        ...state,
+        [action.field]: action.payload,
+      };
     default:
       return state;
   }

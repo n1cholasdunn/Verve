@@ -3,16 +3,17 @@ import React, {Component, useReducer, useState} from 'react';
 import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const initialFormState = {
-  name: '',
-  date: '',
-  weightHistory: [],
-  userId: '',
-};
-
 const WeightForm = ({user}) => {
   // const WeightForm = ({weight, user}) => {
-  const [state, dispatch] = useReducer(formReducer, initialFormState);
+  let today = new Date().toISOString().slice(0, 10);
+
+  const initialFormState = {
+    name: '',
+    weightHistory: [],
+    date: today,
+    userId: '',
+  };
+  const [formState, dispatch] = useReducer(formReducer, initialFormState);
 
   const handleTextChange = e => {
     dispatch({
@@ -21,32 +22,6 @@ const WeightForm = ({user}) => {
       payload: e.target.value,
     });
   };
-
-  let today = new Date().toISOString().slice(0, 10);
-
-  type WeightProps = {
-    name: string;
-    weightHistory: number[];
-    date: string;
-    userId: string;
-  };
-
-  const [weightData, setWeightData] = useState<WeightProps>({
-    name: '',
-    weightHistory: [],
-    date: '',
-    userId: '',
-  });
-
-  function addWeighIn() {
-    const weighInDb = collection(db, 'weighIn-test');
-    addDoc(weighInDb, {
-      name: weightData.name,
-      weight: weightData.weightHistory,
-      date: today,
-      userId: user,
-    });
-  }
 
   return (
     <View
@@ -61,25 +36,15 @@ const WeightForm = ({user}) => {
       <TextInput
         style={styles.input}
         placeholder="name"
-        value={weightData.name}
-        onChangeText={input => {
-          setWeightData({...weightData, name: input});
-        }}
+        value={formState.name}
+        onChangeText={e => handleTextChange(e)}
       />
       <Text className="text-[#FFFFFF]">Weight</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
-        value={weightData.weightHistory[
-          weightData.weightHistory.length - 1
-        ].toString()}
-        onChangeText={input => {
-          const newWeightHistory = weightData.weightHistory.push(Number(input));
-          setWeightData({
-            ...weightData,
-            weightHistory: newWeightHistory,
-          });
-        }}
+        value={formState.w}
+        onChangeText={e => handleTextChange(e)}
       />
       <View style={{alignItems: 'center'}}>
         <Pressable onPress={addWeighIn} style={styles.addButton}>
@@ -113,3 +78,27 @@ const styles = StyleSheet.create({
     width: 300,
   },
 });
+
+// type WeightProps = {
+//   name: string;
+//   weightHistory: number[];
+//   date: string;
+//   userId: string;
+// };
+
+// const [weightData, setWeightData] = useState<WeightProps>({
+//   name: '',
+//   weightHistory: [],
+//   date: '',
+//   userId: '',
+// });
+
+// function addWeighIn() {
+//   const weighInDb = collection(db, 'weighIn-test');
+//   addDoc(weighInDb, {
+//     name: weightData.name,
+//     weight: weightData.weightHistory,
+//     date: today,
+//     userId: user,
+//   });
+// }

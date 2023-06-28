@@ -44,6 +44,7 @@ const Register = ({navigation}) => {
           style={styles.input}
           value={userDetails.email}
           textContentType="emailAddress"
+          autoCapitalize="none"
           onChangeText={input => {
             setUserDetails({...userDetails, email: input});
           }}
@@ -54,6 +55,7 @@ const Register = ({navigation}) => {
         <TextInput
           style={styles.input}
           placeholder="password"
+          autoCapitalize="none"
           textContentType="newPassword"
           value={userDetails.password}
           onChangeText={input => {
