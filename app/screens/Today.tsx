@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
 import Explore from '../../components/Explore';
 import TodayChart from '../../components/charts/TodayChart';
+import WeightChart from '../../components/charts/WeightChart';
 
 const Today = () => {
   return (
@@ -34,6 +35,7 @@ const Today = () => {
       <View>
         <Text className="text-2xl font-bold text-slate-300">Your Progress</Text>
         {/* TODO Weight chart */}
+        <WeightChart />
       </View>
       <View>
         <Explore />
