@@ -21,6 +21,7 @@ const DiscoverMeals = () => {
       try {
         if (meals) {
           setbreakfastRecipes(meals);
+          console.log(breakfastRecipes);
         }
       } catch (error) {
         console.log(error);

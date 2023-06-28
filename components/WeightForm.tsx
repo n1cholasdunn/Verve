@@ -9,19 +9,27 @@ const WeightForm = ({user}) => {
 
   const initialFormState = {
     name: '',
-    weightHistory: [],
-    date: today,
-    userId: '',
+    weight: 0,
   };
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
 
-  const handleTextChange = e => {
+  const handleTextChange = (field, value) => {
     dispatch({
       type: 'HANDLE INPUT TEXT',
-      field: e.target.name,
-      payload: e.target.value,
+      field,
+      payload: value,
     });
   };
+
+  function addWeighIn() {
+    const weighInDb = collection(db, 'weighIn-test');
+    addDoc(weighInDb, {
+      name: formState.name,
+      weight: formState.weight,
+      date: today,
+      userId: user,
+    });
+  }
 
   return (
     <View
@@ -32,19 +40,19 @@ const WeightForm = ({user}) => {
         width: 350,
         backgroundColor: '#1E1E1E',
       }}>
-      <Text className="text-[#FFFFFF]">Name</Text>
+      <Text className="text-slate-200">Name</Text>
       <TextInput
         style={styles.input}
         placeholder="name"
         value={formState.name}
-        onChangeText={e => handleTextChange(e)}
+        onChangeText={value => handleTextChange('name', value)}
       />
-      <Text className="text-[#FFFFFF]">Weight</Text>
+      <Text className="text-slate-200">Weight</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
-        value={formState.w}
-        onChangeText={e => handleTextChange(e)}
+        value={String(formState.weight)}
+        onChangeText={value => handleTextChange('weight', Number(value))}
       />
       <View style={{alignItems: 'center'}}>
         <Pressable onPress={addWeighIn} style={styles.addButton}>
@@ -92,13 +100,3 @@ const styles = StyleSheet.create({
 //   date: '',
 //   userId: '',
 // });
-
-// function addWeighIn() {
-//   const weighInDb = collection(db, 'weighIn-test');
-//   addDoc(weighInDb, {
-//     name: weightData.name,
-//     weight: weightData.weightHistory,
-//     date: today,
-//     userId: user,
-//   });
-// }
