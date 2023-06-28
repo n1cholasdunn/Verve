@@ -7,12 +7,13 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useContext, useEffect, useState} from 'react';
 import {onSnapshot, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import {color} from '@rneui/base';
+import {AuthContext} from '../context/auth';
 
-const MealData = ({day, mealType}) => {
+const MealData = ({day, mealType, user}) => {
   const [meals, setMeals] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +23,9 @@ const MealData = ({day, mealType}) => {
       let mealList = [];
       snapshot.docs.map(doc => mealList.push({...doc.data(), id: doc.id}));
       mealList = mealList.filter(meal => {
-        return meal.type === mealType && meal.date === day;
+        return (
+          meal.type === mealType && meal.date === day && meal.userId === user
+        );
       });
       setMeals(mealList);
       setLoading(false);

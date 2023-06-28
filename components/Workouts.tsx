@@ -1,14 +1,16 @@
 import {Text, View, StyleSheet, SafeAreaView, ScrollView} from 'react-native';
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useContext, useEffect, useState} from 'react';
 import WorkoutData from './WorkoutData';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import {FlatList} from 'react-native-gesture-handler';
 import WorkoutForm from './WorkoutForm';
+import {AuthContext} from '../context/auth';
 
 const Workouts = () => {
   const [workoutGoal, setWorkoutGoal] = useState([]);
   const [loading, setLoading] = useState(false);
+  const userContext = useContext(AuthContext);
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +23,7 @@ const Workouts = () => {
       );
       todaysWorkouts = todaysWorkouts.filter(workout => {
         let today = new Date().toISOString().slice(0, 10);
-        return workout.date === today;
+        return workout.date === today && workout.userId === userContext.UserUID;
       });
       setWorkoutGoal(todaysWorkouts);
       setLoading(false);
@@ -58,9 +60,9 @@ const Workouts = () => {
             );
           })}
         </View>
-        <WorkoutData day={today} />
+        <WorkoutData day={today} user={userContext.UserUID} />
 
-        <WorkoutForm />
+        <WorkoutForm user={userContext.UserUID} />
       </View>
     </View>
   );
