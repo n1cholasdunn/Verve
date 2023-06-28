@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Dashboard from '../app/screens/Dashboard';
-import UserProfile from '../app/screens/UserProfile';
-import Today from '../app/screens/Today';
+import Dashboard from '../screens/Dashboard';
+import UserProfile from '../screens/UserProfile';
+import Today from '../screens/Today';
 import Ionicons from '@expo/vector-icons/Ionicons';
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +42,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#cbd5e1',
+            headerTintColor: '#e2e8f0',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -56,7 +56,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#cbd5e1',
+            headerTintColor: '#e2e8f0',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -70,7 +70,7 @@ export default function userStack() {
             headerStyle: {
               backgroundColor: '#09090b',
             },
-            headerTintColor: '#cbd5e1',
+            headerTintColor: '#e2e8f0',
             headerTitleStyle: {
               fontWeight: 'bold',
             },

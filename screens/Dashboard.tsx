@@ -8,14 +8,15 @@ import {
 } from 'react-native';
 import React, {Component, useContext, useEffect, useState} from 'react';
 import {collection, onSnapshot} from 'firebase/firestore';
-import {db} from '../../firebaseConfig';
-import WorkoutForm from '../../components/WorkoutForm';
-import MealData from '../../components/MealData';
-import WorkoutData from '../../components/WorkoutData';
-import MealForm from '../../components/MealForm';
-import Nutrition from '../../components/Nutrition';
-import Workouts from '../../components/Workouts';
-import {AuthContext} from '../../context/auth';
+import {db} from '../firebaseConfig';
+import WorkoutForm from '../components/WorkoutForm';
+import MealData from '../components/MealData';
+import WorkoutData from '../components/WorkoutData';
+import MealForm from '../components/MealForm';
+import Nutrition from '../components/Nutrition';
+import Workouts from '../components/Workouts';
+
+import {AuthContext} from '../context/auth';
 
 const Dashboard = () => {
   const userContext = useContext(AuthContext);
