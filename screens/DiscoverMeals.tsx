@@ -12,15 +12,24 @@ import {fetchRandomRecipes} from '../utils/recipeApi';
 
 //We can also display recipes such as high-protein, low-fat, low-cal, vegan.....
 const DiscoverMeals = () => {
-  const [breakfastRecipes, setbreakfastRecipes] = useState(null);
+  const [breakfastRecipes, setBreakfastRecipes] = useState(null);
+  const [lunchRecipes, setLunchRecipes] = useState(null);
+  const [dinnerRecipes, setDinnerRecipes] = useState(null);
+  const [snackRecipes, setSnackRecipes] = useState(null);
 
   useEffect(() => {
     const fetchRandom = async () => {
-      const meals = await fetchRandomRecipes('breakfast');
+      const breakfastMeals = await fetchRandomRecipes('breakfast');
+      const lunchMeals = await fetchRandomRecipes('lunch');
+      const dinnerMeals = await fetchRandomRecipes('dinner');
+      const snackMeals = await fetchRandomRecipes('snack');
 
       try {
-        if (meals) {
-          setbreakfastRecipes(meals);
+        if (breakfastMeals && lunchMeals && dinnerMeals && snackMeals) {
+          setBreakfastRecipes(breakfastMeals);
+          setLunchRecipes(lunchMeals);
+          setDinnerRecipes(dinnerMeals);
+          setSnackRecipes(snackMeals);
         }
       } catch (error) {
         console.log(error);
@@ -68,7 +77,7 @@ const DiscoverMeals = () => {
 
   return (
     <SafeAreaView>
-      <ScrollView nestedScrollEnabled>
+      <ScrollView nestedScrollEnabled className="pb-[75px]">
         <Text className="text-5xl text-slate-200 pl-2 mt-10">Find recipes</Text>
         <View className="pb-[75px] min-h-full px-[2px]">
           <View className="mt-10">
@@ -80,37 +89,52 @@ const DiscoverMeals = () => {
                 data={breakfastRecipes.hits}
                 renderItem={renderBreakfast}
                 horizontal={true}
-                // keyExtractor={item => item.uri}
+                keyExtractor={item => item.recipe.uri}
               />
             )}
           </View>
-          {/* <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2">Lunch</Text>
-            <FlatList
-              data={breakfastRecipes}
-              renderItem={renderBreakfast}
-              horizontal={true}
-              // keyExtractor={item => item.uri}
-            />
-          </View>
+
           <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2">Dinner</Text>
-            <FlatList
-              data={breakfastRecipes}
-              renderItem={renderBreakfast}
-              horizontal={true}
-              // keyExtractor={item => item.uri}
-            />
+            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
+              Lunch
+            </Text>
+            {lunchRecipes && (
+              <FlatList
+                data={lunchRecipes.hits}
+                renderItem={renderBreakfast}
+                horizontal={true}
+                keyExtractor={item => item.recipe.uri}
+              />
+            )}
           </View>
-          <View className="mt-10 ">
-            <Text className="text-3xl text-slate-200 pl-2">Snacks</Text>
-            <FlatList
-              data={breakfastRecipes}
-              renderItem={renderBreakfast}
-              horizontal={true}
-              // keyExtractor={item => item.uri}
-            />
-          </View> */}
+
+          <View className="mt-10">
+            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
+              Dinner
+            </Text>
+            {dinnerRecipes && (
+              <FlatList
+                data={dinnerRecipes.hits}
+                renderItem={renderBreakfast}
+                horizontal={true}
+                keyExtractor={item => item.recipe.uri}
+              />
+            )}
+          </View>
+
+          <View className="mt-10">
+            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
+              Snacks
+            </Text>
+            {snackRecipes && (
+              <FlatList
+                data={snackRecipes.hits}
+                renderItem={renderBreakfast}
+                horizontal={true}
+                keyExtractor={item => item.recipe.uri}
+              />
+            )}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -131,17 +155,3 @@ const styles = StyleSheet.create({
 });
 
 export default DiscoverMeals;
-
-// useEffect(() => {
-//     const fetchRandom = async () => {
-//       const meals = await fetchRandomRecipes();
-
-//       if (meals.ok) {
-//         setbreakfastRecipes(meals);
-//       } else {
-//         console.log('error');
-//       }
-//     };
-//     fetchRandom();
-//     console.log('after', breakfastRecipes.hits[0].recipe.uri);
-//   }, []);
