@@ -35,11 +35,11 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Verve</Text>
-      <Text style={styles.text}>Login</Text>
+    <View className="bg-zinc-950 h-full">
+      <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
+      <Text className="text-slate-200">Login</Text>
       <View>
-        <Text style={styles.text}>Email:</Text>
+        <Text className="text-slate-200">Email:</Text>
         <TextInput
           style={styles.input}
           placeholder="email"
@@ -47,7 +47,7 @@ const Login = ({navigation}) => {
           value={userDetails.email}
         />
       </View>
-      <Text style={styles.text}>Password:</Text>
+      <Text className="text-slate-200">Password:</Text>
       <TextInput
         style={styles.input}
         placeholder="password"
@@ -57,30 +57,17 @@ const Login = ({navigation}) => {
         }
         value={userDetails.password}
       />
-      <Button onPress={loginFunction} title="Sign in" />
+      <Button onPress={loginFunction} title="Sign in" color={'#e2e8f0'} />
       <Button
         onPress={() => navigation.navigate('Registration page')}
         title="Register new account"
+        color={'#e2e8f0'}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#1E1E1E',
-    flex: 1,
-  },
-  title: {
-    marginTop: 50,
-    marginBottom: 80,
-    color: '#01DBC6',
-    fontSize: 80,
-    textAlign: 'center',
-  },
-  text: {
-    color: 'white',
-  },
   input: {
     height: 50,
     margin: 12,
