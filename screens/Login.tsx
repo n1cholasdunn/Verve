@@ -43,6 +43,7 @@ const Login = ({navigation}) => {
         <TextInput
           style={styles.input}
           placeholder="email"
+          textContentType="emailAddress"
           onChangeText={input => setUserDetails({...userDetails, email: input})}
           value={userDetails.email}
         />
