@@ -1,9 +1,9 @@
 import {EDAMAM_APP_ID, EDAMAM_APP_KEY} from '@env';
 
-export const fetchRandomRecipes = async () => {
+export const fetchRandomRecipes = async mealtype => {
   try {
     const response = await fetch(
-      `https://api.edamam.com/api/recipes/v2?app_id=${EDAMAM_APP_ID}&mealType=breakfast&type=public&app_key=${EDAMAM_APP_KEY}`
+      `https://api.edamam.com/api/recipes/v2?app_id=${EDAMAM_APP_ID}&mealType=${mealtype}&type=public&random=true&app_key=${EDAMAM_APP_KEY}`
     );
     const jsonResponse = await response.json();
     if (response.ok) {
