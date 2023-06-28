@@ -16,7 +16,7 @@ const DiscoverMeals = () => {
 
   useEffect(() => {
     const fetchRandom = async () => {
-      const meals = await fetchRandomRecipes();
+      const meals = await fetchRandomRecipes('breakfast');
 
       try {
         if (meals) {
