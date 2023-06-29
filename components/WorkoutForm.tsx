@@ -79,42 +79,41 @@ const WorkoutForm = ({user}) => {
       userId: user,
     });
   }
+
   return (
-    <View style={{flex: 1, backgroundColor: '#121212', paddingBottom: 30}}>
-      <Text
-        style={{
-          marginTop: 20,
-          fontWeight: 'bold',
-          fontSize: 30,
-          color: 'white',
-        }}>
+    <View className="bg-[#121212] mx-1 pb-9">
+      <Text className="text-3xl text-slate-200 font-bold mt-3 mb-3">
         Add Workout
       </Text>
-      <View
-        style={{
-          backgroundColor: '#1E1E1E',
-          marginHorizontal: 10,
-          paddingBottom: 20,
-        }}>
-        <Text style={styles.text}>Name</Text>
+      <View className="bg-[#1E1E1E] px-3 pt-3 border rounded-md pb-5">
+        <Text className="text-slate-200 pl-2 font-semibold">Name:</Text>
         <TextInput
-          style={styles.input}
+          className="w-80 h-9 m-2 border p-2 rounded-md text-slate-200 border-slate-200"
           placeholder="name"
           value={formState.name}
           onChangeText={input => handleTextChange('name', input)}
         />
-        <MultiSelect
-          data={muscleData}
-          labelField="label"
-          valueField="value"
-          placeholder="Select muscles"
-          search
-          placeholderStyle={styles.text}
-          value={formState.muscle}
-          onChange={item => handleTextChange('muscle', item)}
-        />
-        <Text style={styles.text}>Reps:</Text>
+        <View className="px-2">
+          <MultiSelect
+            data={muscleData}
+            placeholderStyle={styles.placeholder}
+            inputSearchStyle={styles.search}
+            containerStyle={styles.dropdownContainer}
+            itemTextStyle={styles.itemText}
+            labelField="label"
+            valueField="value"
+            placeholder="Select muscles"
+            activeColor="#bb86fc"
+            selectedTextStyle={styles.selectedText}
+            searchPlaceholder="Search Here"
+            search
+            value={formState.muscle}
+            onChange={item => handleTextChange('muscle', item)}
+          />
+        </View>
+        <Text className="text-slate-200 pl-2 mt-2 font-semibold">Reps:</Text>
         <Picker
+          itemStyle={styles.picker}
           selectedValue={formState.reps}
           onValueChange={input => handleTextChange('reps', input)}>
           <Picker.Item label="1" value={1} />
@@ -133,8 +132,9 @@ const WorkoutForm = ({user}) => {
           <Picker.Item label="14" value={14} />
           <Picker.Item label="15" value={15} />
         </Picker>
-        <Text style={styles.text}>Sets:</Text>
+        <Text className="text-slate-200 pl-2 font-semibold">Sets:</Text>
         <Picker
+          itemStyle={styles.picker}
           selectedValue={formState.sets}
           onValueChange={input => handleTextChange('sets', input)}>
           <Picker.Item label="1" value={1} />
@@ -148,17 +148,21 @@ const WorkoutForm = ({user}) => {
           <Picker.Item label="9" value={9} />
           <Picker.Item label="10" value={10} />
         </Picker>
-        <Text style={styles.text}>Weight(lbs):</Text>
+        <Text className="text-slate-200 pl-2 font-semibold">Weight(lbs):</Text>
         <TextInput
-          style={styles.input}
+          className="w-81 h-9 m-2 border p-2 rounded-md text-slate-200 border-slate-200"
           keyboardType="numeric"
           placeholder="Enter Weight"
           value={formState.weight !== 0 ? String(formState.weight) : ''}
           onChangeText={value => handleTextChange('weight', +value)}
         />
         <View style={{alignItems: 'center'}}>
-          <Pressable onPress={addWorkout} style={styles.addButton}>
-            <Text style={{fontSize: 20, fontWeight: '600'}}>Add workout</Text>
+          <Pressable
+            onPress={addWorkout}
+            className="items-center justify-center border border-solid rounded h-10 w-80 bg-[#bb86fc] my-2">
+            <Text className="font-semibold text-slate-200 text-xl">
+              Add workout
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -167,27 +171,31 @@ const WorkoutForm = ({user}) => {
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    width: 300,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
+  placeholder: {
+    color: '#e2e8f0',
+  },
+  itemContainer: {
+    backgroundColor: '#475569',
+  },
+  selectedText: {
+    color: '#020617',
+  },
+  dropdownContainer: {
+    backgroundColor: '#1E1E1E',
     borderRadius: 10,
-    color: 'white',
-    borderColor: 'white',
+    padding: 8,
   },
-  addButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    backgroundColor: '#BB86FC',
-    height: 40,
-    width: 300,
+  search: {
+    color: '#e2e8f0',
+    backgroundColor: '#1E1E1E',
+    borderRadius: 10,
+    padding: 2,
   },
-  text: {
-    color: 'white',
+  itemText: {
+    color: '#e2e8f0',
+  },
+  picker: {
+    color: '#e2e8f0',
   },
 });
 

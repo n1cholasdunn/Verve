@@ -2,7 +2,7 @@ import {Text, TextInput, View, StyleSheet, Pressable} from 'react-native';
 import React, {useReducer} from 'react';
 import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
-import {formReducer} from '../helpers/weightReducer';
+import {formReducer} from '../helpers/formReducer';
 
 const WeightForm = ({user}) => {
   let today = new Date().toISOString().slice(0, 10);
