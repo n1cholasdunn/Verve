@@ -11,10 +11,11 @@ import {Picker} from '@react-native-picker/picker';
 import React, {useState} from 'react';
 import {collection, addDoc} from 'firebase/firestore';
 import {db} from '../firebaseConfig';
+import {Workout} from '../types/workout';
 
 const WorkoutForm = ({user}) => {
   let today = new Date().toISOString().slice(0, 10);
-  const [workout, setWorkout] = useState({
+  const [workout, setWorkout] = useState<Workout>({
     name: '',
     muscle: [],
     reps: 0,
@@ -36,8 +37,9 @@ const WorkoutForm = ({user}) => {
     {label: 'Hamstrings', value: 'hamstrings'},
     {label: 'Lats', value: 'lats'},
     {label: 'Lower back', value: 'lower_back'},
-    {label: 'Middle back', value: 'middle_back'},
     {label: 'Neck', value: 'neck'},
+    {label: 'Obliques', value: 'obliques'},
+    {label: 'Upper back', value: 'upper_back'},
     {label: 'Quadriceps', value: 'quadriceps'},
     {label: 'Traps', value: 'traps'},
     {label: 'Triceps', value: 'triceps'},
@@ -57,7 +59,7 @@ const WorkoutForm = ({user}) => {
     });
   }
   return (
-    <View style={{flex: 1, backgroundColor: '#121212'}}>
+    <View style={{flex: 1, backgroundColor: '#121212', paddingBottom: 30}}>
       <Text
         style={{
           marginTop: 20,
@@ -68,7 +70,11 @@ const WorkoutForm = ({user}) => {
         Add Workout
       </Text>
       <View
-        style={{backgroundColor: '#1E1E1E', marginHorizontal: 10, height: 500}}>
+        style={{
+          backgroundColor: '#1E1E1E',
+          marginHorizontal: 10,
+          paddingBottom: 20,
+        }}>
         <Text style={styles.text}>Name</Text>
         <TextInput
           style={styles.input}

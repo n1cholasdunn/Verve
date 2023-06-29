@@ -6,6 +6,7 @@ import {db} from '../firebaseConfig';
 import {FlatList} from 'react-native-gesture-handler';
 import WorkoutForm from './WorkoutForm';
 import {AuthContext} from '../context/auth';
+import MuscleDiagram from './MuscleDiagram';
 
 const Workouts = () => {
   const [workoutGoal, setWorkoutGoal] = useState([]);
@@ -35,6 +36,7 @@ const Workouts = () => {
     <View style={styles.container}>
       <View style={{marginHorizontal: 10}}>
         <Text style={styles.title}>Verve</Text>
+        <MuscleDiagram day={today} user={userContext.UserUID} />
         <Text
           style={{
             marginTop: 40,
@@ -72,6 +74,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#121212',
     flex: 1,
+    paddingBottom: 20,
   },
 
   title: {

@@ -1,14 +1,9 @@
-import {Reoccurence} from './reoccurence';
-
-export type Workout = {
-  id: string;
+export interface Workout {
   name: string;
-  type: string;
-  muscle: string;
-  equipment: string;
-  difficulty: string;
-  instructions: string;
-  //TODO figure out adding in reoccurence if it is string or other
-  // reoccurence: Reoccurence;
-  date: Date;
-};
+  muscle: string[];
+  reps: number;
+  sets: number;
+  weight: number;
+  date: string;
+  userId: string;
+}
