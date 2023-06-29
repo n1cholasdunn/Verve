@@ -59,80 +59,79 @@ const WorkoutForm = ({user}) => {
     });
   }
   return (
-    <View style={{flex: 1, backgroundColor: '#121212', paddingBottom: 30}}>
-      <Text
-        style={{
-          marginTop: 20,
-          fontWeight: 'bold',
-          fontSize: 30,
-          color: 'white',
-        }}>
-        Add Workout
-      </Text>
-      <View
-        style={{
-          backgroundColor: '#1E1E1E',
-          marginHorizontal: 10,
-          paddingBottom: 20,
-        }}>
-        <Text style={styles.text}>Name</Text>
+    <View className="bg-[#121212] p-2">
+      <View className="bg-[#1E1E1E] my-10 p-5 pb-16">
+        <Text className="text-[#ffffff] mb-2 font-medium">Name</Text>
         <TextInput
-          style={styles.input}
-          placeholder="name"
+          className="placeholder:italic placeholder-[#ffffff] text-regal-blue border-[#ffffff] h-10 w-300 border rounded-md"
+          placeholder=" required..."
+          placeholderTextColor={'#8d8f94'}
           value={workout.name}
           onChangeText={input => {
             setWorkout({...workout, name: input});
           }}
         />
+        <Text className="text-[#ffffff] mt-16 mb-2 font-medium">Muscles</Text>
         <MultiSelect
+          style={{
+            borderColor: '#ffffff',
+            borderWidth: 1,
+            borderRadius: 5,
+          }}
+          activeColor="#bb86fc"
+          itemTextStyle={{color: '#ffffff'}}
+          containerStyle={{backgroundColor: '#303030', borderColor: '#303030'}}
           data={muscleData}
           labelField="label"
           valueField="value"
-          placeholder="Select muscles"
+          placeholder=" select muscles..."
           search
-          placeholderStyle={styles.text}
+          placeholderStyle={{color: '#8d8f94'}}
           value={workout.muscle}
           onChange={(item: string[]) => {
             setWorkout({...workout, muscle: item});
           }}
         />
-        <Text style={styles.text}>Reps:</Text>
+        <Text className="text-[#ffffff] mt-16 mb-2 font-medium">Reps</Text>
         <Picker
           selectedValue={workout.reps}
           onValueChange={input => {
             setWorkout({...workout, reps: input});
           }}>
-          <Picker.Item label="1" value={1} />
-          <Picker.Item label="2" value={2} />
-          <Picker.Item label="3" value={3} />
-          <Picker.Item label="4" value={4} />
-          <Picker.Item label="5" value={5} />
-          <Picker.Item label="6" value={6} />
-          <Picker.Item label="7" value={7} />
-          <Picker.Item label="8" value={8} />
-          <Picker.Item label="9" value={9} />
-          <Picker.Item label="10" value={10} />
+          <Picker.Item color="#bb86fc" label="1" value={1} />
+          <Picker.Item color="#bb86fc" label="2" value={2} />
+          <Picker.Item color="#bb86fc" label="3" value={3} />
+          <Picker.Item color="#bb86fc" label="4" value={4} />
+          <Picker.Item color="#bb86fc" label="5" value={5} />
+          <Picker.Item color="#bb86fc" label="6" value={6} />
+          <Picker.Item color="#bb86fc" label="7" value={7} />
+          <Picker.Item color="#bb86fc" label="8" value={8} />
+          <Picker.Item color="#bb86fc" label="9" value={9} />
+          <Picker.Item color="#bb86fc" label="10" value={10} />
         </Picker>
-        <Text style={styles.text}>Sets:</Text>
+        <Text className="text-[#ffffff] mt-5 mb-2 font-medium">Sets:</Text>
         <Picker
           selectedValue={workout.sets}
           onValueChange={input => {
             setWorkout({...workout, sets: input});
           }}>
-          <Picker.Item label="1" value={1} />
-          <Picker.Item label="2" value={2} />
-          <Picker.Item label="3" value={3} />
-          <Picker.Item label="4" value={4} />
-          <Picker.Item label="5" value={5} />
-          <Picker.Item label="6" value={6} />
-          <Picker.Item label="7" value={7} />
-          <Picker.Item label="8" value={8} />
-          <Picker.Item label="9" value={9} />
-          <Picker.Item label="10" value={10} />
+          <Picker.Item color="#bb86fc" label="1" value={1} />
+          <Picker.Item color="#bb86fc" label="2" value={2} />
+          <Picker.Item color="#bb86fc" label="3" value={3} />
+          <Picker.Item color="#bb86fc" label="4" value={4} />
+          <Picker.Item color="#bb86fc" label="5" value={5} />
+          <Picker.Item color="#bb86fc" label="6" value={6} />
+          <Picker.Item color="#bb86fc" label="7" value={7} />
+          <Picker.Item color="#bb86fc" label="8" value={8} />
+          <Picker.Item color="#bb86fc" label="9" value={9} />
+          <Picker.Item color="#bb86fc" label="10" value={10} />
         </Picker>
-        <Text style={styles.text}>Weight(lbs):</Text>
+        <Text className="text-[#ffffff] mt-16 mb-2 font-medium">
+          Weight(lbs):
+        </Text>
         <TextInput
-          style={styles.input}
+          className="placeholder:italic placeholder-[#ffffff] text-regal-blue border-[#ffffff] h-10 w-300 border rounded-md"
+          placeholderTextColor={'#8d8f94'}
           keyboardType="numeric"
           value={workout.weight.toString()}
           onChangeText={input => {
@@ -140,7 +139,9 @@ const WorkoutForm = ({user}) => {
           }}
         />
         <View style={{alignItems: 'center'}}>
-          <Pressable onPress={addWorkout} style={styles.addButton}>
+          <Pressable
+            onPress={addWorkout}
+            className="items-center justify-center border bg-[#BB86FC] border-[#BB86FC] h-16 w-64 rounded-full mt-16">
             <Text style={{fontSize: 20, fontWeight: '600'}}>Add workout</Text>
           </Pressable>
         </View>
@@ -150,16 +151,7 @@ const WorkoutForm = ({user}) => {
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    width: 300,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
-    color: 'white',
-    borderColor: 'white',
-  },
+  input: {},
   addButton: {
     alignItems: 'center',
     justifyContent: 'center',

@@ -27,7 +27,7 @@ const MuscleDiagram = ({day, user}) => {
 
       console.log(muscles);
     });
-    // setMuscles([]) //use for now to clear the muscles
+    // setMuscles([]); //use for now to clear the muscles
   }, []);
 
   const imageList = {
@@ -57,15 +57,14 @@ const MuscleDiagram = ({day, user}) => {
         display: 'flex',
         justifyContent: 'center',
         borderColor: '#03dac5',
-        borderWidth: 2,
+        borderWidth: 1,
         borderRadius: 5,
+        paddingHorizontal: 10,
       }}>
       <Image
         style={{
           height: 350,
           width: 350,
-          top: 0,
-          left: 0,
           position: 'relative',
         }}
         source={require('../media/nothing.png')}
@@ -76,8 +75,6 @@ const MuscleDiagram = ({day, user}) => {
           style={{
             height: 350,
             width: 350,
-            top: 0,
-            left: 0,
             position: 'absolute',
           }}
           //   source={require(`../media/${muscle}.png`)}
