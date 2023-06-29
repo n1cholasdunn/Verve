@@ -35,19 +35,14 @@ const Workouts = () => {
   return (
     <View style={styles.container}>
       <View style={{marginHorizontal: 10}}>
-        <Text style={styles.title}>Verve</Text>
-        <MuscleDiagram day={today} user={userContext.UserUID} />
-        <Text
-          style={{
-            marginTop: 40,
-            fontWeight: 'bold',
-            fontSize: 30,
-            color: 'white',
-          }}>
+        <Text className="mb-10 mt-20  font-bold text-5xl text-[#ffffff]">
           Workouts
         </Text>
-        <Text style={{fontSize: 30, color: '#606368'}}>Today's progress</Text>
-        <View style={styles.mealCard}>
+        <MuscleDiagram day={today} user={userContext.UserUID} />
+        <Text className=" mt-20 mb-10 text-3xl text-[#606368]">
+          Today's workouts
+        </Text>
+        <View className="min-h-[200px] h-auto mx-2 bg-[#1E1E1E]">
           {workoutGoal.map(workout => {
             let status;
             if (workout.completed) {
@@ -62,6 +57,7 @@ const Workouts = () => {
             );
           })}
         </View>
+        <Text className=" mt-20 text-3xl text-[#606368]">Add workout</Text>
         <WorkoutData day={today} user={userContext.UserUID} />
         <WorkoutForm user={userContext.UserUID} />
       </View>

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Pressable,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import React, {Component, useContext, useEffect, useState} from 'react';
 import MealData from '../components/MealData';
@@ -12,6 +13,7 @@ import {db} from '../firebaseConfig';
 import MealForm from './MealForm';
 import {Touchable} from 'react-native';
 import {AuthContext} from '../context/auth';
+import {ProgressChart} from 'react-native-chart-kit';
 
 const Nutrition = () => {
   let today = new Date().toISOString().slice(0, 10);
@@ -55,12 +57,99 @@ const Nutrition = () => {
   return (
     <View className="pb-[75px] min-h-full px-[2px]">
       <View style={{marginHorizontal: 10}}>
-        <Text style={styles.title}>Verve</Text>
-        <Text style={styles.text}>Today's Calories: {calories} /2000</Text>
-        <Text style={styles.text}>Today's Macros:</Text>
-        <Text style={styles.text}>Protein: {protein}</Text>
-        <Text style={styles.text}>Carbs: {carbs}</Text>
-        <Text style={styles.text}>fat: {fat}</Text>
+        <Text className="mb-10 mt-20  font-bold text-5xl text-[#ffffff]">
+          Nutrition
+        </Text>
+        <Text className="mt-20 mb-5 text-3xl text-[#606368]">Calories</Text>
+        <View className="bg-[#1E1E1E] py-5 pl-3 flex-row ">
+          <View className="mr-3 w-32 h-32">
+            <ProgressChart
+              data={[calories / 2000]}
+              width={132}
+              hideLegend={true}
+              height={132}
+              radius={46}
+              chartConfig={{
+                backgroundGradientFrom: '#1E1E1E',
+                backgroundGradientTo: '#1E1E1E',
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(187, 134, 252, ${opacity})`,
+              }}
+            />
+          </View>
+          <View className="mt-5">
+            <View className="flex-row justify-between">
+              <Text className=" text-xl text-[#606368]">Goal: </Text>
+              <Text className=" text-xl text-[#bb86fc]">2000 Cal</Text>
+            </View>
+            <View className="flex-row border-b-2 border-[#03dac6] pt-1 justify-between">
+              <Text className=" text-xl text-[#606368]">Actual: </Text>
+              <Text className=" text-xl text-[#bb86fc] justify-end ">
+                {calories} Cal
+              </Text>
+            </View>
+            <View className="flex-row pt-1 justify-between pt-5 ">
+              <Text className=" text-xl text-[#606368]">Remaining: </Text>
+              <Text className=" text-xl text-[#bb86fc] ">
+                {2000 - calories} Cal
+              </Text>
+            </View>
+          </View>
+        </View>
+        <Text className="mt-20 mb-5 text-3xl text-[#606368]">Macros</Text>
+        <View className="bg-[#1E1E1E] p-5 flex-row ">
+          <View className="mr-5 w-24 h-32 flex justify-center items-center ">
+            <Text className="mb-1 text-[#bb86fc]">Protein</Text>
+            <ProgressChart
+              data={[calories / 2000]}
+              width={92}
+              hideLegend={true}
+              height={96}
+              radius={32}
+              chartConfig={{
+                backgroundGradientFrom: '#1E1E1E',
+                backgroundGradientTo: '#1E1E1E',
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(187, 134, 252, ${opacity})`,
+              }}
+            />
+            <Text className=" mb-1 text-[#bb86fc]">{protein}/200 g</Text>
+          </View>
+          <View className="mr-5 w-24 h-32 flex justify-center items-center ">
+            <Text className=" mb-1 text-[#03dac6]">Carbs</Text>
+            <ProgressChart
+              data={[calories / 2000]}
+              width={92}
+              hideLegend={true}
+              height={96}
+              radius={32}
+              chartConfig={{
+                backgroundGradientFrom: '#1E1E1E',
+                backgroundGradientTo: '#1E1E1E',
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(3, 218, 198, ${opacity})`,
+              }}
+            />
+            <Text className=" mb-1 text-[#03dac6]">{carbs}/200 g</Text>
+          </View>
+          <View className="mr-5 w-24 h-32 flex justify-center items-center ">
+            <Text className=" mb-1 text-[#cf6679]">Fat</Text>
+            <ProgressChart
+              data={[calories / 2000]}
+              width={92}
+              hideLegend={true}
+              height={96}
+              radius={32}
+              chartConfig={{
+                backgroundGradientFrom: '#1E1E1E',
+                backgroundGradientTo: '#1E1E1E',
+                decimalPlaces: 2,
+                color: (opacity = 1) => `rgba(207, 102, 121, ${opacity})`,
+              }}
+            />
+            <Text className=" mb-1 text-[#cf6679]">{fat}/200 g</Text>
+          </View>
+        </View>
         <Text
           style={{
             marginTop: 40,

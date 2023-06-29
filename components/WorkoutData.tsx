@@ -47,7 +47,6 @@ const WorkoutData = ({day, user}) => {
     <SafeAreaView>
       <ScrollView>
         <View>
-          <Text className="mt-10 text-2xl font-bold">Added Workouts</Text>
           <FlatList
             data={workouts}
             renderItem={renderWorkouts}
@@ -60,19 +59,3 @@ const WorkoutData = ({day, user}) => {
 };
 
 export default WorkoutData;
-// <FlatList
-//   ListHeaderComponent={
-//     <>
-//       <Text>Workouts </Text>
-//     </>
-//   }
-//   data={workouts}
-//   renderItem={renderWorkouts}
-//   // horizontal={true}
-//   keyExtractor={item => item.id}
-//   ListFooterComponent={
-//     <>
-//       <Text>Footer</Text>
-//     </>
-//   }
-// />;
