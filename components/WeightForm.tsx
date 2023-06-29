@@ -1,16 +1,16 @@
 import {Text, TextInput, View, StyleSheet, Pressable} from 'react-native';
-import React, {Component, useReducer, useState} from 'react';
+import React, {useReducer} from 'react';
 import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
+import {formReducer} from '../helpers/formReducer';
 
 const WeightForm = ({user}) => {
-  // const WeightForm = ({weight, user}) => {
   let today = new Date().toISOString().slice(0, 10);
 
   const initialFormState = {
-    name: '',
     weight: 0,
   };
+
   const [formState, dispatch] = useReducer(formReducer, initialFormState);
 
   const handleTextChange = (field, value) => {
@@ -24,7 +24,6 @@ const WeightForm = ({user}) => {
   function addWeighIn() {
     const weighInDb = collection(db, 'weighIn-test');
     addDoc(weighInDb, {
-      name: formState.name,
       weight: formState.weight,
       date: today,
       userId: user,
@@ -32,31 +31,24 @@ const WeightForm = ({user}) => {
   }
 
   return (
-    <View
-      style={{
-        margin: 10,
-        padding: 15,
-        height: 600,
-        width: 350,
-        backgroundColor: '#1E1E1E',
-      }}>
-      <Text className="text-slate-200">Name</Text>
+    <View className="bg-[#1E1E1E] m-3 p-4 w-92 my-4   items-center rounded-md   border">
+      <Text className="text-slate-200  font-semibold text-xl self-center">
+        Add Weigh In
+      </Text>
       <TextInput
-        style={styles.input}
-        placeholder="name"
-        value={formState.name}
-        onChangeText={value => handleTextChange('name', value)}
-      />
-      <Text className="text-slate-200">Weight</Text>
-      <TextInput
-        style={styles.input}
         keyboardType="numeric"
-        value={String(formState.weight)}
-        onChangeText={value => handleTextChange('weight', Number(value))}
+        placeholder="Enter Weight"
+        value={formState.weight !== 0 ? String(formState.weight) : ''}
+        onChangeText={value => handleTextChange('weight', +value)}
+        className="h-9 w-72  my-2  p-2 rounded border border-slate-200 text-slate-200"
       />
-      <View style={{alignItems: 'center'}}>
-        <Pressable onPress={addWeighIn} style={styles.addButton}>
-          <Text style={{fontSize: 20, fontWeight: '600'}}>Log Weigh In</Text>
+      <View>
+        <Pressable
+          onPress={addWeighIn}
+          className="items-center justify-center border border-solid rounded h-9 w-72 bg-[#bb86fc] my-2">
+          <Text className="font-semibold text-slate-200 text-xl">
+            Log Weigh In
+          </Text>
         </Pressable>
       </View>
     </View>
@@ -64,39 +56,3 @@ const WeightForm = ({user}) => {
 };
 
 export default WeightForm;
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    width: 300,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
-    color: 'white',
-    borderColor: 'white',
-  },
-  addButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    backgroundColor: '#BB86FC',
-    height: 40,
-    width: 300,
-  },
-});
-
-// type WeightProps = {
-//   name: string;
-//   weightHistory: number[];
-//   date: string;
-//   userId: string;
-// };
-
-// const [weightData, setWeightData] = useState<WeightProps>({
-//   name: '',
-//   weightHistory: [],
-//   date: '',
-//   userId: '',
-// });
