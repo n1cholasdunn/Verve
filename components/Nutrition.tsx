@@ -55,12 +55,58 @@ const Nutrition = () => {
   return (
     <View className="pb-[75px] min-h-full px-[2px]">
       <View style={{marginHorizontal: 10}}>
-        <Text style={styles.title}>Verve</Text>
-        <Text style={styles.text}>Today's Calories: {calories} /2000</Text>
-        <Text style={styles.text}>Today's Macros:</Text>
-        <Text style={styles.text}>Protein: {protein}</Text>
-        <Text style={styles.text}>Carbs: {carbs}</Text>
-        <Text style={styles.text}>fat: {fat}</Text>
+        <Text className="mb-10 mt-20  font-bold text-5xl text-[#ffffff]">
+          Nutrition
+        </Text>
+        <Text className="mt-20 mb-5 text-3xl text-[#606368]">Calories</Text>
+        <View className="bg-[#1E1E1E] p-5 flex-row ">
+          <View className="mr-3 w-32 border border-[#243c5a] h-32">
+            <Text className=" text-[#ffffff]">this will be graph</Text>
+          </View>
+          <View className="mt-5">
+            <View className="flex-row justify-between">
+              <Text className=" text-xl text-[#606368]">Goal: </Text>
+              <Text className=" text-xl text-[#bb86fc]">2000 Cal</Text>
+            </View>
+            <View className="flex-row border-b-2 border-[#03dac6] pt-1 justify-between">
+              <Text className=" text-xl text-[#606368]">Actual: </Text>
+              <Text className=" text-xl text-[#bb86fc] justify-end ">
+                {calories} Cal
+              </Text>
+            </View>
+            <View className="flex-row pt-1 justify-between pt-5 ">
+              <Text className=" text-xl text-[#606368]">Remaining: </Text>
+              <Text className=" text-xl text-[#bb86fc] ">
+                {2000 - calories} Cal
+              </Text>
+            </View>
+
+            {/* <Text style={styles.text}>Today's Macros:</Text>
+            <Text style={styles.text}>Protein: {protein}</Text>
+            <Text style={styles.text}>Carbs: {carbs}</Text>
+            <Text style={styles.text}>fat: {fat}</Text> */}
+          </View>
+        </View>
+        <Text className="mt-20 mb-5 text-3xl text-[#606368]">Macros</Text>
+        <View className="bg-[#1E1E1E] p-5 flex-row ">
+          <View className="mr-5 w-24 border border-[#243c5a] h-32">
+            <Text className=" text-[#bb86fc]">Protein graph</Text>
+            <Text className=" text-[#bb86fc]">{protein}/200 g</Text>
+          </View>
+          <View className="mr-5 w-24 border border-[#243c5a] h-32">
+            <Text className=" text-[#03dac6]">Carb graph</Text>
+            <Text className=" text-[#03dac6]">{carbs} /200 g</Text>
+          </View>
+          <View className="mr-5 w-24 border border-[#243c5a] h-32">
+            <Text className=" text-[#cf6679]">Fat graph</Text>
+            <Text className=" text-[#cf6679]">{fat} /200 g</Text>
+          </View>
+
+          {/* <Text style={styles.text}>Today's Macros:</Text>
+            <Text style={styles.text}>Protein: {protein}</Text>
+            <Text style={styles.text}>Carbs: {carbs}</Text>
+            <Text style={styles.text}>fat: {fat}</Text> */}
+        </View>
         <Text
           style={{
             marginTop: 40,
