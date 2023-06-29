@@ -59,7 +59,7 @@ const MuscleDiagram = ({day, user}) => {
         borderColor: '#03dac5',
         borderWidth: 1,
         borderRadius: 5,
-        paddingHorizontal: 10,
+        marginHorizontal: 10,
       }}>
       <Image
         style={{

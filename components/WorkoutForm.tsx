@@ -41,6 +41,7 @@ const WorkoutForm = ({user}) => {
     {label: 'Obliques', value: 'obliques'},
     {label: 'Upper back', value: 'upper_back'},
     {label: 'Quadriceps', value: 'quadriceps'},
+    {label: 'Shoulders', value: 'shoulders'},
     {label: 'Traps', value: 'traps'},
     {label: 'Triceps', value: 'triceps'},
   ];
