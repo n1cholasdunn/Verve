@@ -14,7 +14,7 @@ import {db} from '../firebaseConfig';
 import {Workout} from '../types/workout';
 import {formReducer} from '../helpers/formReducer';
 
-const WorkoutForm = ({user}) => {
+const WorkoutFormTest = ({user}) => {
   let today = new Date().toISOString().slice(0, 10);
   const [workout, setWorkout] = useState<Workout>({
     name: '',
@@ -127,11 +127,6 @@ const WorkoutForm = ({user}) => {
           <Picker.Item label="8" value={8} />
           <Picker.Item label="9" value={9} />
           <Picker.Item label="10" value={10} />
-          <Picker.Item label="11" value={11} />
-          <Picker.Item label="12" value={12} />
-          <Picker.Item label="13" value={13} />
-          <Picker.Item label="14" value={14} />
-          <Picker.Item label="15" value={15} />
         </Picker>
         <Text style={styles.text}>Sets:</Text>
         <Picker
@@ -191,4 +186,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WorkoutForm;
+export default WorkoutFormTest;

@@ -7,6 +7,7 @@ import {FlatList} from 'react-native-gesture-handler';
 import WorkoutForm from './WorkoutForm';
 import {AuthContext} from '../context/auth';
 import MuscleDiagram from './MuscleDiagram';
+import WorkoutFormTest from './WorkoutFormTest';
 
 const Workouts = () => {
   const [workoutGoal, setWorkoutGoal] = useState([]);
