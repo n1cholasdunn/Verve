@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, Pressable} from 'react-native';
-import {collection, deleteDoc, doc, onSnapshot} from '@firebase/firestore';
+import {deleteDoc, doc} from '@firebase/firestore';
 import {AntDesign} from '@expo/vector-icons';
 import {db} from '../firebaseConfig';
 
