@@ -56,7 +56,9 @@ const Workouts = () => {
         <Text className=" mt-20 mb-3 pl-2 text-3xl text-[#606368] font-semibold">
           Today's workouts
         </Text>
-        <View className="min-h-[56px] h-auto mx-2 bg-[#1E1E1E] rounded-md border">
+        <View
+          className="min-h-[56px] h-auto mx-2 bg-[#1E1E1E] rounded-md border
+        ">
           {workoutGoal.map(workout => (
             <View className="flex-row justify-between m-4 ">
               <Text className="text-2xl text-[#BB86FC] " key={workout.id}>

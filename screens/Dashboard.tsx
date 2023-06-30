@@ -19,26 +19,29 @@ import Workouts from '../components/Workouts';
 import {AuthContext} from '../context/auth';
 import DiscoverMeals from './DiscoverMeals';
 import Test from './Test';
+import Layout from '../components/Layout';
 
 const Dashboard = () => {
   const userContext = useContext(AuthContext);
   // gosam61266@fulwark.com
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
-      <ScrollView>
-        {/* <View>
+      <ScrollView nestedScrollEnabled>
+        <Layout>
+          {/* <View>
           <WorkoutForm />
         </View> */}
-        {/* <WorkoutData /> */}
+          {/* <WorkoutData /> */}
 
-        {/* <View>
+          {/* <View>
           <MealForm mealType={undefined} />
         </View> */}
 
-        {/* {userContext && <Nutrition />} */}
-        {userContext && <Workouts />}
-        {/* <DiscoverMeals /> */}
-        {/* <Test /> */}
+          {/* {userContext && <Nutrition />} */}
+          {userContext && <Workouts />}
+          {/* <DiscoverMeals /> */}
+          {/* <Test /> */}
+        </Layout>
       </ScrollView>
     </SafeAreaView>
   );

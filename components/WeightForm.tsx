@@ -5,7 +5,12 @@ import {db} from '../firebaseConfig';
 import {formReducer} from '../helpers/formReducer';
 
 const WeightForm = ({user}) => {
+<<<<<<< HEAD
   let today = new Date().toLocaleString().slice(0, 10);
+=======
+  //   // let today = new Date().toISOString().slice(0, 10);
+  let today = new Date().toLocaleString();
+>>>>>>> 76e95073d560d2eabfe310e7f0d2318b5b4add35
 
   const initialFormState = {
     weight: 0,

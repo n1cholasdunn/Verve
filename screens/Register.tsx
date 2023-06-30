@@ -1,7 +1,7 @@
 import {Button, Text, TextInput, View, StyleSheet} from 'react-native';
 import React, {Component, useState} from 'react';
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
-import {NativeWindStyleSheet} from 'nativewind';
+import Layout from '../components/Layout';
 
 const auth = getAuth();
 
@@ -35,28 +35,32 @@ const Register = ({navigation}) => {
     }
   };
   return (
-    <View className="bg-zinc-950 h-full">
+    <Layout>
       <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
-      <Text className="text-slate-200">Register</Text>
-      <View>
+      <View className="my-2">
         <Text className="text-slate-200">Email:</Text>
         <TextInput
-          style={styles.input}
+          className="h-10 my-2    border rounded-md p-2 text-slate-200 border-slate-200"
           value={userDetails.email}
           textContentType="emailAddress"
+          placeholder="Enter Email..."
+          keyboardType="email-address"
+          placeholderTextColor={'#64748b'}
           autoCapitalize="none"
           onChangeText={input => {
             setUserDetails({...userDetails, email: input});
           }}
         />
       </View>
-      <View>
+      <View className="my-2">
         <Text className="text-slate-200">Password:</Text>
         <TextInput
-          style={styles.input}
-          placeholder="password"
+          className="h-10 my-2    border rounded-md p-2 text-slate-200 border-slate-200"
+          placeholder="Enter Password..."
+          placeholderTextColor={'#64748b'}
           autoCapitalize="none"
           textContentType="newPassword"
+          secureTextEntry
           value={userDetails.password}
           onChangeText={input => {
             setUserDetails({...userDetails, password: input});
@@ -73,20 +77,8 @@ const Register = ({navigation}) => {
           color={'#e2e8f0'}
         />
       </View>
-    </View>
+    </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 50,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
-    color: 'white',
-    borderColor: 'white',
-  },
-});
 
 export default Register;
