@@ -4,7 +4,7 @@ import 'firebase/auth';
 import {getAuth} from 'firebase/auth';
 import {FIREBASE_API_KEY} from '@env';
 import {getFirestore} from '@firebase/firestore';
-
+import {getAnalytics} from 'firebase/analytics';
 // Your web app's Firebase configuration
 
 export const firebaseConfig = {
@@ -14,6 +14,7 @@ export const firebaseConfig = {
   storageBucket: 'verve-513ff.appspot.com',
   messagingSenderId: '703107708284',
   appId: '1:703107708284:web:c0a000abee34e24230e0f9',
+  measurementId: 'G-P2YRB9BDL8',
 };
 
 // export const FIREBASE_APP = initializeApp(firebaseConfig);
@@ -22,6 +23,7 @@ export const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
 export const db = getFirestore();
 export const auth = getAuth(app);
 export default app;

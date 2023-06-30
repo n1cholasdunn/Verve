@@ -16,9 +16,12 @@ const AllActivities = ({user}) => {
     onSnapshot(workoutQuery, snapshot => {
       let workoutList = [];
       snapshot.docs.map(doc => workoutList.push({...doc.data(), id: doc.id}));
-      workoutList = workoutList.filter(workout => {
-        return workout.userId === user;
-      });
+      workoutList = workoutList
+        .filter(workout => {
+          return workout.userId === user;
+        })
+        .sort((a, b) => b.date - a.date);
+      // let sortedWorkouts = workoutList.sort((a, b) => b.date - a.date);
       setWorkouts(workoutList);
       setLoading(false);
     });

@@ -42,7 +42,6 @@ const Today = () => {
             </View>
           </View>
           <View>
-            {/* TODO  add button to log weight into database*/}
             <Text className="text-2xl font-bold text-slate-200">
               Your Progress
             </Text>
