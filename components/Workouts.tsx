@@ -1,12 +1,20 @@
-import {Text, View, StyleSheet, SafeAreaView, ScrollView} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Pressable,
+} from 'react-native';
 import React, {Component, useContext, useEffect, useState} from 'react';
 import WorkoutData from './WorkoutData';
-import {collection, onSnapshot} from '@firebase/firestore';
+import {collection, doc, onSnapshot, updateDoc} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import {FlatList} from 'react-native-gesture-handler';
 import WorkoutForm from './WorkoutForm';
 import {AuthContext} from '../context/auth';
 import MuscleDiagram from './MuscleDiagram';
+import {AntDesign} from '@expo/vector-icons';
 
 const Workouts = () => {
   const [workoutGoal, setWorkoutGoal] = useState([]);
@@ -31,6 +39,12 @@ const Workouts = () => {
     });
   }, []);
 
+  const toggleComplete = async workout => {
+    await updateDoc(doc(db, 'workout-test', workout.id), {
+      completed: !workout.completed,
+    });
+  };
+
   let today = new Date().toISOString().slice(0, 10);
   return (
     <View style={styles.container}>
@@ -42,20 +56,29 @@ const Workouts = () => {
         <Text className=" mt-20 mb-3 pl-2 text-3xl text-[#606368] font-semibold">
           Today's workouts
         </Text>
-        <View className="min-h-[200px] h-auto mx-2 bg-[#1E1E1E] p-4 rounded-md border">
-          {workoutGoal.map(workout => {
-            let status;
-            if (workout.completed) {
-              status = '☒';
-            } else {
-              status = '☐';
-            }
-            return (
-              <Text style={{fontSize: 20, color: '#BB86FC'}} key={workout.id}>
-                {workout.name} {status}
+        <View className="min-h-[56px] h-auto mx-2 bg-[#1E1E1E] rounded-md border">
+          {workoutGoal.map(workout => (
+            <View className="flex-row justify-between m-4 ">
+              <Text className="text-2xl text-[#BB86FC] " key={workout.id}>
+                {workout.name}
               </Text>
-            );
-          })}
+              {workout.completed ? (
+                <Pressable
+                  onPress={() => {
+                    toggleComplete(workout);
+                  }}>
+                  <AntDesign name="checkcircle" size={24} color="#BB86FC" />
+                </Pressable>
+              ) : (
+                <Pressable
+                  onPress={() => {
+                    toggleComplete(workout);
+                  }}>
+                  <AntDesign name="checkcircleo" size={24} color="#BB86FC" />
+                </Pressable>
+              )}
+            </View>
+          ))}
         </View>
         {/* <Text className=" pl-4  mt-20 text-3xl text-[#606368]">
           Add workout

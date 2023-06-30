@@ -47,13 +47,21 @@ const MealData = ({day, mealType, user}) => {
   const renderMeals = ({item}) => (
     <View className="m-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
       <View>
-        <Text style={{fontSize: 20, color: '#BB86FC'}}>{item.name}</Text>
-        <Text style={{color: '#606368'}}>Ingredients: {item.ingredients}</Text>
-        <Text style={{color: '#606368'}}>Calories: {item.totalCalories}</Text>
-        <Text style={{color: '#606368'}}>Protein: {item.totalProtein}</Text>
-        <Text style={{color: '#606368'}}>Carbs: {item.totalCarbs}</Text>
-        <Text style={{color: '#606368'}}>Fat: {item.totalFat}</Text>
-        <Text style={{color: '#606368'}}>Date: {item.date.toString()}</Text>
+        <Text className="text-2xl text-[#BB86FC]">{item.name}</Text>
+        <Text className="text-m text-[#606368]">
+          Ingredients: {item.ingredients}
+        </Text>
+        <Text className="text-m text-[#606368]">
+          Calories: {item.totalCalories}
+        </Text>
+        <Text className="text-m text-[#606368]">
+          Protein: {item.totalProtein}
+        </Text>
+        <Text className="text-m text-[#606368]">Carbs: {item.totalCarbs}</Text>
+        <Text className="text-m text-[#606368]">Fat: {item.totalFat}</Text>
+        <Text className="text-m text-[#606368]">
+          Date: {item.date.toString()}
+        </Text>
       </View>
       <View className="ml-[55px]">
         <Pressable onPress={() => handleDelete(item.id)}>
