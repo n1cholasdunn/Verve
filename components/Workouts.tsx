@@ -34,12 +34,12 @@ const Workouts = () => {
   let today = new Date().toISOString().slice(0, 10);
   return (
     <View style={styles.container}>
-      <View className="mx-2">
-        <Text className="mb-10 mt-20  font-bold text-5xl text-[#ffffff]">
+      <View className="mx-2 ">
+        <Text className="mb-10 mt-20 px-2  font-bold text-5xl text-[#ffffff]">
           Workouts
         </Text>
         <MuscleDiagram day={today} user={userContext.UserUID} />
-        <Text className=" mt-20 mb-3 text-3xl text-[#606368] font-semibold">
+        <Text className=" mt-20 mb-3 pl-2 text-3xl text-[#606368] font-semibold">
           Today's workouts
         </Text>
         <View className="min-h-[200px] h-auto mx-2 bg-[#1E1E1E] p-4 rounded-md border">
