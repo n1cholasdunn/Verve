@@ -6,10 +6,12 @@ import DailyChart from '../components/charts/DailyChart';
 import OverallChart from '../components/charts/OverallChart';
 import {AuthContext} from '../context/auth';
 import Layout from '../components/Layout';
+import AllActivities from '../components/AllActivities';
 
 const UserProfile = () => {
   const userContext = useContext(AuthContext);
-  const username = userContext.email;
+  // const username = userContext.email;
+  // const user = userContext.UserUID;
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView nestedScrollEnabled>
@@ -19,7 +21,7 @@ const UserProfile = () => {
               {/* TODO render user profile picture */}
               {/* <UserOutlined /> */}
               <Text className="text-lg font-semibold text-slate-200 my-2 pl-2">
-                {username}
+                {userContext.email}
               </Text>
             </View>
             <View>
@@ -68,6 +70,7 @@ const UserProfile = () => {
               Your Activities
             </Text>
             {/* TODO Render list of USER activites/workouts */}
+            <AllActivities user={userContext.UserUID} />
             {/* TODO uncomment workout data when either new component made or searchable by user and sort by date */}
             {/* <WorkoutData /> */}
           </View>

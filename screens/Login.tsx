@@ -36,32 +36,36 @@ const Login = ({navigation}) => {
   };
 
   return (
-    // <View className="bg-zinc-950 h-full">
     <Layout>
       <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
-      <Text className="text-slate-200">Login</Text>
-      <View>
-        <Text className="text-slate-200">Email:</Text>
+      <View className="my-2">
+        <Text className="text-slate-200 ">Email:</Text>
         <TextInput
-          style={styles.input}
-          placeholder="email"
+          className="h-10  my-2 border rounded-md p-2 text-slate-200 border-slate-200"
+          placeholder="Enter Email..."
+          placeholderTextColor={'#64748b'}
           textContentType="emailAddress"
+          keyboardType="email-address"
           onChangeText={input => setUserDetails({...userDetails, email: input})}
           value={userDetails.email}
           autoCapitalize="none"
         />
       </View>
-      <Text className="text-slate-200">Password:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="password"
-        textContentType="password"
-        autoCapitalize="none"
-        onChangeText={input =>
-          setUserDetails({...userDetails, password: input})
-        }
-        value={userDetails.password}
-      />
+      <View className="my-2">
+        <Text className="text-slate-200 ">Password:</Text>
+        <TextInput
+          className="h-10 my-2    border rounded-md p-2 text-slate-200 border-slate-200"
+          placeholder="Enter Password..."
+          placeholderTextColor={'#64748b'}
+          secureTextEntry
+          textContentType="password"
+          autoCapitalize="none"
+          onChangeText={input =>
+            setUserDetails({...userDetails, password: input})
+          }
+          value={userDetails.password}
+        />
+      </View>
       <Button onPress={loginFunction} title="Sign in" color={'#e2e8f0'} />
       <Button
         onPress={() => navigation.navigate('Registration page')}
@@ -69,20 +73,7 @@ const Login = ({navigation}) => {
         color={'#e2e8f0'}
       />
     </Layout>
-    // </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 50,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
-    color: 'white',
-    borderColor: 'white',
-  },
-});
 
 export default Login;
