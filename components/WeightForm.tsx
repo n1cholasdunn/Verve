@@ -40,12 +40,12 @@ const WeightForm = ({user}) => {
         placeholder="Enter Weight"
         value={formState.weight !== 0 ? String(formState.weight) : ''}
         onChangeText={value => handleTextChange('weight', +value)}
-        className="h-9 w-72  my-2  p-2 rounded border border-slate-200 text-slate-200"
+        className="h-10 w-72  my-2  p-2 rounded border border-slate-200 text-slate-200"
       />
       <View>
         <Pressable
           onPress={addWeighIn}
-          className="items-center justify-center border border-solid rounded h-9 w-72 bg-[#bb86fc] my-2">
+          className="items-center justify-center border border-solid rounded-full h-14 w-72 bg-[#bb86fc] my-2">
           <Text className="font-semibold text-slate-200 text-xl">
             Log Weigh In
           </Text>
