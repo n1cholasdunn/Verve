@@ -4,7 +4,7 @@ import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
 const MealForm = ({mealType, user}) => {
-  let today = new Date().toISOString().slice(0, 10);
+  let today = new Date().toLocaleString().slice(0, 10);
   const [meal, setMeal] = useState({
     name: '',
     ingredients: [],

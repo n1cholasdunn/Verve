@@ -15,7 +15,7 @@ import {Workout} from '../types/workout';
 import {formReducer} from '../helpers/formReducer';
 
 const WorkoutForm = ({user}) => {
-  let today = new Date().toISOString().slice(0, 10);
+  let today = new Date().toLocaleString().slice(0, 10);
   const [workout, setWorkout] = useState<Workout>({
     name: '',
     muscle: [],

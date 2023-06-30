@@ -31,7 +31,7 @@ const Workouts = () => {
         todaysWorkouts.push({...doc.data(), id: doc.id})
       );
       todaysWorkouts = todaysWorkouts.filter(workout => {
-        let today = new Date().toISOString().slice(0, 10);
+        let today = new Date().toLocaleString().slice(0, 10);
         return workout.date === today && workout.userId === userContext.UserUID;
       });
       setWorkoutGoal(todaysWorkouts);

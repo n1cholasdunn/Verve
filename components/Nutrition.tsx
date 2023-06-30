@@ -16,7 +16,7 @@ import {AuthContext} from '../context/auth';
 import {ProgressChart} from 'react-native-chart-kit';
 
 const Nutrition = () => {
-  let today = new Date().toISOString().slice(0, 10);
+  let today = new Date().toLocaleString().slice(0, 10);
   const [calories, setCalories] = useState(0);
   const [protein, setProtein] = useState(0);
   const [carbs, setCarbs] = useState(0);
