@@ -2,6 +2,7 @@ import {Button, Text, TextInput, View, StyleSheet} from 'react-native';
 import React, {Component, useState} from 'react';
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
 import {NativeWindStyleSheet} from 'nativewind';
+import Layout from '../components/Layout';
 
 const auth = getAuth();
 
@@ -35,7 +36,8 @@ const Register = ({navigation}) => {
     }
   };
   return (
-    <View className="bg-zinc-950 h-full">
+    // <View className="bg-zinc-950 h-full">
+    <Layout>
       <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
       <Text className="text-slate-200">Register</Text>
       <View>
@@ -73,7 +75,9 @@ const Register = ({navigation}) => {
           color={'#e2e8f0'}
         />
       </View>
-    </View>
+    </Layout>
+
+    // </View>
   );
 };
 

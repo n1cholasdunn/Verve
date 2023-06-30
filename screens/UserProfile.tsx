@@ -1,21 +1,25 @@
 import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {UserOutlined} from '@ant-design/icons';
 import WorkoutData from '../components/WorkoutData';
 import DailyChart from '../components/charts/DailyChart';
 import OverallChart from '../components/charts/OverallChart';
+import {AuthContext} from '../context/auth';
+import Layout from '../components/Layout';
 
 const UserProfile = () => {
+  const userContext = useContext(AuthContext);
+  const username = userContext.email;
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView nestedScrollEnabled>
-        <View>
+        <Layout>
           <View className="mb-6">
             <View>
               {/* TODO render user profile picture */}
               {/* <UserOutlined /> */}
-              <Text className="text-xl font-semibold text-slate-200">
-                Username
+              <Text className="text-lg font-semibold text-slate-200 my-2 pl-2">
+                {username}
               </Text>
             </View>
             <View>
@@ -67,7 +71,7 @@ const UserProfile = () => {
             {/* TODO uncomment workout data when either new component made or searchable by user and sort by date */}
             {/* <WorkoutData /> */}
           </View>
-        </View>
+        </Layout>
       </ScrollView>
     </SafeAreaView>
   );

@@ -5,6 +5,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import Layout from '../components/Layout';
 // import {FIREBASE_AUTH} from '../../firebaseConfig';
 
 const auth = getAuth();
@@ -35,7 +36,8 @@ const Login = ({navigation}) => {
   };
 
   return (
-    <View className="bg-zinc-950 h-full">
+    // <View className="bg-zinc-950 h-full">
+    <Layout>
       <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
       <Text className="text-slate-200">Login</Text>
       <View>
@@ -66,7 +68,8 @@ const Login = ({navigation}) => {
         title="Register new account"
         color={'#e2e8f0'}
       />
-    </View>
+    </Layout>
+    // </View>
   );
 };
 
