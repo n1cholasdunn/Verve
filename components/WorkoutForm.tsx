@@ -90,7 +90,7 @@ const WorkoutForm = ({user}) => {
         <Text className="text-slate-200 pl-2 font-semibold">Name:</Text>
         <TextInput
           className="w-80 h-9 m-2 border p-2 rounded-md text-slate-200 border-slate-200"
-          placeholder="name"
+          placeholder="Enter name..."
           value={formState.name}
           onChangeText={input => handleTextChange('name', input)}
         />
@@ -100,13 +100,15 @@ const WorkoutForm = ({user}) => {
             placeholderStyle={styles.placeholder}
             inputSearchStyle={styles.search}
             containerStyle={styles.dropdownContainer}
+            itemContainerStyle={styles.itemContainer}
             itemTextStyle={styles.itemText}
+            selectedStyle={styles.selected}
+            selectedTextStyle={styles.selectedText}
             labelField="label"
             valueField="value"
             placeholder="Select muscles"
             activeColor="#bb86fc"
-            selectedTextStyle={styles.selectedText}
-            searchPlaceholder="Search Here"
+            searchPlaceholder="Search..."
             search
             value={formState.muscle}
             onChange={item => handleTextChange('muscle', item)}
@@ -153,14 +155,14 @@ const WorkoutForm = ({user}) => {
         <TextInput
           className="w-81 h-9 m-2 border p-2 rounded-md text-slate-200 border-slate-200"
           keyboardType="numeric"
-          placeholder="Enter Weight"
+          placeholder="Enter Weight..."
           value={formState.weight !== 0 ? String(formState.weight) : ''}
           onChangeText={value => handleTextChange('weight', +value)}
         />
-        <View style={{alignItems: 'center'}}>
+        <View className="items-center mt-10">
           <Pressable
             onPress={addWorkout}
-            className="items-center justify-center border border-solid rounded h-10 w-80 bg-[#bb86fc] my-2">
+            className="items-center justify-center border border-solid rounded-full h-20  w-80 bg-[#bb86fc] my-2">
             <Text className="font-semibold text-slate-200 text-xl">
               Add workout
             </Text>
@@ -176,10 +178,11 @@ const styles = StyleSheet.create({
     color: '#e2e8f0',
   },
   itemContainer: {
-    backgroundColor: '#475569',
+    borderRadius: 10,
+    marginVertical: 4,
   },
   selectedText: {
-    color: '#020617',
+    color: '#bb86fc',
   },
   dropdownContainer: {
     backgroundColor: '#1E1E1E',
@@ -195,8 +198,15 @@ const styles = StyleSheet.create({
   itemText: {
     color: '#e2e8f0',
   },
+  selected: {
+    borderColor: '#bb86fc',
+    borderRadius: 10,
+  },
   picker: {
-    color: '#e2e8f0',
+    color: '#bb86fc',
+  },
+  containerStyle: {
+    borderRadius: 10,
   },
 });
 
