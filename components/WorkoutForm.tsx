@@ -83,7 +83,7 @@ const WorkoutForm = ({user}) => {
 
   return (
     <View className="bg-[#121212] mx-1 pb-9">
-      <Text className="text-3xl text-slate-200 font-bold mt-3 mb-3">
+      <Text className="text-3xl text-[#606368] font-semibold my-3">
         Add Workout
       </Text>
       <View className="bg-[#1E1E1E] px-3 pt-3 border rounded-md pb-5">
