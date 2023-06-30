@@ -8,10 +8,12 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, {Component, useContext, useEffect, useState} from 'react';
-import {onSnapshot, collection} from '@firebase/firestore';
+import {onSnapshot, collection, doc, deleteDoc} from '@firebase/firestore';
+import {getDatabase, ref, remove} from 'firebase/database';
 import {db} from '../firebaseConfig';
 import {color} from '@rneui/base';
 import {AuthContext} from '../context/auth';
+import {AntDesign} from '@expo/vector-icons';
 
 const MealData = ({day, mealType, user}) => {
   const [meals, setMeals] = useState([]);
@@ -31,16 +33,33 @@ const MealData = ({day, mealType, user}) => {
       setLoading(false);
     });
   }, []);
+
+  const handleDelete = async meal => {
+    console.log(meal);
+    try {
+      await deleteDoc(doc(db, 'meal-test', meal));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   //flatlist for ingredients
   const renderMeals = ({item}) => (
-    <View style={styles.mealCard}>
-      <Text style={{fontSize: 20, color: '#BB86FC'}}>{item.name}</Text>
-      <Text style={{color: '#606368'}}>Ingredients: {item.ingredients}</Text>
-      <Text style={{color: '#606368'}}>Calories: {item.totalCalories}</Text>
-      <Text style={{color: '#606368'}}>Protein: {item.totalProtein}</Text>
-      <Text style={{color: '#606368'}}>Carbs: {item.totalCarbs}</Text>
-      <Text style={{color: '#606368'}}>Fat: {item.totalFat}</Text>
-      <Text style={{color: '#606368'}}>Date: {item.date.toString()}</Text>
+    <View className="m-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
+      <View>
+        <Text style={{fontSize: 20, color: '#BB86FC'}}>{item.name}</Text>
+        <Text style={{color: '#606368'}}>Ingredients: {item.ingredients}</Text>
+        <Text style={{color: '#606368'}}>Calories: {item.totalCalories}</Text>
+        <Text style={{color: '#606368'}}>Protein: {item.totalProtein}</Text>
+        <Text style={{color: '#606368'}}>Carbs: {item.totalCarbs}</Text>
+        <Text style={{color: '#606368'}}>Fat: {item.totalFat}</Text>
+        <Text style={{color: '#606368'}}>Date: {item.date.toString()}</Text>
+      </View>
+      <View className="ml-[55px]">
+        <Pressable onPress={() => handleDelete(item.id)}>
+          <AntDesign name="delete" size={24} color="#606368" />
+        </Pressable>
+      </View>
     </View>
   );
 

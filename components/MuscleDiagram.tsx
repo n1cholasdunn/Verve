@@ -17,7 +17,7 @@ const MuscleDiagram = ({day, user}) => {
       workoutList = workoutList.filter(workout => {
         return workout.date === day && workout.userId === user;
       });
-
+      setMuscles([]);
       workoutList.map(workout => {
         setMuscles(current => [...current, workout.muscle]);
       });
@@ -27,7 +27,7 @@ const MuscleDiagram = ({day, user}) => {
 
       console.log(muscles);
     });
-    // setMuscles([]); //use for now to clear the muscles
+    //setMuscles([]); //use for now to clear the muscles
   }, []);
 
   const imageList = {
