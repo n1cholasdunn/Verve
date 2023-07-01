@@ -1,36 +1,67 @@
 import {Text, TextInput, View, StyleSheet, Pressable} from 'react-native';
-import React, {Component, useState} from 'react';
+import React, {Component, useState, useEffect, useReducer} from 'react';
 import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
+import {fetchIngredientInfo} from '../utils/recipeApi';
+import {set} from 'firebase/database';
 
 const MealForm = ({mealType, user}) => {
   let today = new Date().toLocaleString().slice(0, 10);
+
+  const [calorieContent, setCalorieContent] = useState(0);
+  const [proteinContent, setProteinContent] = useState(0);
+  const [fatContent, setFatContent] = useState(0);
+  const [carbContent, setCarbContent] = useState(0);
+
   const [meal, setMeal] = useState({
     name: '',
     ingredients: [],
     totalCalories: 0,
-    totalCarbs: 0,
-    totalProtein: 0,
-    totalFat: 0,
+    macros: {
+      totalCarbs: 0,
+      totalProtein: 0,
+      totalFat: 0,
+    },
     type: '',
     date: '',
     userId: '',
   });
 
-  function addMeal() {
-    const mealDb = collection(db, 'meal-test');
-    addDoc(mealDb, {
-      name: meal.name,
-      ingredients: meal.ingredients,
-      totalCalories: meal.totalCalories,
-      totalCarbs: meal.totalCarbs,
-      totalProtein: meal.totalProtein,
-      totalFat: meal.totalFat,
-      type: mealType,
-      date: today,
-      userId: user,
+  const getNutrientInfo = async () => {
+    meal.ingredients.map(async ingredient => {
+      const ingredientInfo = await fetchIngredientInfo(ingredient);
+      setCalorieContent(ingredientInfo.calories);
+      setCarbContent(ingredientInfo.totalNutrients.CHOCDF.quantity);
+      setProteinContent(ingredientInfo.totalNutrients.PROCNT.quantity),
+        setFatContent(ingredientInfo.totalNutrients.FAT.quantity);
     });
-  }
+  };
+
+  const addMeal = async () => {
+    await getNutrientInfo().then(() => {
+      const mealDb = collection(db, 'meal-test');
+
+      addDoc(mealDb, {
+        name: meal.name,
+        ingredients: meal.ingredients,
+        totalCalories: meal.totalCalories,
+        macros: {
+          totalCarbs: carbContent.toFixed(1),
+          totalProtein: proteinContent.toFixed(1),
+          totalFat: fatContent.toFixed(1),
+        },
+        type: mealType,
+        date: today,
+        userId: user,
+      });
+      console.log(calorieContent);
+      console.log(meal);
+    });
+    // setCalorieContent(0);
+    // setProteinContent(0);
+    // setCarbContent(0);
+    // setFatContent(0);
+  };
 
   return (
     <View
@@ -57,10 +88,11 @@ const MealForm = ({mealType, user}) => {
         onChangeText={input => {
           setMeal({
             ...meal,
-            ingredients: input.replaceAll(',', '').split(' '),
+            ingredients: input.split(','),
           });
         }}
       />
+
       <Text className="text-[#FFFFFF]">Calories(kcal)</Text>
       <TextInput
         style={styles.input}
@@ -70,7 +102,7 @@ const MealForm = ({mealType, user}) => {
           setMeal({...meal, totalCalories: +input});
         }}
       />
-      <Text className="text-[#FFFFFF]">Protein(g)</Text>
+      {/* <Text className="text-[#FFFFFF]">Protein(g)</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
@@ -96,7 +128,7 @@ const MealForm = ({mealType, user}) => {
         onChangeText={input => {
           setMeal({...meal, totalFat: +input});
         }}
-      />
+      /> */}
       <View style={{alignItems: 'center'}}>
         <Pressable onPress={addMeal} style={styles.addButton}>
           <Text style={{fontSize: 20, fontWeight: '600'}}>Add Meal</Text>

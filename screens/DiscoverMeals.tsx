@@ -6,16 +6,21 @@ import {
   Image,
   ScrollView,
   SafeAreaView,
+  Pressable,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {fetchRandomRecipes} from '../utils/recipeApi';
+import {useNavigation} from '@react-navigation/native';
+import DiscoverMealInfo from './DiscoverMealInfo';
 
 //We can also display recipes such as high-protein, low-fat, low-cal, vegan.....
-const DiscoverMeals = () => {
+const DiscoverMeals = ({navigation}) => {
   const [breakfastRecipes, setBreakfastRecipes] = useState(null);
   const [lunchRecipes, setLunchRecipes] = useState(null);
   const [dinnerRecipes, setDinnerRecipes] = useState(null);
   const [snackRecipes, setSnackRecipes] = useState(null);
+
+  // const navigation = useNavigation();
 
   useEffect(() => {
     const fetchRandom = async () => {
@@ -40,15 +45,22 @@ const DiscoverMeals = () => {
 
   const renderBreakfast = ({item}) => (
     <View style={styles.mealCard}>
-      <Image
-        style={{
-          height: 200,
-          width: 200,
-          borderTopLeftRadius: 8,
-          borderTopRightRadius: 8,
-        }}
-        source={{uri: item.recipe.images['SMALL'].url}}
-      />
+      <Pressable
+        onPress={() => {
+          navigation.navigate('DiscoverMealInfo', {
+            data: item,
+          });
+        }}>
+        <Image
+          style={{
+            height: 200,
+            width: 200,
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+          }}
+          source={{uri: item.recipe.images['SMALL'].url}}
+        />
+      </Pressable>
       <Text
         numberOfLines={2}
         style={{

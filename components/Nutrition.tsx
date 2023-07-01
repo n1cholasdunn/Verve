@@ -43,9 +43,9 @@ const Nutrition = () => {
 
       mealList.map(meal => {
         cal += meal.totalCalories;
-        pro += meal.totalProtein;
-        car += meal.totalCarbs;
-        fatv += meal.totalFat;
+        pro += meal.macros.totalProtein;
+        car += meal.macros.totalCarbs;
+        fatv += meal.macros.totalFat;
       });
       setCalories(cal);
       setProtein(pro);
@@ -101,7 +101,7 @@ const Nutrition = () => {
           <View className="mr-5 w-24 h-32 flex justify-center items-center ">
             <Text className="mb-1 text-[#bb86fc]">Protein</Text>
             <ProgressChart
-              data={[calories / 2000]}
+              data={[protein / 2000]}
               width={92}
               hideLegend={true}
               height={96}
@@ -118,7 +118,7 @@ const Nutrition = () => {
           <View className="mr-5 w-24 h-32 flex justify-center items-center ">
             <Text className=" mb-1 text-[#03dac6]">Carbs</Text>
             <ProgressChart
-              data={[calories / 2000]}
+              data={[carbs / 2000]}
               width={92}
               hideLegend={true}
               height={96}
@@ -135,7 +135,7 @@ const Nutrition = () => {
           <View className="mr-5 w-24 h-32 flex justify-center items-center ">
             <Text className=" mb-1 text-[#cf6679]">Fat</Text>
             <ProgressChart
-              data={[calories / 2000]}
+              data={[fat / 2000]}
               width={92}
               hideLegend={true}
               height={96}

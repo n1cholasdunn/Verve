@@ -5,6 +5,8 @@ import Dashboard from '../screens/Dashboard';
 import UserProfile from '../screens/UserProfile';
 import Today from '../screens/Today';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import DiscoverMealInfo from '../screens/DiscoverMealInfo';
+import DiscoverMeals from '../screens/DiscoverMeals';
 
 const Tab = createBottomTabNavigator();
 
@@ -69,6 +71,34 @@ export default function userStack() {
           title: 'Profile',
           headerStyle: {
             backgroundColor: '#09090b',
+          },
+          headerTintColor: '#e2e8f0',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <Tab.Screen
+        name="DiscoverMeals"
+        component={DiscoverMeals}
+        options={{
+          title: 'Discover Meals',
+          headerStyle: {
+            backgroundColor: '#121212',
+          },
+          headerTintColor: '#e2e8f0',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <Tab.Screen
+        name="DiscoverMealInfo"
+        component={DiscoverMealInfo}
+        options={{
+          title: 'Meal Info',
+          headerStyle: {
+            backgroundColor: '#121212',
           },
           headerTintColor: '#e2e8f0',
           headerTitleStyle: {

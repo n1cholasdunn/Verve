@@ -35,7 +35,6 @@ const MealData = ({day, mealType, user}) => {
   }, []);
 
   const handleDelete = async meal => {
-    console.log(meal);
     try {
       await deleteDoc(doc(db, 'meal-test', meal));
     } catch (error) {
@@ -55,10 +54,14 @@ const MealData = ({day, mealType, user}) => {
           Calories: {item.totalCalories}
         </Text>
         <Text className="text-m text-[#606368]">
-          Protein: {item.totalProtein}
+          Protein: {item.macros.totalProtein}
         </Text>
-        <Text className="text-m text-[#606368]">Carbs: {item.totalCarbs}</Text>
-        <Text className="text-m text-[#606368]">Fat: {item.totalFat}</Text>
+        <Text className="text-m text-[#606368]">
+          Carbs: {item.macros.totalCarbs}
+        </Text>
+        <Text className="text-m text-[#606368]">
+          Fat: {item.macros.totalFat}
+        </Text>
         <Text className="text-m text-[#606368]">
           Date: {item.date.toString()}
         </Text>
