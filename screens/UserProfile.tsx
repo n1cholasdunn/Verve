@@ -6,10 +6,11 @@ import {AuthContext} from '../context/auth';
 import Layout from '../components/Layout';
 import AllActivities from '../components/AllActivities';
 import {useColorScheme} from 'nativewind';
+// import {colors} from '../theme/colors';
 
 const UserProfile = () => {
   const userContext = useContext(AuthContext);
-  const {colorScheme, toggleColorScheme} = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
@@ -18,7 +19,7 @@ const UserProfile = () => {
           <View className="mb-6">
             <View>
               {/* TODO render user profile picture */}
-              <Text className="text-lg font-semibold text-slate-200 my-2 pl-2">
+              <Text className="text-lg font-semibold dark:text-slate-200 text-zinc-900 my-2 pl-2">
                 {userContext.email}
               </Text>
               {/* <Pressable

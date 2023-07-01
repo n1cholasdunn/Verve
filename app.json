@@ -14,7 +14,10 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.verve"
+      "bundleIdentifier": "com.anonymous.verve",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app will optionally use Camera to scan barcodes of food"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +28,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
+        }
+      ]
+    ]
   }
 }
