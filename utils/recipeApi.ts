@@ -1,9 +1,29 @@
-import {EDAMAM_APP_ID, EDAMAM_APP_KEY} from '@env';
+import {
+  EDAMAM_APP_ID,
+  EDAMAM_APP_KEY,
+  EDAMAM_NUTRIENT_APP_ID,
+  EDAMAM_NUTRIENT_APP_KEY,
+} from '@env';
 
 export const fetchRandomRecipes = async mealtype => {
   try {
     const response = await fetch(
       `https://api.edamam.com/api/recipes/v2?app_id=${EDAMAM_APP_ID}&mealType=${mealtype}&type=public&random=true&app_key=${EDAMAM_APP_KEY}`
+    );
+    const jsonResponse = await response.json();
+    if (response.ok) {
+      jsonResponse.ok = true;
+      return jsonResponse;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchIngredientInfo = async ingredient => {
+  try {
+    const response = await fetch(
+      `https://api.edamam.com/api/nutrition-data?app_id=${EDAMAM_NUTRIENT_APP_ID}&app_key=${EDAMAM_NUTRIENT_APP_KEY}&ingr=${ingredient}`
     );
     const jsonResponse = await response.json();
     if (response.ok) {

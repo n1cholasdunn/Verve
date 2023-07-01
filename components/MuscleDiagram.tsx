@@ -24,10 +24,7 @@ const MuscleDiagram = ({day, user}) => {
       setMuscles(current => current.flat(Infinity));
       setMuscles(current => [...new Set(current)]);
       setLoading(false);
-
-      console.log(muscles);
     });
-    //setMuscles([]); //use for now to clear the muscles
   }, []);
 
   const imageList = {
