@@ -1,6 +1,6 @@
 import {useColorScheme} from 'nativewind';
 
-const {colorScheme, toggleColorScheme} = useColorScheme();
+// const {colorScheme, toggleColorScheme} = useColorScheme();
 
 const commonColors = {
   commonBlue: '#01DBC6',
