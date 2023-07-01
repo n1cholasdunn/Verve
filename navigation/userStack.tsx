@@ -5,6 +5,7 @@ import Dashboard from '../screens/Dashboard';
 import UserProfile from '../screens/UserProfile';
 import Today from '../screens/Today';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Scan from '../screens/Scan';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,11 +22,9 @@ export default function userStack() {
             iconName = focused ? 'bar-chart' : 'bar-chart-outline';
           } else if (route.name === 'Dashboard') {
             iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Scan') {
+            iconName = focused ? 'barcode' : 'barcode-outline';
           }
-          // else if (route.name === 'Your Day') {
-          //   iconName = focused ? 'bar-chart' : 'bar-chart-outline';
-          // }
-
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -53,6 +52,20 @@ export default function userStack() {
         component={Today}
         options={{
           title: 'Your Day',
+          headerStyle: {
+            backgroundColor: '#09090b',
+          },
+          headerTintColor: '#e2e8f0',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Scan"
+        component={Scan}
+        options={{
+          title: 'Scan Food',
           headerStyle: {
             backgroundColor: '#09090b',
           },
