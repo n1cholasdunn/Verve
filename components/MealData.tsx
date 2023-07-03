@@ -45,7 +45,7 @@ const MealData = ({day, mealType, user}) => {
   //flatlist for ingredients
   const renderMeals = ({item}) => (
     <View className="m-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
-      <View>
+      <ScrollView>
         <Text className="text-2xl text-[#BB86FC]">{item.name}</Text>
         <Text className="text-m text-[#606368]">
           Ingredients: {item.ingredients}
@@ -65,8 +65,8 @@ const MealData = ({day, mealType, user}) => {
         <Text className="text-m text-[#606368]">
           Date: {item.date.toString()}
         </Text>
-      </View>
-      <View className="ml-[55px]">
+      </ScrollView>
+      <View>
         <Pressable onPress={() => handleDelete(item.id)}>
           <AntDesign name="delete" size={24} color="#606368" />
         </Pressable>
@@ -77,14 +77,12 @@ const MealData = ({day, mealType, user}) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View>
-          <FlatList
-            data={meals}
-            renderItem={renderMeals}
-            horizontal={true}
-            keyExtractor={item => item.id}
-          />
-        </View>
+        <FlatList
+          data={meals}
+          renderItem={renderMeals}
+          horizontal={true}
+          keyExtractor={item => item.id}
+        />
       </ScrollView>
     </SafeAreaView>
   );

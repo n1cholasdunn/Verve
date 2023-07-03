@@ -95,13 +95,10 @@ export default function userStack() {
         name="DiscoverMeals"
         component={DiscoverMeals}
         options={{
+          headerShown: false,
           title: 'Discover Meals',
           headerStyle: {
             backgroundColor: '#121212',
-          },
-          headerTintColor: '#e2e8f0',
-          headerTitleStyle: {
-            fontWeight: 'bold',
           },
         }}
       />
@@ -109,13 +106,10 @@ export default function userStack() {
         name="DiscoverMealInfo"
         component={DiscoverMealInfo}
         options={{
+          headerShown: false,
           title: 'Meal Info',
           headerStyle: {
             backgroundColor: '#121212',
-          },
-          headerTintColor: '#e2e8f0',
-          headerTitleStyle: {
-            fontWeight: 'bold',
           },
         }}
       />
