@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import {BarCodeScanner} from 'expo-barcode-scanner';
+import {fetchBarcodeInfo} from '../utils/recipeApi';
 
 const BarcodeScan = () => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -21,6 +22,7 @@ const BarcodeScan = () => {
   const handleBarcodeScanned = ({type, data}) => {
     setScanned(true);
     setText(data);
+    // onBarcodeScanned(data);
     console.log('Type: ' + type + '\nData: ' + data);
   };
 
@@ -51,7 +53,9 @@ const BarcodeScan = () => {
           className="h-96 w-96"
         />
       </View>
-      <Text className="text-slate-200 text-4xl font-bold">{text}</Text>
+      <Text className="self-center text-slate-200 text-4xl font-bold">
+        {text}
+      </Text>
       {scanned && (
         <Button
           title="Scan Again?"
