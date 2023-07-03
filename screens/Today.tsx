@@ -13,23 +13,21 @@ const Today = () => {
   return (
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <Layout>
-        <ScrollView nestedScrollEnabled>
+        <ScrollView nestedScrollEnabled className="px-5">
           <View>
-            <Text className="text-2xl font-bold text-slate-200 mt-2 mb-4">
+            <Text className="text-4xl font-bold text-slate-200 mt-5 mb-4">
               Today's Stats
             </Text>
           </View>
           <View>
-            <Text className="text-slate-200 text-xl font-semibold px-2">
-              Diet
-            </Text>
+            <Text className="text-slate-200 text-xl font-semibold ">Diet</Text>
           </View>
-          <View className="flex flex-row px-2">
+          <View className="flex flex-row ">
             <View>
               <TodayChart />
             </View>
             <View className="flex flex-row ">
-              <View className="mr-2">
+              <View>
                 <Text className="text-slate-200">Calories:</Text>
                 <Text className="text-slate-200">Macros:</Text>
               </View>

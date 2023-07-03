@@ -7,13 +7,15 @@ import {
   Dimensions,
 } from 'react-native';
 import React, {Component, useContext, useEffect, useState} from 'react';
-import MealData from '../components/MealData';
+import MealData from './Nutrition/MealData';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
-import MealForm from './MealForm';
+import MealForm from './Nutrition/MealForm';
 import {Touchable} from 'react-native';
 import {AuthContext} from '../context/auth';
 import {ProgressChart} from 'react-native-chart-kit';
+import MacroChart from './Nutrition/MacroChart';
+import AddMeal from './Nutrition/AddMeal,';
 
 const Nutrition = () => {
   let today = new Date().toLocaleString().slice(0, 10);
@@ -21,10 +23,6 @@ const Nutrition = () => {
   const [protein, setProtein] = useState(0);
   const [carbs, setCarbs] = useState(0);
   const [fat, setFat] = useState(0);
-  const [addBrstate, setAddBrState] = useState(false);
-  const [addLnState, setAddLnState] = useState(false);
-  const [addDnState, setAddDnState] = useState(false);
-  const [addSnState, setAddSnState] = useState(false);
   const userContext = useContext(AuthContext);
 
   useEffect(() => {
@@ -56,19 +54,19 @@ const Nutrition = () => {
 
   return (
     <View className="pb-[75px] min-h-full px-[2px]">
-      <View style={{marginHorizontal: 10}}>
-        <Text className="mb-10 mt-20  font-bold text-5xl text-[#ffffff]">
+      <View className="mx-2">
+        <Text className="mb-20 mt-20 font-bold text-5xl text-[#ffffff]">
           Nutrition
         </Text>
-        <Text className="mt-20 mb-5 text-3xl text-[#606368]">Calories</Text>
-        <View className="bg-[#1E1E1E] py-5 pl-3 flex-row ">
-          <View className="mr-3 w-32 h-32">
+        <Text className=" mb-5 text-3xl text-[#606368]">Calories</Text>
+        <View className="bg-[#1E1E1E] pr-2 py-3 flex-row flex justify-evenly">
+          <View className=" w-32 h-32 flex justify-center">
             <ProgressChart
               data={[calories / 2000]}
-              width={132}
+              width={116}
               hideLegend={true}
-              height={132}
-              radius={46}
+              height={116}
+              radius={45}
               chartConfig={{
                 backgroundGradientFrom: '#1E1E1E',
                 backgroundGradientTo: '#1E1E1E',
@@ -77,7 +75,7 @@ const Nutrition = () => {
               }}
             />
           </View>
-          <View className="mt-5">
+          <View className="mt-2">
             <View className="flex-row justify-between">
               <Text className=" text-xl text-[#606368]">Goal: </Text>
               <Text className=" text-xl text-[#bb86fc]">2000 Cal</Text>
@@ -96,218 +94,65 @@ const Nutrition = () => {
             </View>
           </View>
         </View>
-        <Text className="mt-20 mb-5 text-3xl text-[#606368]">Macros</Text>
-        <View className="bg-[#1E1E1E] p-5 flex-row ">
-          <View className="mr-5 w-24 h-32 flex justify-center items-center ">
-            <Text className="mb-1 text-[#bb86fc]">Protein</Text>
-            <ProgressChart
-              data={[protein / 2000]}
-              width={92}
-              hideLegend={true}
-              height={96}
-              radius={32}
-              chartConfig={{
-                backgroundGradientFrom: '#1E1E1E',
-                backgroundGradientTo: '#1E1E1E',
-                decimalPlaces: 2,
-                color: (opacity = 1) => `rgba(187, 134, 252, ${opacity})`,
-              }}
-            />
-            <Text className=" mb-1 text-[#bb86fc]">{protein}/200 g</Text>
-          </View>
-          <View className="mr-5 w-24 h-32 flex justify-center items-center ">
-            <Text className=" mb-1 text-[#03dac6]">Carbs</Text>
-            <ProgressChart
-              data={[carbs / 2000]}
-              width={92}
-              hideLegend={true}
-              height={96}
-              radius={32}
-              chartConfig={{
-                backgroundGradientFrom: '#1E1E1E',
-                backgroundGradientTo: '#1E1E1E',
-                decimalPlaces: 2,
-                color: (opacity = 1) => `rgba(3, 218, 198, ${opacity})`,
-              }}
-            />
-            <Text className=" mb-1 text-[#03dac6]">{carbs}/200 g</Text>
-          </View>
-          <View className="mr-5 w-24 h-32 flex justify-center items-center ">
-            <Text className=" mb-1 text-[#cf6679]">Fat</Text>
-            <ProgressChart
-              data={[fat / 2000]}
-              width={92}
-              hideLegend={true}
-              height={96}
-              radius={32}
-              chartConfig={{
-                backgroundGradientFrom: '#1E1E1E',
-                backgroundGradientTo: '#1E1E1E',
-                decimalPlaces: 2,
-                color: (opacity = 1) => `rgba(207, 102, 121, ${opacity})`,
-              }}
-            />
-            <Text className=" mb-1 text-[#cf6679]">{fat}/200 g</Text>
-          </View>
-        </View>
-        <Text
-          style={{
-            marginTop: 40,
-            fontWeight: 'bold',
-            fontSize: 30,
-            color: 'white',
-          }}>
-          Meals
-        </Text>
-        <View>
-          <View style={{display: 'flex', flexDirection: 'column'}}>
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-              <View style={styles.mealCard}>
-                <Text style={styles.mealType}>Breakfast</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.addBtn}
-                onPress={() => setAddBrState(!addBrstate)}>
-                <Text style={styles.mealType} id="breakfastAdd">
-                  {addBrstate ? '-' : '+'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              {addBrstate && (
-                <MealForm mealType={'breakfast'} user={userContext.UserUID} />
-              )}
-            </View>
-          </View>
-          <MealData
-            day={today}
-            mealType={'breakfast'}
-            user={userContext.UserUID}
+        <Text className="mt-16 mb-5 text-3xl text-[#606368] ">Macros</Text>
+        <View className="bg-[#1E1E1E] py-5 flex-row flex justify-between">
+          <MacroChart
+            macro={{
+              name: 'Carbs',
+              data: carbs,
+              className: 'mb-1 text-[#bb86fc]',
+              color: 'rgba(187, 134, 252',
+            }}
+          />
+          <MacroChart
+            macro={{
+              name: 'Protein',
+              data: protein,
+              className: 'mb-1 text-[#03dac6]',
+              color: 'rgba(3, 218, 198',
+            }}
+          />
+          <MacroChart
+            macro={{
+              name: 'Fat',
+              data: fat,
+              className: 'mb-1 text-[#cf6679]',
+              color: 'rgba(207, 102, 121',
+            }}
           />
         </View>
-        <View>
-          <View style={{display: 'flex', flexDirection: 'column'}}>
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-              <View style={styles.mealCard}>
-                <Text style={styles.mealType}>Lunch</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.addBtn}
-                onPress={() => setAddLnState(!addLnState)}>
-                <Text style={styles.mealType} id="lunchAdd">
-                  {addLnState ? '-' : '+'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              {addLnState && (
-                <MealForm mealType={'lunch'} user={userContext.UserUID} />
-              )}
-            </View>
-          </View>
-          <MealData day={today} mealType={'lunch'} user={userContext.UserUID} />
-        </View>
-        <View>
-          <View style={{display: 'flex', flexDirection: 'column'}}>
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-              <View style={styles.mealCard}>
-                <Text style={styles.mealType}>Dinner</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.addBtn}
-                onPress={() => setAddDnState(!addDnState)}>
-                <Text style={styles.mealType} id="dinnerAdd">
-                  {addDnState ? '-' : '+'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              {addDnState && (
-                <MealForm mealType={'dinner'} user={userContext.UserUID} />
-              )}
-            </View>
-          </View>
-          <MealData
-            day={today}
-            mealType={'dinner'}
-            user={userContext.UserUID}
-          />
-        </View>
-        <View>
-          <View style={{display: 'flex', flexDirection: 'column'}}>
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-              <View style={styles.mealCard}>
-                <Text style={styles.mealType}>Snacks</Text>
-              </View>
-              <TouchableOpacity
-                style={styles.addBtn}
-                onPress={() => setAddSnState(!addSnState)}>
-                <Text style={styles.mealType} id="snacksAdd">
-                  {addSnState ? '-' : '+'}
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              {addSnState && (
-                <MealForm mealType={'snacks'} user={userContext.UserUID} />
-              )}
-            </View>
-          </View>
-          <MealData
-            day={today}
-            mealType={'snacks'}
-            user={userContext.UserUID}
-          />
-        </View>
+        <Text className="mt-16 text-[#ffffff] text-3xl font-medium">Meals</Text>
+        <AddMeal
+          data={{
+            mealType: 'breakfast',
+            mealText: 'Breakfast',
+            user: userContext.UserUID,
+          }}
+        />
+        <AddMeal
+          data={{
+            mealType: 'lunch',
+            mealText: 'Lunch',
+            user: userContext.UserUID,
+          }}
+        />
+        <AddMeal
+          data={{
+            mealType: 'dinner',
+            mealText: 'Dinner',
+            user: userContext.UserUID,
+          }}
+        />
+        <AddMeal
+          data={{
+            mealType: 'snacks',
+            mealText: 'Snacks',
+            user: userContext.UserUID,
+          }}
+        />
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#121212',
-    flex: 1,
-  },
-  title: {
-    marginTop: 20,
-    marginBottom: 40,
-    color: '#01DBC6',
-    fontSize: 80,
-    textAlign: 'center',
-  },
-  text: {
-    color: 'white',
-  },
-  mealType: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#606368',
-  },
-  mealCard: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    marginTop: 20,
-    marginLeft: 10,
-    height: 40,
-    width: 300,
-    backgroundColor: '#1E1E1E',
-  },
-  addBtn: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: '#606368',
-    backgroundColor: '#1E1E1E',
-    height: 40,
-    width: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 20,
-    marginLeft: 10,
-  },
-});
 
 export default Nutrition;
