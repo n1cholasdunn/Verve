@@ -12,6 +12,7 @@ import React, {useEffect, useState} from 'react';
 import {fetchRandomRecipes} from '../utils/recipeApi';
 import {useNavigation} from '@react-navigation/native';
 import DiscoverMealInfo from './DiscoverMealInfo';
+import Layout from '../components/Layout';
 
 //We can also display recipes such as high-protein, low-fat, low-cal, vegan.....
 const DiscoverMeals = ({navigation}) => {
@@ -88,66 +89,62 @@ const DiscoverMeals = ({navigation}) => {
   );
 
   return (
-    <SafeAreaView>
-      <ScrollView nestedScrollEnabled className="pb-[75px]">
-        <Text className="text-5xl text-slate-200 pl-2 mt-10">Find recipes</Text>
-        <View className="pb-[75px] min-h-full px-[2px]">
-          <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
-              Breakfast
-            </Text>
-            {breakfastRecipes && (
-              <FlatList
-                data={breakfastRecipes.hits}
-                renderItem={renderBreakfast}
-                horizontal={true}
-                keyExtractor={item => item.recipe.uri}
-              />
-            )}
-          </View>
+    <SafeAreaView className="bg-zinc-950 h-full w-full">
+      <ScrollView nestedScrollEnabled>
+        <Layout>
+          <Text className="text-5xl text-slate-200 pl-2 mt-10">
+            Find recipes
+          </Text>
+          <View className="pb-[75px] min-h-full px-[2px]">
+            <View className="mt-10">
+              <Text className="text-3xl  pl-2 text-[#606368]">Breakfast</Text>
+              {breakfastRecipes && (
+                <FlatList
+                  data={breakfastRecipes.hits}
+                  renderItem={renderBreakfast}
+                  horizontal={true}
+                  keyExtractor={item => item.recipe.uri}
+                />
+              )}
+            </View>
 
-          <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
-              Lunch
-            </Text>
-            {lunchRecipes && (
-              <FlatList
-                data={lunchRecipes.hits}
-                renderItem={renderBreakfast}
-                horizontal={true}
-                keyExtractor={item => item.recipe.uri}
-              />
-            )}
-          </View>
+            <View className="mt-10">
+              <Text className="text-3xl  pl-2 text-[#606368]">Lunch</Text>
+              {lunchRecipes && (
+                <FlatList
+                  data={lunchRecipes.hits}
+                  renderItem={renderBreakfast}
+                  horizontal={true}
+                  keyExtractor={item => item.recipe.uri}
+                />
+              )}
+            </View>
 
-          <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
-              Dinner
-            </Text>
-            {dinnerRecipes && (
-              <FlatList
-                data={dinnerRecipes.hits}
-                renderItem={renderBreakfast}
-                horizontal={true}
-                keyExtractor={item => item.recipe.uri}
-              />
-            )}
-          </View>
+            <View className="mt-10">
+              <Text className="text-3xl  pl-2 text-[#606368]">Dinner</Text>
+              {dinnerRecipes && (
+                <FlatList
+                  data={dinnerRecipes.hits}
+                  renderItem={renderBreakfast}
+                  horizontal={true}
+                  keyExtractor={item => item.recipe.uri}
+                />
+              )}
+            </View>
 
-          <View className="mt-10">
-            <Text className="text-3xl text-slate-200 pl-2 text-[#606368]">
-              Snacks
-            </Text>
-            {snackRecipes && (
-              <FlatList
-                data={snackRecipes.hits}
-                renderItem={renderBreakfast}
-                horizontal={true}
-                keyExtractor={item => item.recipe.uri}
-              />
-            )}
+            <View className="mt-10">
+              <Text className="text-3xl  pl-2 text-[#606368]">Snacks</Text>
+              {snackRecipes && (
+                <FlatList
+                  data={snackRecipes.hits}
+                  renderItem={renderBreakfast}
+                  horizontal={true}
+                  keyExtractor={item => item.recipe.uri}
+                />
+              )}
+            </View>
           </View>
-        </View>
+        </Layout>
       </ScrollView>
     </SafeAreaView>
   );
