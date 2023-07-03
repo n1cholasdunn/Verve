@@ -10,9 +10,9 @@ import React, {Component, useContext, useEffect, useState} from 'react';
 import {collection, onSnapshot} from 'firebase/firestore';
 import {db} from '../firebaseConfig';
 import WorkoutForm from '../components/WorkoutForm';
-import MealData from '../components/MealData';
+import MealData from '../components/Nutrition/MealData';
 import WorkoutData from '../components/WorkoutData';
-import MealForm from '../components/MealForm';
+import MealForm from '../components/Nutrition/MealForm';
 import Nutrition from '../components/Nutrition';
 import Workouts from '../components/Workouts';
 

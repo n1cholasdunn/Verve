@@ -10,9 +10,9 @@ import {
 import React, {Component, useContext, useEffect, useState} from 'react';
 import {onSnapshot, collection, doc, deleteDoc} from '@firebase/firestore';
 import {getDatabase, ref, remove} from 'firebase/database';
-import {db} from '../firebaseConfig';
+import {db} from '../../firebaseConfig';
 import {color} from '@rneui/base';
-import {AuthContext} from '../context/auth';
+import {AuthContext} from '../../context/auth';
 import {AntDesign} from '@expo/vector-icons';
 
 const MealData = ({day, mealType, user}) => {
