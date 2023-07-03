@@ -26,6 +26,12 @@ export default function userStack() {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Scan') {
             iconName = focused ? 'barcode' : 'barcode-outline';
+          } else if (route.name === 'DiscoverMeals') {
+            iconName = focused ? 'fast-food' : 'fast-food-outline';
+          } else if (route.name === 'DiscoverMealInfo') {
+            iconName = focused
+              ? 'information-circle'
+              : 'information-circle-outline';
           }
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -97,7 +103,7 @@ export default function userStack() {
         options={{
           title: 'Discover Meals',
           headerStyle: {
-            backgroundColor: '#121212',
+            backgroundColor: '#09090b',
           },
           headerTintColor: '#e2e8f0',
           headerTitleStyle: {
@@ -111,7 +117,7 @@ export default function userStack() {
         options={{
           title: 'Meal Info',
           headerStyle: {
-            backgroundColor: '#121212',
+            backgroundColor: '#09090b',
           },
           headerTintColor: '#e2e8f0',
           headerTitleStyle: {
