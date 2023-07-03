@@ -8,6 +8,8 @@ import {set} from 'firebase/database';
 const MealForm = ({mealType, user}) => {
   let today = new Date().toLocaleString().slice(0, 10);
 
+  // const [calorieContent, setCalorieContent] = useState(0);
+  const [ingredients, setIngredients] = useState([]);
   const [calorieContent, setCalorieContent] = useState(0);
   const [proteinContent, setProteinContent] = useState(0);
   const [fatContent, setFatContent] = useState(0);
@@ -27,8 +29,14 @@ const MealForm = ({mealType, user}) => {
     userId: '',
   });
 
+  useEffect(() => {
+    getNutrientInfo();
+  }, [ingredients]);
+
   const getNutrientInfo = async () => {
-    meal.ingredients.map(async ingredient => {
+    // console.log(meal.ingredients);
+
+    ingredients.map(async ingredient => {
       const ingredientInfo = await fetchIngredientInfo(ingredient);
       setCalorieContent(ingredientInfo.calories);
       setCarbContent(ingredientInfo.totalNutrients.CHOCDF.quantity);
@@ -38,29 +46,21 @@ const MealForm = ({mealType, user}) => {
   };
 
   const addMeal = async () => {
-    await getNutrientInfo().then(() => {
-      const mealDb = collection(db, 'meal-test');
+    const mealDb = collection(db, 'meal-test');
 
-      addDoc(mealDb, {
-        name: meal.name,
-        ingredients: meal.ingredients,
-        totalCalories: meal.totalCalories,
-        macros: {
-          totalCarbs: carbContent.toFixed(1),
-          totalProtein: proteinContent.toFixed(1),
-          totalFat: fatContent.toFixed(1),
-        },
-        type: mealType,
-        date: today,
-        userId: user,
-      });
-      console.log(calorieContent);
-      console.log(meal);
+    addDoc(mealDb, {
+      name: meal.name,
+      ingredients: ingredients,
+      totalCalories: calorieContent,
+      macros: {
+        totalCarbs: Number(carbContent.toFixed(1)),
+        totalProtein: Number(proteinContent.toFixed(1)),
+        totalFat: Number(fatContent.toFixed(1)),
+      },
+      type: mealType,
+      date: today,
+      userId: user,
     });
-    // setCalorieContent(0);
-    // setProteinContent(0);
-    // setCarbContent(0);
-    // setFatContent(0);
   };
 
   return (
@@ -84,16 +84,19 @@ const MealForm = ({mealType, user}) => {
       <Text className="text-[#FFFFFF]">ingredients</Text>
       <TextInput
         style={styles.input}
-        placeholder="name"
-        onChangeText={input => {
-          setMeal({
-            ...meal,
-            ingredients: input.split(','),
-          });
+        placeholder="ingredients"
+        // onChangeText={input => {
+        //   setMeal({
+        //     ...meal,
+        //     ingredients: input.split(','),
+        //   });
+        // }}
+        onEndEditing={event => {
+          setIngredients(event.nativeEvent.text.split(','));
         }}
       />
 
-      <Text className="text-[#FFFFFF]">Calories(kcal)</Text>
+      {/* <Text className="text-[#FFFFFF]">Calories(kcal)</Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
@@ -101,7 +104,7 @@ const MealForm = ({mealType, user}) => {
         onChangeText={input => {
           setMeal({...meal, totalCalories: +input});
         }}
-      />
+      /> */}
       {/* <Text className="text-[#FFFFFF]">Protein(g)</Text>
       <TextInput
         style={styles.input}
