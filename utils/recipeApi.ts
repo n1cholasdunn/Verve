@@ -34,3 +34,18 @@ export const fetchIngredientInfo = async ingredient => {
     console.log(error);
   }
 };
+
+export const fetchBarcodeInfo = async upcBarcode => {
+  try {
+    const response = await fetch(
+      `https://api.edamam.com/api/nutrition-data?app_id=${EDAMAM_NUTRIENT_APP_ID}&app_key=${EDAMAM_NUTRIENT_APP_KEY}&upc=${upcBarcode}`
+    );
+    const jsonResponse = await response.json();
+    if (response.ok) {
+      jsonResponse.ok = true;
+      return jsonResponse;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
