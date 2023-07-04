@@ -23,14 +23,14 @@ const WeightForm = ({user}) => {
     });
   };
 
-  function addWeighIn() {
+  const addWeighIn = () => {
     const weighInDb = collection(db, 'weighIn-test');
     addDoc(weighInDb, {
       weight: formState.weight,
       date: today,
       userId: user,
     });
-  }
+  };
 
   return (
     <View className="bg-[#1E1E1E] m-3 p-4 w-92 my-4   items-center rounded-md   border">
