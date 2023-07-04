@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import Layout from '../components/Layout';
-// import {FIREBASE_AUTH} from '../../firebaseConfig';
+import AnimatedInput from 'react-native-animated-input';
 
 const auth = getAuth();
 
@@ -16,6 +16,7 @@ const Login = ({navigation}) => {
     password: '',
     error: '',
   });
+  const [isValid, setIsValid] = useState(true);
 
   const loginFunction = async () => {
     if (userDetails.email === '' || userDetails.password === '') {
@@ -39,9 +40,11 @@ const Login = ({navigation}) => {
     <Layout>
       <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
       <View className="my-2">
-        <Text className="text-slate-200 ">Email:</Text>
-        <TextInput
-          className="h-10  my-2 border rounded-md p-2 text-slate-200 border-slate-200"
+        <AnimatedInput
+          valid={isValid}
+          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          errorText="Please enter a valid weight."
+          styleLabel={{fontWeight: '600', fontSize: 16}}
           placeholder="Enter Email..."
           placeholderTextColor={'#64748b'}
           textContentType="emailAddress"
@@ -52,9 +55,11 @@ const Login = ({navigation}) => {
         />
       </View>
       <View className="my-2">
-        <Text className="text-slate-200 ">Password:</Text>
-        <TextInput
-          className="h-10 my-2    border rounded-md p-2 text-slate-200 border-slate-200"
+        <AnimatedInput
+          valid={isValid}
+          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          errorText="Please enter a valid weight."
+          styleLabel={{fontWeight: '600', fontSize: 16}}
           placeholder="Enter Password..."
           placeholderTextColor={'#64748b'}
           secureTextEntry
