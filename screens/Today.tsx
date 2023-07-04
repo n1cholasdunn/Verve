@@ -69,7 +69,10 @@ const Today = () => {
               />
               <View className="relative right-[120px] top-11  h-10 w-[120px] flex  ">
                 <Text className=" text-center text-lg text-[#606368]">
-                  {calories / 2000 > 1 ? '100' : calories / 2000}%
+                  {calories / 2000 > 1
+                    ? '100'
+                    : Math.floor((calories / 2000) * 100)}
+                  %
                 </Text>
               </View>
             </View>

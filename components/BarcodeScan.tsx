@@ -27,8 +27,7 @@ const BarcodeScan = () => {
   useEffect(() => {
     askCameraPermission();
   }, []);
-
-  const addScan = () => {
+  const addScan = apiData => {
     const scanDb = collection(db, 'scan-test');
     addDoc(scanDb, {
       foodId: apiData.hints[0].food.foodId,
@@ -46,8 +45,10 @@ const BarcodeScan = () => {
   const handleBarcodeScanned = async ({type, data}) => {
     setScanned(true);
     setUpcScanData(data);
-    setApiData(await fetchBarcodeInfo(data));
-    addScan();
+    const barcodeData = await fetchBarcodeInfo(data);
+    setApiData(barcodeData);
+    console.log('barcode data', barcodeData);
+    addScan(barcodeData);
     // setAllScans([...allScans, apiData]);
     console.log('Type: ' + type + '\nData: ' + data);
   };
