@@ -31,24 +31,24 @@ const BarcodeScan = () => {
   const addScan = () => {
     const scanDb = collection(db, 'scan-test');
     addDoc(scanDb, {
-      foodId: apiData.foodId,
-      label: apiData.label,
+      foodId: apiData.hints[0].food.foodId,
+      label: apiData.hints[0].food.label,
       nutrients: {
-        ENERC_KCAL: apiData.ENERC_KCAL,
-        FAT: apiData.FAT,
-        SUGAR: apiData.SUGAR,
-        PROCNT: apiData.PROCNT,
+        ENERC_KCAL: apiData.hints[0].food.nutrients.ENERC_KCAL,
+        FAT: apiData.hints[0].food.nutrients.FAT,
+        SUGAR: apiData.hints[0].food.nutrients.SUGAR,
+        PROCNT: apiData.hints[0].food.nutrients.PROCNT,
       },
       date: today,
       userId: userContext.UserUID,
     });
   };
-  const handleBarcodeScanned = ({type, data}) => {
+  const handleBarcodeScanned = async ({type, data}) => {
     setScanned(true);
     setUpcScanData(data);
-    setApiData(fetchBarcodeInfo(data));
+    setApiData(await fetchBarcodeInfo(data));
     addScan();
-    setAllScans([...allScans, data]);
+    // setAllScans([...allScans, apiData]);
     console.log('Type: ' + type + '\nData: ' + data);
   };
 
