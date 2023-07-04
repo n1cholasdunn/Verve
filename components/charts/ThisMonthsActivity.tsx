@@ -36,11 +36,14 @@ const ThisMonthsActivity = () => {
     });
   }, []);
 
-  const activityData = [];
+  const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
+
+  const activityData = [{date: '2023-07-1', count: 0}];
 
   activity.map(workout => {
     activityData.push({date: workout.date, count: 5});
   });
+
   console.log(activityData);
   return (
     <View>
@@ -50,11 +53,10 @@ const ThisMonthsActivity = () => {
         endDate={new Date(nextMonth)}
         width={500}
         height={200}
-        numDays={40}
+        numDays={daysInMonth(2023, Number(thisMonth))}
         chartConfig={{
           backgroundGradientFrom: '#1E1E1E',
           backgroundGradientTo: '#1E1E1E',
-          decimalPlaces: 2,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
         }}

@@ -22,6 +22,7 @@ import Test from './Test';
 import Layout from '../components/Layout';
 import {useNavigation} from '@react-navigation/native';
 import ThisMonthsActivity from '../components/charts/ThisMonthsActivity';
+import CalorieChart from '../components/charts/CalorieChart';
 
 const Dashboard = () => {
   const userContext = useContext(AuthContext);
@@ -39,10 +40,10 @@ const Dashboard = () => {
           <MealForm mealType={undefined} />
         </View> */}
 
-          {/* {userContext && <Nutrition />} */}
+          {userContext && <Nutrition />}
           {/* {userContext && <Workouts />} */}
           {/* <DiscoverMeals /> */}
-          {userContext && <ThisMonthsActivity />}
+          {userContext && <CalorieChart />}
         </Layout>
       </ScrollView>
     </SafeAreaView>
