@@ -49,15 +49,7 @@ const MuscleDiagram = ({day, user}) => {
   };
 
   return (
-    <View
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        borderColor: '#03dac5',
-        borderWidth: 1,
-        borderRadius: 5,
-        marginHorizontal: 10,
-      }}>
+    <View className="flex justify-center border border-[#03dac5] rounded-lg">
       <Image
         style={{
           height: 350,
@@ -74,7 +66,6 @@ const MuscleDiagram = ({day, user}) => {
             width: 350,
             position: 'absolute',
           }}
-          //   source={require(`../media/${muscle}.png`)}
           source={imageList[muscle]}
         />
       ))}

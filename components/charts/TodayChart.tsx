@@ -3,23 +3,21 @@ import {View, Text} from 'react-native';
 import {ProgressChart} from 'react-native-chart-kit';
 import {Dimensions} from 'react-native';
 
-const TodayChart = () => {
+const TodayChart = ({data}) => {
   const screenWidth = Dimensions.get('window').width;
   return (
     <ProgressChart
-      data={[0.3]}
-      width={Dimensions.get('window').width / 2}
-      height={220}
+      data={[data.infoFor / 2000]}
+      width={data.chartSize}
+      hideLegend={true}
+      height={data.chartSize}
+      radius={data.radius}
+      strokeWidth={data.width}
       chartConfig={{
-        backgroundGradientFrom: '#09090b',
-        backgroundGradientTo: '#09090b',
-
+        backgroundGradientFrom: '#1E1E1E',
+        backgroundGradientTo: '#1E1E1E',
         decimalPlaces: 2,
-        color: (opacity = 1) => `rgba(187, 134, 252, ${opacity})`,
-      }}
-      style={{
-        marginVertical: 8,
-        borderRadius: 16,
+        color: (opacity = 1) => `${data.color}, ${opacity})`,
       }}
     />
   );
