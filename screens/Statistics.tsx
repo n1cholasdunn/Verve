@@ -6,6 +6,7 @@ import CarbsChart from '../components/charts/CarbsChart';
 import ProteinChart from '../components/charts/ProteinChart';
 import FatChart from '../components/charts/FatChart';
 import MuscleChart from '../components/charts/MuscleChart';
+import WeightChart from '../components/charts/WeightChart';
 
 const Statistics = () => {
   return (
@@ -14,6 +15,10 @@ const Statistics = () => {
         <Text className="mb-20 mt-8 font-bold text-5xl text-[#ffffff]">
           Statistics
         </Text>
+        <Text className=" mb-5 text-3xl text-[#606368]">Weight</Text>
+        <View>
+          <WeightChart />
+        </View>
         <Text className=" mb-5 text-3xl text-[#606368]">Nutrition</Text>
         <ScrollView horizontal={true} className="mb-16">
           <CalorieChart />

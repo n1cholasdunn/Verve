@@ -44,7 +44,7 @@ const MealData = ({day, mealType, user}) => {
 
   //flatlist for ingredients
   const renderMeals = ({item}) => (
-    <View className="my-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
+    <View className="my-2.5 mr-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
       <ScrollView>
         <Text className="text-2xl text-[#BB86FC]">{item.name}</Text>
         <Text className="text-m text-[#606368]">
