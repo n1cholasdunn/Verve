@@ -44,7 +44,7 @@ const MealData = ({day, mealType, user}) => {
 
   //flatlist for ingredients
   const renderMeals = ({item}) => (
-    <View className="m-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
+    <View className="my-2.5 p-4 h-44 w-[300px] bg-[#1E1E1E] flex-row">
       <ScrollView>
         <Text className="text-2xl text-[#BB86FC]">{item.name}</Text>
         <Text className="text-m text-[#606368]">
@@ -87,15 +87,5 @@ const MealData = ({day, mealType, user}) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  mealCard: {
-    margin: 10,
-    padding: 15,
-    height: 180,
-    width: 300,
-    backgroundColor: '#1E1E1E',
-  },
-});
 
 export default MealData;

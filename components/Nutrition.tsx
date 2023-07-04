@@ -16,6 +16,7 @@ import {AuthContext} from '../context/auth';
 import {ProgressChart} from 'react-native-chart-kit';
 import MacroChart from './Nutrition/MacroChart';
 import AddMeal from './Nutrition/AddMeal,';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Nutrition = () => {
   let today = new Date().toLocaleString().slice(0, 10);
@@ -53,9 +54,9 @@ const Nutrition = () => {
   }, []);
 
   return (
-    <View className="pb-[75px] min-h-full px-[2px]">
+    <SafeAreaView className="pb-[75px] min-h-full">
       <View className="mx-2">
-        <Text className="mb-20 mt-20 font-bold text-5xl text-[#ffffff]">
+        <Text className="mb-20 mt-8 font-bold text-5xl text-[#ffffff]">
           Nutrition
         </Text>
         <Text className=" mb-5 text-3xl text-[#606368]">Calories</Text>
@@ -151,7 +152,7 @@ const Nutrition = () => {
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

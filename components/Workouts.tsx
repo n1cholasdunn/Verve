@@ -47,7 +47,7 @@ const Workouts = () => {
 
   let today = new Date().toISOString().slice(0, 10);
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
       <View className="mx-2 ">
         <Text className="mb-10 mt-20 px-2  font-bold text-5xl text-[#ffffff]">
           Workouts
@@ -90,7 +90,7 @@ const Workouts = () => {
           <WorkoutForm user={userContext.UserUID} />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
