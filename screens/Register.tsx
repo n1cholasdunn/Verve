@@ -2,6 +2,7 @@ import {Button, Text, TextInput, View, StyleSheet} from 'react-native';
 import React, {Component, useState} from 'react';
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
 import Layout from '../components/Layout';
+import AnimatedInput from 'react-native-animated-input';
 
 const auth = getAuth();
 
@@ -11,6 +12,7 @@ const Register = ({navigation}) => {
     password: '',
     error: '',
   });
+  const [isValid, setIsValid] = useState(true);
 
   const registerFunction = async () => {
     if (userDetails.email === '' || userDetails.password === '') {
@@ -38,33 +40,37 @@ const Register = ({navigation}) => {
     <Layout>
       <Text className="text-[#01DBC6] self-center text-7xl my-20">Verve</Text>
       <View className="my-2">
-        <Text className="text-slate-200">Email:</Text>
-        <TextInput
-          className="h-10 my-2    border rounded-md p-2 text-slate-200 border-slate-200"
-          value={userDetails.email}
-          textContentType="emailAddress"
+        <AnimatedInput
           placeholder="Enter Email..."
-          keyboardType="email-address"
-          placeholderTextColor={'#64748b'}
-          autoCapitalize="none"
+          valid={isValid}
           onChangeText={input => {
             setUserDetails({...userDetails, email: input});
           }}
+          value={userDetails.email}
+          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          errorText="Please enter a valid weight."
+          styleLabel={{fontWeight: '600', fontSize: 16}}
+          keyboardType="email-address"
+          placeholderTextColor={'#64748b'}
+          textContentType="emailAddress"
+          autoCapitalize="none"
         />
       </View>
       <View className="my-2">
-        <Text className="text-slate-200">Password:</Text>
-        <TextInput
-          className="h-10 my-2    border rounded-md p-2 text-slate-200 border-slate-200"
+        <AnimatedInput
           placeholder="Enter Password..."
+          valid={isValid}
+          onChangeText={input => {
+            setUserDetails({...userDetails, password: input});
+          }}
+          value={userDetails.password}
+          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          errorText="Please enter a valid weight."
+          styleLabel={{fontWeight: '600', fontSize: 16}}
           placeholderTextColor={'#64748b'}
           autoCapitalize="none"
           textContentType="newPassword"
           secureTextEntry
-          value={userDetails.password}
-          onChangeText={input => {
-            setUserDetails({...userDetails, password: input});
-          }}
         />
       </View>
       <View>

@@ -33,10 +33,10 @@ const BarcodeScan = () => {
       foodId: apiData.hints[0].food.foodId,
       label: apiData.hints[0].food.label,
       nutrients: {
-        ENERC_KCAL: apiData.hints[0].food.nutrients.ENERC_KCAL,
-        FAT: apiData.hints[0].food.nutrients.FAT,
-        SUGAR: apiData.hints[0].food.nutrients.SUGAR,
-        PROCNT: apiData.hints[0].food.nutrients.PROCNT,
+        ENERC_KCAL: Math.floor(apiData.hints[0].food.nutrients.ENERC_KCAL),
+        FAT: Math.floor(apiData.hints[0].food.nutrients.FAT),
+        CHOCDF: Math.floor(apiData.hints[0].food.nutrients.CHOCDF),
+        PROCNT: Math.floor(apiData.hints[0].food.nutrients.PROCNT),
       },
       date: today,
       userId: userContext.UserUID,
@@ -46,8 +46,8 @@ const BarcodeScan = () => {
     setScanned(true);
     setUpcScanData(data);
     const barcodeData = await fetchBarcodeInfo(data);
+    console.log(barcodeData);
     setApiData(barcodeData);
-    console.log('barcode data', barcodeData);
     addScan(barcodeData);
     // setAllScans([...allScans, apiData]);
     console.log('Type: ' + type + '\nData: ' + data);

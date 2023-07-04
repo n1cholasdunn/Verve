@@ -1,6 +1,5 @@
 import {Text, View} from 'react-native';
 import React, {Component} from 'react';
-import {RadarChart} from 'react-native-charts-wrapper';
 
 const MuscleChart = () => {
   const data = [
@@ -37,8 +36,7 @@ const MuscleChart = () => {
 
   return (
     <View>
-      <RadarChart />
-    </View>
+        </View>
   );
 };
 

@@ -25,24 +25,26 @@ const RenderScans = ({item}) => {
   return (
     <View className="p-5 mb-10 mx-3 h-180 w-300 bg-[#1E1E1E] border rounded-md flex-row">
       <View>
-        <Text className="text-2xl text-[#BB86FC]">{barcodeInfo.label}</Text>
+        <Text className="text-2xl text-[#BB86FC]">
+          {item.hints[0].food.label}
+        </Text>
 
         <Text className="text-lg text-[#606368]">
-          Calories: {barcodeInfo.nutrients.ENERC_KCAL}
+          Calories: {item.hints[0].food.nutrients.ENERC_KCAL}
         </Text>
         <Text className="text-lg text-[#606368]">
-          Fat: {barcodeInfo.nutrients.FAT}g
+          Fat: {item.hints[0].food.nutrients.FAT}g
         </Text>
         <Text className="text-lg text-[#606368]">
-          Sugar: {barcodeInfo.nutrients.SUGAR}g
+          Carbs: {item.hints[0].food.nutrients.CHOCDF}g
         </Text>
         <Text className="text-lg text-[#606368]">
-          Protein: {barcodeInfo.nutrients.PROCNT}g
+          Protein: {item.hints[0].food.nutrients.PROCNT}g
         </Text>
-        <Text className="text-lg text-[#606368]">Date: {barcodeInfo.date}</Text>
+        <Text className="text-lg text-[#606368]">Date: {item.date}</Text>
       </View>
       <View className="ml-[135px]">
-        <Pressable onPress={() => handleDelete(barcodeInfo.foodId)}>
+        <Pressable onPress={() => handleDelete(item.hints[0].food.foodId)}>
           <AntDesign name="delete" size={24} color="#606368" />
         </Pressable>
       </View>
