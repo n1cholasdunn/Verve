@@ -47,7 +47,7 @@ const Dashboard = () => {
           {/* {userContext && <Nutrition />} */}
           {/* {userContext && <Workouts />} */}
           {/* <DiscoverMeals /> */}
-          {userContext && <Statistics />}
+          {/* {userContext && <Statistics />} */}
         </Layout>
       </ScrollView>
     </SafeAreaView>
