@@ -10,7 +10,7 @@ import {AuthContext} from '../context/auth';
 import ScanData from '../components/ScanData';
 
 const Scan = () => {
-  // const [scannedBarcode, setScannedBarcode] = useState(null);
+  const [isScanned, setIsScanned] = useState(false);
   // const [scans, setScans] = useState<Scan[]>([]);
   // const [scannedFood, setScannedFood] = useState([]);
   // const [loading, setLoading] = useState(false);
@@ -40,17 +40,13 @@ const Scan = () => {
 
   return (
     <Layout>
-      <View>
-        <BarcodeScan />
-      </View>
-      <View>
-        <ScanData />
-      </View>
+      {isScanned ? <ScanData /> : <BarcodeScan setIsScanned={setIsScanned} />}
     </Layout>
   );
 };
 
 export default Scan;
+
 //  {
 //    scannedBarcode && (
 //      <View>

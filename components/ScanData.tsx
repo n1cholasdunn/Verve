@@ -28,7 +28,8 @@ const ScanData = () => {
 
   return (
     <SafeAreaView>
-      <ScrollView>
+      <Text>HI IT WORKS</Text>
+      {/* <ScrollView>
         <View>
           {loading! && (
             <FlatList
@@ -38,7 +39,7 @@ const ScanData = () => {
             />
           )}
         </View>
-      </ScrollView>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };

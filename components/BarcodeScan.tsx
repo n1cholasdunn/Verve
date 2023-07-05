@@ -7,7 +7,7 @@ import {addDoc, collection} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import {AuthContext} from '../context/auth';
 
-const BarcodeScan = () => {
+const BarcodeScan = ({setIsScanned}) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [upcScanData, setUpcScanData] = useState('Nothing scanned yet');
@@ -42,6 +42,7 @@ const BarcodeScan = () => {
       userId: userContext.UserUID,
     });
   };
+
   const handleBarcodeScanned = async ({type, data}) => {
     setScanned(true);
     setUpcScanData(data);
@@ -50,6 +51,7 @@ const BarcodeScan = () => {
     setApiData(barcodeData);
     addScan(barcodeData);
     // setAllScans([...allScans, apiData]);
+    setIsScanned(true);
     console.log('Type: ' + type + '\nData: ' + data);
   };
 

@@ -5,7 +5,7 @@ import {Dimensions} from 'react-native';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../../firebaseConfig';
 
-const TodayChart = ({data}) => {
+const TodayChartx = ({data}) => {
   const screenWidth = Dimensions.get('window').width;
   const [requirement, setRequirement] = useState({
     calories: 0,
@@ -69,7 +69,7 @@ const TodayChart = ({data}) => {
     />
   );
 };
-export default TodayChart;
+export default TodayChartx;
 // const TodayChart = ({dataValuesValues}) => {
 //   const [progressTime, setProgressTime] = useState(0);
 
