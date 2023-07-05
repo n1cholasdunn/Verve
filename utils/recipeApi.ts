@@ -1,14 +1,16 @@
 import {
-  EDAMAM_APP_ID,
-  EDAMAM_APP_KEY,
+  EDAMAM_SEARCH_APP_ID,
+  EDAMAM_SEARCH_APP_KEY,
   EDAMAM_NUTRIENT_APP_ID,
   EDAMAM_NUTRIENT_APP_KEY,
+  EDAMAM_DATABASE_APP_ID,
+  EDAMAM_DATABASE_APP_KEY,
 } from '@env';
 
 export const fetchRandomRecipes = async (mealtype, dietType) => {
   try {
     const response = await fetch(
-      `https://api.edamam.com/api/recipes/v2?app_id=${EDAMAM_APP_ID}&mealType=${mealtype}&diet=${dietType}&type=public&random=true&app_key=${EDAMAM_APP_KEY}`
+      `https://api.edamam.com/api/recipes/v2?app_id=${EDAMAM_SEARCH_APP_ID}&mealType=${mealtype}&diet=${dietType}&type=public&random=true&app_key=${EDAMAM_SEARCH_APP_KEY}`
     );
     const jsonResponse = await response.json();
     if (response.ok) {
@@ -38,7 +40,7 @@ export const fetchIngredientInfo = async ingredient => {
 export const fetchBarcodeInfo = async upcBarcode => {
   try {
     const response = await fetch(
-      `https://api.edamam.com/api/food-database/v2/parser?app_id=${EDAMAM_NUTRIENT_APP_ID}&app_key=${EDAMAM_NUTRIENT_APP_KEY}&upc=${upcBarcode}`
+      `https://api.edamam.com/api/food-database/v2/parser?app_id=${EDAMAM_DATABASE_APP_ID}&app_key=${EDAMAM_DATABASE_APP_KEY}&upc=${upcBarcode}`
     );
     const jsonResponse = await response.json();
     console.log('json response', jsonResponse);
