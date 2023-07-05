@@ -85,7 +85,7 @@ const Today = ({navigation}) => {
               <Text className=" mb-3 text-3xl text-[#606368]">Diet</Text>
               <View className="absolute top-20 left-4 flex-row flex justify-center ">
                 <TodayChart
-                  data={{
+                  dataValues={{
                     name: 'calories',
                     infoFor: calories,
                     color: 'rgba(255, 255, 255',
@@ -106,7 +106,7 @@ const Today = ({navigation}) => {
               <View className="left-24 top-8">
                 <View className="flex-row items-center">
                   <TodayChart
-                    data={{
+                    dataValues={{
                       name: 'carbs',
                       infoFor: carbs,
                       color: 'rgba(187, 134, 252',
@@ -119,7 +119,7 @@ const Today = ({navigation}) => {
                 </View>
                 <View className="flex-row items-center">
                   <TodayChart
-                    data={{
+                    dataValues={{
                       name: 'protein',
                       infoFor: protein,
                       color: 'rgba(3, 218, 198',
@@ -132,7 +132,7 @@ const Today = ({navigation}) => {
                 </View>
                 <View className="flex-row items-center">
                   <TodayChart
-                    data={{
+                    dataValues={{
                       name: 'fat',
                       infoFor: fat,
                       color: 'rgba(207, 102, 121',

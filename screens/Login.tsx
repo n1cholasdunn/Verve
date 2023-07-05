@@ -42,7 +42,7 @@ const Login = ({navigation}) => {
       <View className="my-2">
         <AnimatedInput
           valid={isValid}
-          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          styleInput={{color: '#e2e8f0', padding: 0.5, height: 35}}
           errorText="Please enter a valid weight."
           styleLabel={{fontWeight: '600', fontSize: 16}}
           placeholder="Enter Email..."
@@ -57,7 +57,7 @@ const Login = ({navigation}) => {
       <View className="my-2">
         <AnimatedInput
           valid={isValid}
-          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          styleInput={{color: '#e2e8f0', padding: 0.5, height: 35}}
           errorText="Please enter a valid weight."
           styleLabel={{fontWeight: '600', fontSize: 16}}
           placeholder="Enter Password..."

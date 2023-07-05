@@ -47,7 +47,7 @@ const Register = ({navigation}) => {
             setUserDetails({...userDetails, email: input});
           }}
           value={userDetails.email}
-          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          styleInput={{color: '#e2e8f0', padding: 0.5, height: 35}}
           errorText="Please enter a valid weight."
           styleLabel={{fontWeight: '600', fontSize: 16}}
           keyboardType="email-address"
@@ -64,7 +64,7 @@ const Register = ({navigation}) => {
             setUserDetails({...userDetails, password: input});
           }}
           value={userDetails.password}
-          styleInput={{color: '#e2e8f0', padding: 0.5}}
+          styleInput={{color: '#e2e8f0', padding: 0.5, height: 35}}
           errorText="Please enter a valid weight."
           styleLabel={{fontWeight: '600', fontSize: 16}}
           placeholderTextColor={'#64748b'}
