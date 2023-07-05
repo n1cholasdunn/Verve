@@ -22,6 +22,7 @@ import Test from './Test';
 import Layout from '../components/Layout';
 import {useNavigation} from '@react-navigation/native';
 import ThisMonthsActivity from '../components/charts/ThisMonthsActivity';
+import TestWeightChart from '../components/charts/TestWeightChart';
 
 const Dashboard = () => {
   const userContext = useContext(AuthContext);
@@ -30,6 +31,7 @@ const Dashboard = () => {
     <SafeAreaView className="bg-zinc-950 h-full w-full">
       <ScrollView nestedScrollEnabled>
         <Layout>
+          <TestWeightChart />
           {/* <View>
           <WorkoutForm />
         </View> */}

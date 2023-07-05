@@ -10,6 +10,7 @@ import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 import {ProgressChart} from 'react-native-chart-kit';
 import MacroChart from '../components/Nutrition/MacroChart';
+import TestWeightChart from '../components/charts/TestWeightChart';
 
 const Today = () => {
   let today = new Date().toLocaleString().slice(0, 10);
@@ -56,10 +57,10 @@ const Today = () => {
         <ScrollView horizontal={true}>
           <View className="m-2.5 p-4 h-60 w-[300px] bg-[#1E1E1E] flex-row">
             <Text className=" mb-3 text-3xl text-[#606368]">Diet</Text>
-            <View></View>
+            {/* <View></View> */}
             <View className="absolute top-20 left-4 flex-row flex justify-center ">
               <TodayChart
-                data={{
+                dataValues={{
                   infoFor: calories,
                   color: 'rgba(255, 255, 255',
                   chartSize: 120,
@@ -76,7 +77,7 @@ const Today = () => {
             <View className="left-24 top-8">
               <View className="flex-row items-center">
                 <TodayChart
-                  data={{
+                  dataValues={{
                     infoFor: carbs,
                     color: 'rgba(187, 134, 252',
                     chartSize: 60,
@@ -88,7 +89,7 @@ const Today = () => {
               </View>
               <View className="flex-row items-center">
                 <TodayChart
-                  data={{
+                  dataValues={{
                     infoFor: protein,
                     color: 'rgba(3, 218, 198',
                     chartSize: 60,
@@ -100,7 +101,7 @@ const Today = () => {
               </View>
               <View className="flex-row items-center">
                 <TodayChart
-                  data={{
+                  dataValues={{
                     infoFor: fat,
                     color: 'rgba(207, 102, 121',
                     chartSize: 60,
@@ -137,6 +138,7 @@ const Today = () => {
           </Text>
           {/* TODO Weight chart */}
           <WeightChart />
+          {/* <TestWeightChart /> */}
           <WeightForm user={userContext.UserUID} />
         </View>
         <View>

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {ProgressChart} from 'react-native-chart-kit';
 
-const TodayChart = ({dataValues}) => {
+const TodayChartx = ({dataValues}) => {
   const [progressTime, setProgressTime] = useState(0);
   console.log('dataValues', dataValues);
   // Define a initial value for chart
@@ -87,7 +87,7 @@ const TodayChart = ({dataValues}) => {
     </SafeAreaView>
   );
 };
-export default TodayChart;
+export default TodayChartx;
 // const TodayChart = ({dataValuesValues}) => {
 //   const [progressTime, setProgressTime] = useState(0);
 

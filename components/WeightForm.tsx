@@ -51,7 +51,7 @@ const WeightForm = ({user}) => {
           value={formState.weight !== 0 ? String(formState.weight) : ''}
           styleInput={{color: '#e2e8f0', padding: 0.5}}
           errorText="Please enter a valid weight."
-          styleLabel={{fontWeight: '600'}}
+          styleLabel={{fontWeight: '600', fontSize: 16}}
         />
         <Pressable
           onPress={addWeighIn}
