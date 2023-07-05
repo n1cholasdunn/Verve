@@ -23,6 +23,11 @@ import Layout from '../components/Layout';
 import {useNavigation} from '@react-navigation/native';
 import ThisMonthsActivity from '../components/charts/ThisMonthsActivity';
 import TestWeightChart from '../components/charts/TestWeightChart';
+import CalorieChart from '../components/charts/CalorieChart';
+import CarbsChart from '../components/charts/CarbsChart';
+import ProteinChart from '../components/charts/ProteinChart';
+import FatChart from '../components/charts/FatChart';
+import Statistics from './Statistics';
 
 const Dashboard = () => {
   const userContext = useContext(AuthContext);
@@ -44,7 +49,7 @@ const Dashboard = () => {
           {/* {userContext && <Nutrition />} */}
           {/* {userContext && <Workouts />} */}
           {/* <DiscoverMeals /> */}
-          {userContext && <ThisMonthsActivity />}
+          {/* {userContext && <Statistics />} */}
         </Layout>
       </ScrollView>
     </SafeAreaView>

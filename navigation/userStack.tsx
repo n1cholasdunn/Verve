@@ -8,6 +8,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Scan from '../screens/Scan';
 import DiscoverMealInfo from '../screens/DiscoverMealInfo';
 import DiscoverMeals from '../screens/DiscoverMeals';
+import Workouts from '../components/Workouts';
+import Nutrition from '../components/Nutrition';
 
 const Tab = createBottomTabNavigator();
 
@@ -114,6 +116,28 @@ export default function userStack() {
         options={{
           headerShown: false,
           title: 'Meal Info',
+          headerStyle: {
+            backgroundColor: '#09090b',
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Nutrition"
+        component={Nutrition}
+        options={{
+          headerShown: false,
+          title: 'Nutrition',
+          headerStyle: {
+            backgroundColor: '#09090b',
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Workouts"
+        component={Workouts}
+        options={{
+          headerShown: false,
+          title: 'Workouts',
           headerStyle: {
             backgroundColor: '#09090b',
           },

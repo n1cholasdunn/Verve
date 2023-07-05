@@ -27,7 +27,6 @@ const BarcodeScan = () => {
   useEffect(() => {
     askCameraPermission();
   }, []);
-
   const addScan = apiData => {
     const scanDb = collection(db, 'scan-test');
     addDoc(scanDb, {

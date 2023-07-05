@@ -3,7 +3,7 @@ import React, {Component, useEffect, useState} from 'react';
 import {collection, onSnapshot} from '@firebase/firestore';
 import {db} from '../firebaseConfig';
 
-const MuscleDiagram = ({day, user}) => {
+const TodayMuscleDiagram = ({day, user}) => {
   const [muscles, setMuscles] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -49,11 +49,11 @@ const MuscleDiagram = ({day, user}) => {
   };
 
   return (
-    <View className="flex justify-center border border-[#BB86FC] rounded-lg">
+    <View className="flex justify-center ">
       <Image
         style={{
-          height: 350,
-          width: 350,
+          height: 200,
+          width: 200,
           position: 'relative',
         }}
         source={require('../media/nothing.png')}
@@ -62,8 +62,8 @@ const MuscleDiagram = ({day, user}) => {
       {muscles.map(muscle => (
         <Image
           style={{
-            height: 350,
-            width: 350,
+            height: 200,
+            width: 200,
             position: 'absolute',
           }}
           source={imageList[muscle]}
@@ -73,4 +73,4 @@ const MuscleDiagram = ({day, user}) => {
   );
 };
 
-export default MuscleDiagram;
+export default TodayMuscleDiagram;

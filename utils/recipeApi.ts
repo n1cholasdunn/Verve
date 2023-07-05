@@ -41,11 +41,13 @@ export const fetchBarcodeInfo = async upcBarcode => {
       `https://api.edamam.com/api/food-database/v2/parser?app_id=${EDAMAM_NUTRIENT_APP_ID}&app_key=${EDAMAM_NUTRIENT_APP_KEY}&upc=${upcBarcode}`
     );
     const jsonResponse = await response.json();
+    console.log('json response', jsonResponse);
     if (response.ok) {
       jsonResponse.ok = true;
       return jsonResponse;
     }
+    throw new Error('barcode error');
   } catch (error) {
-    console.log(error);
+    console.log('barcode error', error);
   }
 };
